@@ -1,11 +1,12 @@
+// Section IDs
 export const homepageSectionTypes = [
   'hero',
   'services',
   'service-cards',
-  'testimonials',
+  'reviews',
   'gallery',
   'cta',
-  'about',
+  'value-props',
   'faq'
 ] as const;
 
@@ -29,7 +30,7 @@ export type TierContentOptions = {
 };
 
 export type TierMarketingOptions = {
-  testimonialsEnabled: boolean;
+  reviewsEnabled: boolean;
   conversionTracking: boolean;
 };
 
