@@ -15,12 +15,13 @@ import {
 
 import { SITE_TIER, tierPresets } from '@/src/config/tiers';
 
-/* ---------- Tier presets ---------- */
-
 /* ---------- Resolve active tier ---------- */
 const tierId = SITE_TIER;
 const tier = tierPresets[tierId];
-/* ---------- logo presets ---------- */
+
+/* ---------- Client Specific choices ---------- */
+
+/* ---------- logo ---------- */
 
 const logoPresets = {
   text: <TextLogo text="Smith Plumbing" className="text-blue-900" />,
@@ -42,7 +43,7 @@ const logoPresets = {
 const logo = logoPresets.image; // Adjust logo & alt text above. Logo must be present in public/logos/
 // const logo = logoPresets.text; // Enter text in logo presets object above.
 
-/* ---------- SEO Metadata presets ---------- */
+/* ---------- SEO Metadata ---------- */
 const seo = {
   siteName: 'Smith Plumbing',
   defaultTitle: 'Smith Plumbing',
@@ -50,7 +51,7 @@ const seo = {
     'Professional residential and commercial plumbing services in your area.'
 };
 
-/* ---------- Contact presets ---------- */
+/* ---------- Contact info ---------- */
 const phone: PhoneConfig = {
   label: '(618) 555-1234',
   href: 'tel:16185551234'

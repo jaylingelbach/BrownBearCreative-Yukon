@@ -8,7 +8,7 @@ export const tierPresets: Record<TierId, TierPreset> = {
       maxDepth: 1
     },
     homepage: {
-      allowedSectionsInOrder: ['hero', 'services', 'about', 'cta']
+      allowedSectionsInOrder: ['hero', 'services', 'value-props', 'cta']
     },
     content: {
       maxPages: 5,
@@ -17,7 +17,7 @@ export const tierPresets: Record<TierId, TierPreset> = {
       faqEnabled: false
     },
     marketing: {
-      testimonialsEnabled: false,
+      reviewsEnabled: false,
       conversionTracking: false
     },
     management: {
@@ -36,7 +36,7 @@ export const tierPresets: Record<TierId, TierPreset> = {
         'hero',
         'services',
         'service-cards',
-        'testimonials',
+        'reviews',
         'cta'
       ]
     },
@@ -47,7 +47,7 @@ export const tierPresets: Record<TierId, TierPreset> = {
       faqEnabled: false
     },
     marketing: {
-      testimonialsEnabled: false,
+      reviewsEnabled: false,
       conversionTracking: false
     },
     management: {
@@ -67,7 +67,7 @@ export const tierPresets: Record<TierId, TierPreset> = {
         'hero',
         'services',
         'service-cards',
-        'testimonials',
+        'reviews',
         'gallery',
         'faq',
         'cta'
@@ -82,7 +82,7 @@ export const tierPresets: Record<TierId, TierPreset> = {
     },
 
     marketing: {
-      testimonialsEnabled: true,
+      reviewsEnabled: true,
       conversionTracking: true
     },
 

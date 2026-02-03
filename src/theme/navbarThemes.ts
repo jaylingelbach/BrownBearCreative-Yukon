@@ -1,5 +1,8 @@
 import { NavbarTheme } from '@/src/lib/types';
 
+// Design-system themes for the navbar.
+// Selected by site config; never contain client-specific data.
+
 export const blueTheme: NavbarTheme = {
   // top bar
   topbarContainer: 'bg-white text-blue-900 border-b',
