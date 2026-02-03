@@ -1,6 +1,16 @@
 import { homepageSectionRegistry } from '@/src/components/homepage/sectionRegistry';
 import { SITE_TIER, tierPresets } from '@/src/config/tiers';
 
+/**
+ * Render homepage sections allowed for the active site tier.
+ *
+ * Looks up the active tier via SITE_TIER and renders the sections listed in
+ * the tier's `homepage.allowedSectionsInOrder`, skipping any section whose
+ * component is not registered.
+ *
+ * @returns A React element containing the resolved homepage section elements; some children may be `null` for missing section components.
+ * @throws Error if the active SITE_TIER does not have a corresponding entry in `tierPresets`.
+ */
 export default function Home() {
   /* ---------- Resolve active tier ---------- */
   const tierId = SITE_TIER;
