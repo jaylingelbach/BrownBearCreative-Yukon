@@ -5,7 +5,9 @@ export function getHomepageServices(
 ): ServiceData[] {
   const homepageServices: ServiceData[] = Object.values(servicesById)
     .filter((service) => service.visibility.showOnHomepage === true)
-    .sort((a, b) => a.order.homepage - b.order.homepage);
+    .sort(
+      (a, b) => a.order.homepage - b.order.homepage || a.id.localeCompare(b.id)
+    );
 
   // Dev-only sanity checks
   if (process.env.NODE_ENV !== 'production') {
