@@ -206,14 +206,20 @@ export function Header({
               }
 
               /* ───── Normal link ───── */
+
+              if (!item.href) {
+                return (
+                  <span key={item.label} className={theme.navLink}>
+                    {item.label}
+                  </span>
+                );
+              }
               return (
                 <Link
-                  key={item.href ?? item.label}
-                  href={item.href ?? '#'}
+                  key={item.href}
+                  href={item.href}
                   className={`${theme.navLink} ${
-                    item.href && isActivePath(pathname, item.href)
-                      ? theme.navLinkActive
-                      : ''
+                    isActivePath(pathname, item.href) ? theme.navLinkActive : ''
                   }`}
                   aria-current={
                     item.href && isActivePath(pathname, item.href)

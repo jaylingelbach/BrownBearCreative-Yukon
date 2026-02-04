@@ -10,12 +10,12 @@ export default function ServicesGrid({ filteredServices }: Props) {
   const theme = defaultServiceGridTheme;
 
   return (
-    <section className={theme.section}>
+    <div className={theme.section}>
       <div className={theme.grid}>
         {filteredServices.map((service) => (
           <ServiceCard key={service.id} service={service} theme={theme} />
         ))}
       </div>
-    </section>
+    </div>
   );
 }
