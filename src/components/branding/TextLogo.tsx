@@ -4,6 +4,7 @@ export type TextLogoProps = {
 };
 
 export function TextLogo({ text, className = '' }: TextLogoProps) {
+  if (!text) return null;
   return (
     <div
       role="img"

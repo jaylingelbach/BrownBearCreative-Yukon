@@ -14,8 +14,7 @@ export const services: Record<ServiceId, ServiceData> = {
 
     labels: {
       navLabel: 'Drain Cleaning',
-      cardTitle: 'Professional Drain Cleaning',
-      shortDescription: 'Clear stubborn clogs and restore proper drainage fast.'
+      cardTitle: 'Professional Drain Cleaning'
     },
 
     visibility: {
@@ -29,7 +28,8 @@ export const services: Record<ServiceId, ServiceData> = {
     },
 
     media: {
-      icon: Droplets
+      // icon: Droplets,
+      imageSrc: '/plumber1.png'
     }
   },
 
@@ -39,8 +39,7 @@ export const services: Record<ServiceId, ServiceData> = {
 
     labels: {
       navLabel: 'Water Heaters',
-      cardTitle: 'Water Heater Repair & Installation',
-      shortDescription: 'Reliable hot water solutions for your home.'
+      cardTitle: 'Water Heater Repair & Installation'
     },
 
     visibility: {
@@ -54,7 +53,8 @@ export const services: Record<ServiceId, ServiceData> = {
     },
 
     media: {
-      icon: Flame
+      // icon: Flame
+      imageSrc: '/plumber1.png'
     }
   },
 
@@ -64,13 +64,12 @@ export const services: Record<ServiceId, ServiceData> = {
 
     labels: {
       navLabel: 'Emergency Repair',
-      cardTitle: '24/7 Emergency Plumbing',
-      shortDescription: 'Fast response when plumbing problems can’t wait.'
+      cardTitle: '24/7 Emergency Plumbing'
     },
 
     visibility: {
       showInNav: true,
-      showOnHomepage: false
+      showOnHomepage: true
     },
 
     order: {
@@ -79,7 +78,8 @@ export const services: Record<ServiceId, ServiceData> = {
     },
 
     media: {
-      icon: AlertTriangle
+      // icon: AlertTriangle,
+      imageSrc: '/plumber1.png'
     }
   }
 };

@@ -9,7 +9,6 @@ export type ServiceId = string;
 export type ServiceLabels = {
   navLabel: string;
   cardTitle: string;
-  shortDescription: string;
 };
 
 export type ServiceVisibility = {
@@ -29,7 +28,7 @@ export type ServiceViewOrder = {
 };
 
 export type ServiceMedia = {
-  icon: LucideIcon;
+  icon?: LucideIcon;
   imageSrc?: string;
 };
 

@@ -1,4 +1,4 @@
-import { tierIds, TierId } from '@/src/config/tiers/types';
+import { tierIds, type TierId } from '@src/config/tiers/types';
 
 function parseTier(value: string | undefined): TierId {
   if (!value) return 'starter';

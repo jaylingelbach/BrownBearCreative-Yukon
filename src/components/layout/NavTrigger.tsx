@@ -29,7 +29,7 @@ export const NavTrigger = forwardRef<HTMLButtonElement, NavTriggerProps>(
         className={`
         appearance-none bg-transparent border-0 p-0 m-0
         font-inherit text-inherit leading-inherit
-        ${className}
+        ${className ?? ''}
         ${isActive ? 'is-active' : ''}
       `}
       >
