@@ -6,6 +6,12 @@ interface Props {
   filteredServices: ServiceData[];
 }
 
+/**
+ * Render a grid of service cards for the provided services.
+ *
+ * @param filteredServices - Array of services to display in the grid. Each service's `id` is used as the React key.
+ * @returns The rendered React element containing a container with a grid of service cards.
+ */
 export default function ServicesGrid({ filteredServices }: Props) {
   const theme = defaultServiceGridTheme;
 

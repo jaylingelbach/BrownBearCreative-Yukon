@@ -10,6 +10,13 @@ interface ServiceCardProps {
   theme: ServiceGridTheme;
 }
 
+/**
+ * Render a linked service card displaying either an image, an icon, or a placeholder and the service title, with layout and styling adjusted by service card configuration and the provided theme.
+ *
+ * @param service - The service data to display (media, labels, and slug used for link).
+ * @param theme - Theme classes used to style the card, icon, and title.
+ * @returns A React element representing a link-wrapped service card for the given service.
+ */
 export default function ServiceCard({ service, theme }: ServiceCardProps) {
   const { mediaVariant, imageFit } = useServiceCardsConfig();
 

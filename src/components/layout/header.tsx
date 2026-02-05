@@ -7,6 +7,16 @@ import { isActivePath } from '@/src/lib/navigation';
 import { useAccessibleDropdownMenu } from '@/src/hooks/useAccessibleDropdownMenu';
 import { NavTrigger } from '@/src/components/layout/NavTrigger';
 
+/**
+ * Renders the site header including a top identity bar and a primary navigation bar with optional accessible dropdown menus.
+ *
+ * @param logo - Visual/logo node shown in the top-left Home link
+ * @param phone - Object with `href` and `label` for the phone call link in the top-right
+ * @param links - Array of navigation items; items may include `href`, `label`, and optional `children` for dropdowns
+ * @param enableDropdowns - When true, items with `children` render as accessible dropdown menus (default: `false`)
+ * @param theme - Object of CSS class names used to style the header and navigation elements
+ * @returns The header JSX element to be rendered at the top of the page
+ */
 export function Header({
   logo,
   phone,
