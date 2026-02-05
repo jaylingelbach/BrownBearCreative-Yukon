@@ -1,5 +1,14 @@
 import type { ServiceData, ServiceId } from '@src/config/services/types';
 
+/**
+ * Collects services flagged for homepage display and returns them sorted by homepage order then by id.
+ *
+ * @param servicesById - Record mapping service IDs to their ServiceData
+ * @returns The list of services with `visibility.showOnHomepage === true`, sorted by `order.homepage` ascending and then by `id` to break ties
+ *
+ * @remarks
+ * In non-production environments this function logs warnings if a homepage-visible service has neither `media.imageSrc` nor `media.icon`, and if multiple services share the same `order.homepage` value.
+ */
 export function getHomepageServices(
   servicesById: Record<ServiceId, ServiceData>
 ): ServiceData[] {
