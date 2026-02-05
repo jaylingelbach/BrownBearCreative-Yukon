@@ -19,7 +19,7 @@ export const homepageSectionRegistry: Record<
   hero: HeroSection,
   'service-cards': ServiceCardsSection,
   cta: PrimaryCTASection,
-  'value-props': ValuePropsSection,g
+  'value-props': ValuePropsSection,
   reviews: ReviewsSection,
   gallery: GallerySection,
   faq: FaqSection
