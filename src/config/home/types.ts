@@ -1,8 +1,21 @@
-export type HomepageTheme = {};
-
-export type HomepageSections = {};
+export type ServiceCardMediaVariant = 'contained' | 'bleed';
+export type ServiceCardImageFit = 'cover' | 'contain';
 
 export type HomeConfig = {
-  theme: HomepageTheme;
-  sections: HomepageSections[];
+  serviceCards: {
+    /**
+     * 'contained' => media sits inside padding (card background visible)
+     * 'bleed'     => media is edge-to-edge like the mockup tiles
+     */
+    mediaVariant: ServiceCardMediaVariant;
+
+    /**
+     * Global image rendering mode for service cards.
+     * This intentionally prevents per-service mixing.
+     *
+     * 'cover'   => photo tiles (fills frame, may crop)
+     * 'contain' => logo tiles (fully visible, letterboxed)
+     */
+    imageFit: ServiceCardImageFit;
+  };
 };

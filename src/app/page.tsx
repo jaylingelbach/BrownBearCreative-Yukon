@@ -1,32 +1,25 @@
-import { homepageSectionRegistry } from '@/src/components/homepage/sectionRegistry';
-import { SITE_TIER, tierPresets } from '@/src/config/tiers';
+'use client';
+
+import { homepageSectionRegistry } from '@src/components/homepage/services/sectionRegistry';
+import { useTierPreset } from '@src/config/tiers/hooks';
 
 /**
- * Render homepage sections allowed for the active site tier.
+ * Render the home page by composing configured homepage sections in order.
  *
- * Looks up the active tier via SITE_TIER and renders the sections listed in
- * the tier's `homepage.allowedSectionsInOrder`, skipping any section whose
- * component is not registered.
+ * Sections listed in the current tier's `homepage.allowedSectionsInOrder` are rendered
+ * using components registered in `homepageSectionRegistry`. If a section has no
+ * registered component it is skipped (rendered as `null`) and a console warning is
+ * emitted in non-production environments.
  *
- * @returns A React element containing the resolved homepage section elements; some children may be `null` for missing section components.
- * @throws Error if the active SITE_TIER does not have a corresponding entry in `tierPresets`.
+ * @returns The root JSX element containing the homepage sections in configured order; missing sections are represented as `null` in the children.
  */
 export default function Home() {
-  /* ---------- Resolve active tier ---------- */
-  const tierId = SITE_TIER;
-  const tier = tierPresets[tierId];
-
-  if (!tier) {
-    throw new Error(
-      `[homepage] Invalid SITE_TIER: "${tierId}" not found in tierPresets.`
-    );
-  }
-
-  /* ---------- Render allowed Sections ---------- */
+  const tier = useTierPreset();
   const allowedSections = tier.homepage.allowedSectionsInOrder;
 
   const sections = allowedSections.map((section, index) => {
     const Section = homepageSectionRegistry[section];
+
     if (!Section) {
       if (process.env.NODE_ENV !== 'production') {
         console.warn(
@@ -39,5 +32,5 @@ export default function Home() {
     return <Section key={`${section}-${index}`} />;
   });
 
-  return <div className="flex flex-col items-center h-60 p-6">{sections}</div>;
+  return <div className="flex flex-col items-stretch p-6">{sections}</div>;
 }

@@ -1,7 +1,6 @@
 // Section IDs
 export const homepageSectionTypes = [
   'hero',
-  'services',
   'service-cards',
   'reviews',
   'gallery',

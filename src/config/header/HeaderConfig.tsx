@@ -1,4 +1,4 @@
-import { TextLogo } from '@/src/components/branding/text-logo';
+import { TextLogo } from '@/src/components/branding/TextLogo';
 import { blueTheme } from '@/src/theme/navbarThemes';
 import {
   growthLinks,
@@ -13,7 +13,7 @@ import {
   SiteConfig
 } from '@/src/config/header/types';
 
-import { SITE_TIER, tierPresets } from '@/src/config/tiers';
+import { SITE_TIER, tierPresets } from '@/src/config/tiers/index';
 
 /* ---------- Resolve active tier ---------- */
 const tierId = SITE_TIER;

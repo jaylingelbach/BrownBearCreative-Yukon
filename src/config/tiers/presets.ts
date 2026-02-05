@@ -8,7 +8,7 @@ export const tierPresets: Record<TierId, TierPreset> = {
       maxDepth: 1
     },
     homepage: {
-      allowedSectionsInOrder: ['hero', 'services', 'value-props', 'cta']
+      allowedSectionsInOrder: ['hero', 'service-cards', 'value-props', 'cta']
     },
     content: {
       maxPages: 5,
@@ -32,13 +32,7 @@ export const tierPresets: Record<TierId, TierPreset> = {
       maxDepth: 1
     },
     homepage: {
-      allowedSectionsInOrder: [
-        'hero',
-        'services',
-        'service-cards',
-        'reviews',
-        'cta'
-      ]
+      allowedSectionsInOrder: ['hero', 'service-cards', 'reviews', 'cta']
     },
     content: {
       maxPages: 10,
@@ -65,7 +59,6 @@ export const tierPresets: Record<TierId, TierPreset> = {
     homepage: {
       allowedSectionsInOrder: [
         'hero',
-        'services',
         'service-cards',
         'reviews',
         'gallery',
