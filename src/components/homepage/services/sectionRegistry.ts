@@ -1,11 +1,11 @@
 import React from 'react';
 
-import HeroSection from '@/src/components/homepage/heroSection';
+import HeroSection from '@/src/components/homepage/HeroSection';
 import ServiceCardsSection from '@/src/components/homepage/services/ServiceCardsSection';
-import PrimaryCTASection from '@/src/components/homepage/primaryCTASection';
-import ValuePropsSection from '@/src/components/homepage/valuePropsSection';
-import ReviewsSection from '@/src/components/homepage/reviewsSection';
-import GallerySection from '@/src/components/homepage/gallerySection';
+import PrimaryCTASection from '@/src/components/homepage/PrimaryCTASection';
+import ValuePropsSection from '@/src/components/homepage/ValuePropsSection';
+import ReviewsSection from '@/src/components/homepage/ReviewsSection';
+import GallerySection from '@/src/components/homepage/GallerySection';
 import FaqSection from '@/src/components/homepage/Faq/FaqSection';
 
 import { HomepageSectionType } from '@src/config/tiers';
