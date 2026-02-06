@@ -1,7 +1,7 @@
 'use client';
 
 import { homepageSectionRegistry } from '@src/components/homepage/services/sectionRegistry';
-import { getTierPreset } from '@src/config/tiers/hooks';
+import { getTierPreset } from '@/src/config/tiers/getters';
 
 /**
  * Render the home page by composing configured homepage sections in order.

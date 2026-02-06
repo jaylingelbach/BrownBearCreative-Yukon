@@ -8,7 +8,7 @@ import type {
   SiteConfig
 } from '@/src/config/header/types';
 
-import { getTierId, getTierPreset } from '@/src/config/tiers/hooks';
+import { getTierId, getTierPreset } from '@/src/config/tiers/getters';
 
 import { services } from '@/src/config/services/services';
 import {
