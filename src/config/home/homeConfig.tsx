@@ -1,4 +1,4 @@
-import { HomeConfig } from '@src/config/home/types';
+import { HomeConfig } from '@/src/config/home/types';
 
 export const homeConfig: HomeConfig = {
   serviceCards: {

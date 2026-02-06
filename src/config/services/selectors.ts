@@ -1,5 +1,5 @@
 import { NavChild } from '@/src/lib/types';
-import type { ServiceData, ServiceId } from '@src/config/services/types';
+import type { ServiceData, ServiceId } from '@/src/config/services/types';
 
 /**
  * Collects services flagged for homepage display and returns them sorted by homepage order then by id.

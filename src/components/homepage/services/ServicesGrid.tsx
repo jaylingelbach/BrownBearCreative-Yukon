@@ -1,6 +1,6 @@
-import ServiceCard from '@src/components/homepage/services/ServiceCard';
-import type { ServiceData } from '@src/config/services/types';
-import { defaultServiceGridTheme } from '@src/theme/serviceGridThemes';
+import ServiceCard from '@/src/components/homepage/services/ServiceCard';
+import type { ServiceData } from '@/src/config/services/types';
+import { defaultServiceGridTheme } from '@/src/theme/serviceGridThemes';
 
 interface Props {
   filteredServices: ServiceData[];

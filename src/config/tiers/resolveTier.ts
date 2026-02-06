@@ -1,4 +1,4 @@
-import { tierIds, type TierId } from '@src/config/tiers/types';
+import { tierIds, type TierId } from '@/src/config/tiers/types';
 
 /**
  * Normalize an input tier string to a valid TierId, defaulting to `starter` when missing or invalid.
