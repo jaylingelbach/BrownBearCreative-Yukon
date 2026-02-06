@@ -59,6 +59,12 @@ export function getHomepageServices(
   return homepageServices;
 }
 
+/**
+ * Collects services permitted to appear in navigation dropdowns and sorts them by navigation order.
+ *
+ * @param servicesById - Mapping of service IDs to their ServiceData
+ * @returns An array of ServiceData for services with `visibility.showInNav === true`, sorted by `order.nav` ascending and by `id` for ties
+ */
 export function getAllowedDropdowns(
   servicesById: Record<ServiceId, ServiceData>
 ): ServiceData[] {
@@ -68,6 +74,12 @@ export function getAllowedDropdowns(
   return allowedDropdowns;
 }
 
+/**
+ * Converts service entries into navigation child items for use in a dropdown.
+ *
+ * @param allowedDropdowns - Services permitted to appear in navigation dropdowns.
+ * @returns An array of `NavChild` objects where `label` is the service's `labels.navLabel` and `href` is `/services/{slug}`.
+ */
 export function getServiceNavChildren(
   allowedDropdowns: ServiceData[]
 ): NavChild[] {

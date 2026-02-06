@@ -2,12 +2,13 @@ import { homepageSectionRegistry } from '@/src/components/homepage/services/sect
 import { getTierPreset } from '@/src/config/tiers/getters';
 
 /**
- * Render the home page by composing configured homepage sections in order.
+ * Renders the home page by composing the configured homepage sections in order.
  *
  * Sections listed in the current tier's `homepage.allowedSectionsInOrder` are rendered
  * using components registered in `homepageSectionRegistry`. If a section has no
  * registered component it is skipped (rendered as `null`) and a console warning is
  * emitted in non-production environments.
+ *
  * @returns The root JSX element containing the homepage sections in configured order; missing sections are represented as `null` in the children.
  */
 export default function Home() {
