@@ -61,7 +61,7 @@ export function getHomepageServices(
 
 export function getAllowedDropdowns(
   servicesById: Record<ServiceId, ServiceData>
-) {
+): ServiceData[] {
   const allowedDropdowns = Object.values(servicesById)
     .filter((service) => service.visibility.showInNav === true)
     .sort((a, b) => a.order.nav - b.order.nav || a.id.localeCompare(b.id));
