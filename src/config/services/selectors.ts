@@ -1,4 +1,5 @@
-import type { ServiceData, ServiceId } from '@src/config/services/types';
+import { NavChild } from '@/src/lib/types';
+import type { ServiceData, ServiceId } from '@/src/config/services/types';
 
 /**
  * Collects services flagged for homepage display and returns them sorted by homepage order then by id.
@@ -56,4 +57,36 @@ export function getHomepageServices(
   }
 
   return homepageServices;
+}
+
+/**
+ * Collects services permitted to appear in navigation dropdowns and sorts them by navigation order.
+ *
+ * @param servicesById - Mapping of service IDs to their ServiceData
+ * @returns An array of ServiceData for services with `visibility.showInNav === true`, sorted by `order.nav` ascending and by `id` for ties
+ */
+export function getAllowedDropdowns(
+  servicesById: Record<ServiceId, ServiceData>
+): ServiceData[] {
+  const allowedDropdowns = Object.values(servicesById)
+    .filter((service) => service.visibility.showInNav === true)
+    .sort((a, b) => a.order.nav - b.order.nav || a.id.localeCompare(b.id));
+  return allowedDropdowns;
+}
+
+/**
+ * Converts service entries into navigation child items for use in a dropdown.
+ *
+ * @param allowedDropdowns - Services permitted to appear in navigation dropdowns.
+ * @returns An array of `NavChild` objects where `label` is the service's `labels.navLabel` and `href` is `/services/{slug}`.
+ */
+export function getServiceNavChildren(
+  allowedDropdowns: ServiceData[]
+): NavChild[] {
+  return allowedDropdowns.map((service) => {
+    return {
+      label: service.labels.navLabel,
+      href: `/services/${service.slug}`
+    };
+  });
 }

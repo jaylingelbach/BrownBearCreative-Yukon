@@ -1,6 +1,6 @@
-import { useServiceCardsConfig } from '@src/config/home/hooks';
-import type { ServiceData } from '@src/config/services/types';
-import type { ServiceGridTheme } from '@src/theme/serviceGridThemes';
+import { useServiceCardsConfig } from '@/src/config/home/hooks';
+import type { ServiceData } from '@/src/config/services/types';
+import type { ServiceGridTheme } from '@/src/theme/serviceGridThemes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useId } from 'react';

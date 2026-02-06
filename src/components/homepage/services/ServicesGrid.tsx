@@ -1,16 +1,16 @@
-import ServiceCard from '@src/components/homepage/services/ServiceCard';
-import type { ServiceData } from '@src/config/services/types';
-import { defaultServiceGridTheme } from '@src/theme/serviceGridThemes';
+import ServiceCard from '@/src/components/homepage/services/ServiceCard';
+import type { ServiceData } from '@/src/config/services/types';
+import { defaultServiceGridTheme } from '@/src/theme/serviceGridThemes';
 
 interface Props {
   filteredServices: ServiceData[];
 }
 
 /**
- * Render a grid of service cards for the provided services.
+ * Renders a grid of service cards for the provided services.
  *
- * @param filteredServices - Array of services to display in the grid. Each service's `id` is used as the React key.
- * @returns The rendered React element containing a container with a grid of service cards.
+ * @param filteredServices - The services to display in the grid.
+ * @returns A React element containing a container with a grid of ServiceCard components.
  */
 export default function ServicesGrid({ filteredServices }: Props) {
   const theme = defaultServiceGridTheme;

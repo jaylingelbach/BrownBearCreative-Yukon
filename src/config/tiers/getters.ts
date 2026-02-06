@@ -6,7 +6,7 @@ import type { TierId, TierNavigationOptions, TierPreset } from './types';
  *
  * @returns The active site tier identifier used by the application.
  */
-export function useTierId(): TierId {
+export function getTierId(): TierId {
   return SITE_TIER;
 }
 
@@ -16,7 +16,7 @@ export function useTierId(): TierId {
  * @returns The `TierPreset` for the active `SITE_TIER`.
  * @throws Error if `SITE_TIER` is not found in `tierPresets`.
  */
-export function useTierPreset(): TierPreset {
+export function getTierPreset(): TierPreset {
   const tierId = SITE_TIER;
   const tier = tierPresets[tierId];
 
@@ -36,6 +36,6 @@ export function useTierPreset(): TierPreset {
  *
  * @returns The navigation capabilities defined by the active tier preset.
  */
-export function useNavigationCapabilities(): TierNavigationOptions {
-  return useTierPreset().navigation;
+export function getNavigationCapabilities(): TierNavigationOptions {
+  return getTierPreset().navigation;
 }

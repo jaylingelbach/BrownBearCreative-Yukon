@@ -1,28 +1,36 @@
 import { TextLogo } from '@/src/components/branding/TextLogo';
 import { blueTheme } from '@/src/theme/navbarThemes';
-import {
-  growthLinks,
-  managedLinks,
-  starterLinks
-} from '@/src/config/header/links';
 
 import Image from 'next/image';
-import {
+import type {
   EmailConfig,
   PhoneConfig,
   SiteConfig
 } from '@/src/config/header/types';
 
-import { SITE_TIER, tierPresets } from '@/src/config/tiers/index';
+import { getTierId, getTierPreset } from '@/src/config/tiers/getters';
+
+import { services } from '@/src/config/services/services';
+import {
+  getAllowedDropdowns,
+  getServiceNavChildren
+} from '@/src/config/services/selectors';
+
+import {
+  buildStarterLinks,
+  buildGrowthLinks,
+  buildManagedLinks
+} from '@/src/config/header/links';
 
 /* ---------- Resolve active tier ---------- */
-const tierId = SITE_TIER;
-const tier = tierPresets[tierId];
+const tierId = getTierId();
+const tier = getTierPreset();
 
-/* ---------- Client Specific choices ---------- */
+if (!tier) {
+  throw new Error(`[headerConfig] Invalid SITE_TIER "${tierId}"`);
+}
 
-/* ---------- logo ---------- */
-
+/* ---------- logo presets ---------- */
 const logoPresets = {
   text: <TextLogo text="Smith Plumbing" className="text-blue-900" />,
   image: (
@@ -39,9 +47,7 @@ const logoPresets = {
   )
 } as const;
 
-// Switch logo type here:
-const logo = logoPresets.image; // Adjust logo & alt text above. Logo must be present in public/logos/
-// const logo = logoPresets.text; // Enter text in logo presets object above.
+const logo = logoPresets.image;
 
 /* ---------- SEO Metadata ---------- */
 const seo = {
@@ -62,16 +68,22 @@ const email: EmailConfig = {
   href: 'mailto:info@smithplumbing.com'
 };
 
-/* ---------- Tier → links mapping ---------- */
+/* ---------- Services → dropdown children (from Service Data) ---------- */
+const allowedDropdowns = getAllowedDropdowns(services);
+const serviceChildren = getServiceNavChildren(allowedDropdowns);
 
+/* ---------- Hard rule: Starter NEVER gets dropdowns ---------- */
+const enableDropdowns =
+  tierId !== 'starter' && tier.navigation.enableDropdowns === true;
+
+/* ---------- Tier → links mapping (RESTORED) ---------- */
 const linksByTier = {
-  starter: starterLinks,
-  growth: growthLinks,
-  managed: managedLinks
+  starter: buildStarterLinks(),
+  growth: buildGrowthLinks({ serviceChildren }),
+  managed: buildManagedLinks({ serviceChildren })
 } as const;
 
 /* ---------- Final Site config ---------- */
-
 export const siteConfig: SiteConfig = {
   theme: blueTheme,
   logo,
@@ -79,5 +91,5 @@ export const siteConfig: SiteConfig = {
   email,
   seo,
   links: linksByTier[tierId],
-  enableDropdowns: tier.navigation.enableDropdowns
+  enableDropdowns
 };

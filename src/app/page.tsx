@@ -1,10 +1,8 @@
-'use client';
-
-import { homepageSectionRegistry } from '@src/components/homepage/services/sectionRegistry';
-import { useTierPreset } from '@src/config/tiers/hooks';
+import { homepageSectionRegistry } from '@/src/components/homepage/services/sectionRegistry';
+import { getTierPreset } from '@/src/config/tiers/getters';
 
 /**
- * Render the home page by composing configured homepage sections in order.
+ * Renders the home page by composing the configured homepage sections in order.
  *
  * Sections listed in the current tier's `homepage.allowedSectionsInOrder` are rendered
  * using components registered in `homepageSectionRegistry`. If a section has no
@@ -14,7 +12,7 @@ import { useTierPreset } from '@src/config/tiers/hooks';
  * @returns The root JSX element containing the homepage sections in configured order; missing sections are represented as `null` in the children.
  */
 export default function Home() {
-  const tier = useTierPreset();
+  const tier = getTierPreset();
   const allowedSections = tier.homepage.allowedSectionsInOrder;
 
   const sections = allowedSections.map((section, index) => {
