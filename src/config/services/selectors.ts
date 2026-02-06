@@ -72,6 +72,9 @@ export function getServiceNavChildren(
   allowedDropdowns: ServiceData[]
 ): NavChild[] {
   return allowedDropdowns.map((service) => {
-    return { label: service.labels.navLabel, href: `services/${service.slug}` };
+    return {
+      label: service.labels.navLabel,
+      href: `/services/${service.slug}`
+    };
   });
 }
