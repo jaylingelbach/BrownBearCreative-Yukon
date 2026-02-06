@@ -1,5 +1,3 @@
-'use client';
-
 import { homepageSectionRegistry } from '@/src/components/homepage/services/sectionRegistry';
 import { getTierPreset } from '@/src/config/tiers/getters';
 
