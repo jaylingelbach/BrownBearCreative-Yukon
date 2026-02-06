@@ -1,3 +1,4 @@
+import { NavChild } from '@/src/lib/types';
 import type { ServiceData, ServiceId } from '@src/config/services/types';
 
 /**
@@ -56,4 +57,21 @@ export function getHomepageServices(
   }
 
   return homepageServices;
+}
+
+export function getAllowedDropdowns(
+  servicesById: Record<ServiceId, ServiceData>
+) {
+  const allowedDropdowns = Object.values(servicesById)
+    .filter((service) => service.visibility.showInNav === true)
+    .sort((a, b) => a.order.nav - b.order.nav || a.id.localeCompare(b.id));
+  return allowedDropdowns;
+}
+
+export function getServiceNavChildren(
+  allowedDropdowns: ServiceData[]
+): NavChild[] {
+  return allowedDropdowns.map((service) => {
+    return { label: service.labels.navLabel, href: `services/${service.slug}` };
+  });
 }

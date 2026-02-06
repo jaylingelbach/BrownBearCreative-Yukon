@@ -1,89 +1,98 @@
-import { NavItem } from '@/src/lib/types';
+import type { NavChild, NavItem } from '@/src/lib/types';
 import { navFeatures, navLabels } from '@/src/config/header/navConfig';
 
-export const starterLinks: NavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' }
-];
+export type NavFeatureFlags = {
+  showReviews: boolean;
+  showWork: boolean;
+  showFaq: boolean;
+};
 
-export const baseGrowthLinks: NavItem[] = [
-  { label: 'Home', href: '/' },
-  {
-    label: 'Services',
-    children: [
-      { label: 'Drain Cleaning', href: '/services/drain-cleaning' },
-      { label: 'Water Heaters', href: '/services/water-heaters' },
-      { label: 'Emergency Repair', href: '/services/emergency' }
-    ]
-  },
-  { label: 'About', href: '/about' },
-  { label: navLabels.reviews, href: '/reviews' },
-  { label: 'Contact', href: '/contact' }
-];
-
-export const growthLinks: NavItem[] = [];
-
-growthLinks.push({ label: 'Home', href: '/' });
-growthLinks.push({
-  label: 'Services',
-  children: [
-    { label: 'Drain Cleaning', href: '/services/drain-cleaning' },
-    { label: 'Water Heaters', href: '/services/water-heaters' },
-    { label: 'Emergency Repair', href: '/services/emergency' }
-  ]
-});
-growthLinks.push({ label: 'About', href: '/about' });
-
-if (navFeatures.showReviews) {
-  growthLinks.push({ label: navLabels.reviews, href: '/reviews' });
+function resolveFeatures(
+  overrides?: Partial<NavFeatureFlags>
+): NavFeatureFlags {
+  return {
+    showReviews: overrides?.showReviews ?? navFeatures.showReviews,
+    showWork: overrides?.showWork ?? navFeatures.showWork,
+    showFaq: overrides?.showFaq ?? navFeatures.showFaq
+  };
 }
 
-growthLinks.push({ label: 'Contact', href: '/contact' });
-
-export const baseManagedLinks = [
-  { label: 'Home', href: '/' },
-  {
-    label: 'Services',
-    children: [
-      { label: 'Drain Cleaning', href: '/services/drain-cleaning' },
-      { label: 'Water Heaters', href: '/services/water-heaters' },
-      { label: 'Emergency Repair', href: '/services/emergency' }
-    ]
-  },
-  { label: 'About', href: '/about' },
-  { label: navLabels.work, href: '/gallery' }, // or Portfolio depending on trade
-  { label: navLabels.faq, href: '/faq' }, // or Resources
-  { label: navLabels.reviews, href: '/reviews' },
-  { label: 'Contact', href: '/contact' }
-];
-
-export const managedLinks: NavItem[] = [];
-
-managedLinks.push({ label: 'Home', href: '/' });
-
-managedLinks.push({
-  label: 'Services',
-  children: [
-    { label: 'Drain Cleaning', href: '/services/drain-cleaning' },
-    { label: 'Water Heaters', href: '/services/water-heaters' },
-    { label: 'Emergency Repair', href: '/services/emergency' }
-  ]
-});
-
-managedLinks.push({ label: 'About', href: '/about' });
-
-if (navFeatures.showWork) {
-  managedLinks.push({ label: navLabels.work, href: '/gallery' });
+/* ──────────────────────────────────────────────────────────
+ * Tier 1 — Starter
+ * No dropdowns. Simple conversion nav.
+ * ────────────────────────────────────────────────────────── */
+export function buildStarterLinks(): NavItem[] {
+  return [
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' }
+  ];
 }
 
-if (navFeatures.showReviews) {
-  managedLinks.push({ label: navLabels.reviews, href: '/reviews' });
+/* ──────────────────────────────────────────────────────────
+ * Tier 2 — Growth
+ * Services dropdown (1 level) + Reviews, always between About and Contact.
+ * ────────────────────────────────────────────────────────── */
+export function buildGrowthLinks(params: {
+  serviceChildren: NavChild[];
+  features?: Partial<NavFeatureFlags>;
+}): NavItem[] {
+  const features = resolveFeatures(params.features);
+
+  const before: NavItem[] = [
+    { label: 'Home', href: '/' },
+    {
+      label: 'Services',
+      href: '/services', // parent page must exist for ALL tiers
+      children: params.serviceChildren
+    },
+    { label: 'About', href: '/about' }
+  ];
+
+  const middle: NavItem[] = [];
+  if (features.showReviews) {
+    middle.push({ label: navLabels.reviews, href: '/reviews' });
+  }
+
+  const after: NavItem[] = [{ label: 'Contact', href: '/contact' }];
+
+  return [...before, ...middle, ...after];
 }
 
-if (navFeatures.showFaq) {
-  managedLinks.push({ label: navLabels.faq, href: '/faq' });
-}
+/* ──────────────────────────────────────────────────────────
+ * Tier 3 — Managed
+ * Services dropdown (1 level) + optional Work/Reviews/FAQ,
+ * always between About and Contact.
+ * ────────────────────────────────────────────────────────── */
+export function buildManagedLinks(params: {
+  serviceChildren: NavChild[];
+  features?: Partial<NavFeatureFlags>;
+}): NavItem[] {
+  const features = resolveFeatures(params.features);
 
-managedLinks.push({ label: 'Contact', href: '/contact' });
+  const before: NavItem[] = [
+    { label: 'Home', href: '/' },
+    {
+      label: 'Services',
+      href: '/services', // parent page must exist for ALL tiers
+      children: params.serviceChildren
+    },
+    { label: 'About', href: '/about' }
+  ];
+
+  const middle: NavItem[] = [];
+  if (features.showWork) {
+    middle.push({ label: navLabels.work, href: '/gallery' });
+  }
+  if (features.showReviews) {
+    middle.push({ label: navLabels.reviews, href: '/reviews' });
+  }
+  if (features.showFaq) {
+    middle.push({ label: navLabels.faq, href: '/faq' });
+  }
+
+  const after: NavItem[] = [{ label: 'Contact', href: '/contact' }];
+
+  return [...before, ...middle, ...after];
+}
