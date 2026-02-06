@@ -4,9 +4,9 @@ import { services } from '@/src/config/services/services';
 import { useId } from 'react';
 
 /**
- * Render a section containing an accessible heading and a grid of homepage services.
+ * Render a landmark section that exposes an accessible heading and a grid of homepage services.
  *
- * @returns A section element with a visually hidden `h2` (id used for `aria-labelledby`) and a `ServicesGrid` populated with the homepage services.
+ * @returns A <section> element with a visually hidden `h2` (used by `aria-labelledby`) and a `ServicesGrid` populated with the homepage services
  */
 export default function ServiceCardsSection() {
   const homepageServices = getHomepageServices(services);
