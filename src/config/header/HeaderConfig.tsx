@@ -8,7 +8,7 @@ import type {
   SiteConfig
 } from '@/src/config/header/types';
 
-import { SITE_TIER, tierPresets } from '@/src/config/tiers';
+import { getTierId, getTierPreset } from '@/src/config/tiers/hooks';
 
 import { services } from '@/src/config/services/services';
 import {
@@ -23,8 +23,8 @@ import {
 } from '@/src/config/header/links';
 
 /* ---------- Resolve active tier ---------- */
-const tierId = SITE_TIER;
-const tier = tierPresets[tierId];
+const tierId = getTierId();
+const tier = getTierPreset();
 
 if (!tier) {
   throw new Error(`[headerConfig] Invalid SITE_TIER "${tierId}"`);
