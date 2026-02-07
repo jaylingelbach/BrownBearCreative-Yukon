@@ -54,7 +54,7 @@ export const services: Record<ServiceId, ServiceData> = {
 
     media: {
       // icon: Flame
-      imageSrc: '/plumber1.png'
+      imageSrc: '/plumber2.png'
     }
   },
 
@@ -79,7 +79,7 @@ export const services: Record<ServiceId, ServiceData> = {
 
     media: {
       // icon: AlertTriangle,
-      imageSrc: '/plumber1.png'
+      imageSrc: '/plumber3.png'
     }
   }
 };

@@ -1,5 +1,9 @@
 import { NavChild } from '@/src/lib/types';
-import type { ServiceData, ServiceId } from '@/src/config/services/types';
+import type {
+  ServiceData,
+  ServiceId,
+  ServicePageContent
+} from '@/src/config/services/types';
 
 /**
  * Collects services flagged for homepage display and returns them sorted by homepage order then by id.
@@ -89,4 +93,46 @@ export function getServiceNavChildren(
       href: `/services/${service.slug}`
     };
   });
+}
+
+/**
+ * Finds a service by slug from the service registry.
+ *
+ * @param servicesById - Record mapping service IDs to ServiceData
+ * @param slug - URL slug to resolve
+ * @returns The matching ServiceData or undefined if not found
+ */
+export function getServiceBySlug(
+  servicesById: Record<ServiceId, ServiceData>,
+  slug?: string
+): ServiceData | undefined {
+  return Object.values(servicesById).find((service) => service.slug === slug);
+}
+
+export type ResolvedServicePage = {
+  service: ServiceData;
+  page?: ServicePageContent;
+};
+/**
+ * Resolves a service page model (core service + optional page content) by slug.
+ *
+ * @param servicesById - Service registry
+ * @param pagesById - Optional page content registry keyed by ServiceId
+ * @param slug - URL slug
+ * @returns A resolved model or null if the slug is unknown
+ */
+export function resolveServicePageBySlug(args: {
+  servicesById: Record<ServiceId, ServiceData>;
+  pagesById: Partial<Record<ServiceId, ServicePageContent>>;
+  slug: string;
+}): ResolvedServicePage | null {
+  const { servicesById, slug, pagesById } = args;
+  const service = getServiceBySlug(servicesById, slug);
+
+  if (!service) {
+    return null;
+  }
+
+  const page = pagesById[service.id];
+  return { service, page };
 }
