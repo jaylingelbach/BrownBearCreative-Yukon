@@ -17,6 +17,21 @@ type ServiceViewProps = {
   secondaryCtaHref?: string;
 };
 
+/**
+ * Renders a themed service header section with eyebrow, title, CTAs, and hero media.
+ *
+ * The component displays a title (preferring the service cardTitle when present) and an eyebrow label,
+ * shows primary and secondary call-to-action links, and renders hero media using the following priority:
+ * 1) image from `page.heroMedia.imageSrc` if provided, 2) image from `service.media.imageSrc`, 3) `service.media.icon` if available.
+ * When an image alt is present it is applied to the image; otherwise the image and icon are marked as decorative via `aria-hidden`.
+ *
+ * @param service - Core service data used to derive labels and media
+ * @param page - Optional page-level overrides for hero media and alt text
+ * @param theme - Theme object containing class names used for layout and styling
+ * @param primaryCtaHref - HREF for the primary CTA (defaults to '/contact')
+ * @param secondaryCtaHref - HREF for the secondary CTA (defaults to '/')
+ * @returns A React element containing the service hero/header section
+ */
 export default function ServiceView({
   service,
   page,
