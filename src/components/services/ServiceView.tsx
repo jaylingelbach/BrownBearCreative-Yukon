@@ -1,12 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import type { ServiceData } from '@/src/config/services/types';
-import { ServiceViewTheme } from '@/src/lib/types';
-import { servicePagesById } from '@/src/config/services/servicePagesById';
+import type {
+  ServiceData,
+  ServicePageContent
+} from '@/src/config/services/types';
+import type { ServiceViewTheme } from '@/src/lib/types';
 
 type ServiceViewProps = {
   service: ServiceData;
+  page?: ServicePageContent;
   theme: ServiceViewTheme;
 
   /** Keep minimal + production-safe for now */
@@ -16,6 +19,7 @@ type ServiceViewProps = {
 
 export default function ServiceView({
   service,
+  page,
   theme,
   primaryCtaHref = '/contact',
   secondaryCtaHref = '/'
@@ -23,7 +27,6 @@ export default function ServiceView({
   const title = service.labels.cardTitle || service.labels.navLabel;
   const eyebrow = service.labels.navLabel;
 
-  const page = servicePagesById[service.id];
   const imageUrl = page?.heroMedia?.imageSrc ?? service.media.imageSrc;
 
   const imageAlt = page?.heroMedia?.alt ?? '';
@@ -50,10 +53,7 @@ export default function ServiceView({
 
           <div className={theme.mediaRow}>
             {imageUrl ? (
-              <div
-                className={theme.mediaFrame}
-                aria-hidden={hasImageAlt ? undefined : 'true'}
-              >
+              <div className={theme.mediaFrame} aria-hidden={!hasImageAlt}>
                 <Image
                   src={imageUrl}
                   alt={hasImageAlt ? imageAlt : ''}
@@ -64,11 +64,11 @@ export default function ServiceView({
                 />
               </div>
             ) : IconComponent ? (
-              <div className={theme.iconFrame} aria-hidden="true">
+              <div className={theme.iconFrame} aria-hidden={true}>
                 <IconComponent
                   className={theme.icon}
-                  aria-hidden="true"
-                  focusable="false"
+                  aria-hidden={true}
+                  focusable={false}
                 />
               </div>
             ) : null}

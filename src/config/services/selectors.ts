@@ -106,6 +106,15 @@ export function getServiceBySlug(
   servicesById: Record<ServiceId, ServiceData>,
   slug?: string
 ): ServiceData | undefined {
+  if (typeof slug !== 'string' || slug.length === 0) {
+    return undefined;
+  }
+
+  const directMatch = servicesById[slug];
+  if (directMatch && directMatch.slug === slug) {
+    return directMatch;
+  }
+
   return Object.values(servicesById).find((service) => service.slug === slug);
 }
 
