@@ -48,3 +48,29 @@ export type HeaderProps = {
   enableDropdowns?: boolean;
   theme: NavbarTheme;
 };
+
+/* ---------- Service View Theme ---------- */
+export type ServiceViewTheme = {
+  page: string;
+
+  hero: string;
+  heroInner: string;
+
+  eyebrow: string;
+  title: string;
+
+  mediaRow: string;
+  mediaFrame: string;
+  iconFrame: string;
+  icon: string;
+
+  ctaRow: string;
+  primaryCta: string;
+  secondaryCta: string;
+
+  section: string;
+  sectionInner: string;
+  card: string;
+  cardTitle: string;
+  cardBody: string;
+};

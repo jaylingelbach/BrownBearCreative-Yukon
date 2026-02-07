@@ -44,3 +44,50 @@ export type ServiceData = {
   order: ServiceViewOrder;
   media: ServiceMedia;
 };
+
+export type ServiceCta = {
+  label: string;
+  href: string;
+};
+
+export type ServicePageMedia = {
+  /**
+   * Optional override specifically for the service detail page hero.
+   * If omitted, the page can fall back to ServiceData.media.
+   */
+  imageSrc?: string;
+  icon?: LucideIcon;
+  alt?: string;
+};
+
+export type ServicePageContent = {
+  /**
+   * Optional page-specific title override.
+   * Default should be ServiceData.labels.cardTitle (fallback navLabel).
+   */
+  pageTitle?: string;
+
+  /**
+   * Short intro paragraph shown near the top of the page.
+   * Optional so you can roll this out gradually.
+   */
+  intro?: string;
+
+  /**
+   * Optional hero media override for the service page (separate from card media).
+   */
+  heroMedia?: ServicePageMedia;
+
+  /**
+   * Minimal “value props” bullets for the service page.
+   */
+  highlights?: string[];
+
+  /**
+   * Optional page CTAs (defaults can be provided by the view).
+   */
+  ctas?: {
+    primary?: ServiceCta;
+    secondary?: ServiceCta;
+  };
+};
