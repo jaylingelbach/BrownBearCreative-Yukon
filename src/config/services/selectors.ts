@@ -123,12 +123,12 @@ export type ResolvedServicePage = {
   page?: ServicePageContent;
 };
 /**
- * Resolves a service page model (core service + optional page content) by slug.
+ * Locate a service by slug and return its core service data together with any associated page content.
  *
- * @param servicesById - Service registry
- * @param pagesById - Optional page content registry keyed by ServiceId
- * @param slug - URL slug
- * @returns A resolved model or null if the slug is unknown
+ * @param servicesById - Registry mapping service IDs to service data
+ * @param pagesById - Optional registry mapping service IDs to page content
+ * @param slug - Service URL slug to resolve
+ * @returns A ResolvedServicePage containing `service` and optional `page` when a matching service is found, or `null` if no service matches the slug
  */
 export function resolveServicePageBySlug(args: {
   servicesById: Record<ServiceId, ServiceData>;
