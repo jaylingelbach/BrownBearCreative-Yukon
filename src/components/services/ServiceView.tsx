@@ -75,20 +75,6 @@ export default function ServiceView({
           </div>
         </div>
       </header>
-
-      <section className={theme.section}>
-        <div className={theme.sectionInner}>
-          <div className={theme.card}>
-            <h2 className={theme.cardTitle}>Service details</h2>
-            <p className={theme.cardBody}>
-              This is the minimal scaffold page for <strong>{eyebrow}</strong>.
-              Later cards can add richer sections (FAQs, pricing, galleries,
-              etc.) driven by config/CMS without changing the route or slug
-              resolution.
-            </p>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
