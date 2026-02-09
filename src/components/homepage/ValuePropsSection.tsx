@@ -45,9 +45,9 @@ export default function ValuePropsSection({
           {hasItems ? (
             <div className={cn(theme.leftCol, 'flex flex-col h-full')}>
               <ul className={theme.items}>
-                {items.map((item) => {
+                {items.map((item, index) => {
                   return (
-                    <li key={item.text} className={theme.item}>
+                    <li key={`${item.text}-${index}`} className={theme.item}>
                       <SquareCheckBig
                         className={theme.itemIcon}
                         aria-hidden={true}
