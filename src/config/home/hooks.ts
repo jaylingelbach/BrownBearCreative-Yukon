@@ -17,3 +17,6 @@ export function useHomeConfig() {
 export function useServiceCardsConfig() {
   return homeConfig.serviceCards;
 }
+export function useValuePropsConfig() {
+  return homeConfig.valuePropsSection;
+}

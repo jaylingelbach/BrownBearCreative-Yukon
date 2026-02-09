@@ -1,9 +1,11 @@
-import { useServiceCardsConfig } from '@/src/config/home/hooks';
-import type { ServiceData } from '@/src/config/services/types';
-import type { ServiceGridTheme } from '@/src/theme/serviceGridThemes';
+import { useId } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useId } from 'react';
+
+import { useServiceCardsConfig } from '@/src/config/home/hooks';
+
+import type { ServiceData } from '@/src/config/services/types';
+import type { ServiceGridTheme } from '@/src/theme/serviceGridThemes';
 
 interface ServiceCardProps {
   service: ServiceData;
@@ -51,12 +53,10 @@ export default function ServiceCard({ service, theme }: ServiceCardProps) {
       ].join(' ');
 
   const labelBarClasses = isBleed
-    ? 'h-14 flex items-center justify-center px-4 bg-black/5'
-    : 'h-14 flex items-center justify-center px-4 mt-4 bg-black/10';
+    ? 'h-14 flex items-center justify-center px-4 bg-blue-800'
+    : 'h-14 flex items-center justify-center px-4 mt-4 blue-800';
 
-  const titleColorClasses = isBleed
-    ? 'text-slate-800'
-    : 'text-primary-foreground';
+  const titleColorClasses = isBleed ? 'text-white' : 'text-white';
 
   return (
     <Link
