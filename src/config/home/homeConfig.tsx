@@ -1,6 +1,14 @@
-import { HomeConfig, ValuePropsSectionConfig } from '@/src/config/home/types';
+import { HomeConfig } from '@/src/config/home/types';
 
 export const homeConfig: HomeConfig = {
+  hero: {
+    heading: 'Trusted Plumbing Services in Belleville, IL',
+    subheading: '24/7 Emergency Repairs — Call Us Today!',
+    ctas: {
+      primary: { label: 'Book Appointment', href: '/contact' }, // placeholder
+      secondary: { label: 'Call Now', href: 'tel:+16185551234' } // placeholder
+    }
+  },
   serviceCards: {
     /**
      * 'contained' => media sits inside padding (card background visible)

@@ -2,6 +2,7 @@ export type ServiceCardMediaVariant = 'contained' | 'bleed';
 export type ServiceCardImageFit = 'cover' | 'contain';
 
 export type HomeConfig = {
+  hero: HeroSectionConfig;
   serviceCards: {
     /**
      * 'contained' => media sits inside padding (card background visible)
@@ -43,5 +44,19 @@ export type ValuePropsSectionConfig = {
   cta?: {
     label: string;
     href: string;
+  };
+};
+
+export type HeroCta = {
+  label: string;
+  href: string;
+};
+
+export type HeroSectionConfig = {
+  heading: string;
+  subheading?: string;
+  ctas: {
+    primary: HeroCta;
+    secondary: HeroCta;
   };
 };

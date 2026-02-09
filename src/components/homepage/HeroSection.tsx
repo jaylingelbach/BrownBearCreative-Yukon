@@ -1,12 +1,48 @@
-/**
- * Render the hero section used on the homepage.
- *
- * @returns A JSX element containing a wrapper `div` with a margin-bottom class and an `h1` with the text "HERO SECTION".
- */
-export default function HeroSection() {
+import { useId } from 'react';
+import Link from 'next/link';
+
+import { cn } from '@/src/lib/cn';
+import { useHeroConfig } from '@/src/config/home/hooks';
+import type { HeroTheme } from '@/src/theme/heroThemes';
+import { defaultHeroTheme } from '@/src/theme/heroThemes';
+
+type HeroSectionProps = {
+  theme?: HeroTheme;
+};
+
+export default function HeroSection({
+  theme = defaultHeroTheme
+}: HeroSectionProps) {
+  const config = useHeroConfig();
+  const headingId = `${useId()}-hero-heading`;
+
   return (
-    <div className="mb-2">
-      <h1>HERO SECTION</h1>
-    </div>
+    <section className={theme.section} aria-labelledby={headingId}>
+      <div className={theme.inner}>
+        <h1 id={headingId} className={theme.heading}>
+          {config.heading}
+        </h1>
+
+        {config.subheading ? (
+          <p className={theme.subheading}>{config.subheading}</p>
+        ) : null}
+
+        <div className={theme.ctaRow} role="group" aria-label="Primary actions">
+          <Link
+            href={config.ctas.primary.href}
+            className={cn(theme.primaryCta)}
+          >
+            {config.ctas.primary.label}
+          </Link>
+
+          <Link
+            href={config.ctas.secondary.href}
+            className={cn(theme.secondaryCta)}
+          >
+            {config.ctas.secondary.label}
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
