@@ -21,7 +21,7 @@ export function useServiceCardsConfig() {
 /**
  * Accesses the `valuePropsSection` section of the home configuration.
  *
- * `@returns` The `valuePropsSection` configuration extracted from `homeConfig`.
+ * @returns The `valuePropsSection` configuration extracted from `homeConfig`.
  */
 
 export function useValuePropsConfig() {
