@@ -15,6 +15,12 @@ type ValuePropsSectionProps = {
   theme?: ValuePropsTheme;
 };
 
+/**
+ * Render a themed value-props section with a heading, optional description, an optional list of value items with check icons, an image, and an optional call-to-action.
+ *
+ * @param theme - Theme overrides that provide className fragments for the section layout and elements; defaults to `defaultValuePropsTheme`.
+ * @returns The rendered value-props section element.
+ */
 export default function ValuePropsSection({
   theme = defaultValuePropsTheme
 }: ValuePropsSectionProps) {
