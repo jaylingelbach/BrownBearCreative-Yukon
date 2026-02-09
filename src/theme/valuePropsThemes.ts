@@ -30,7 +30,7 @@ export const defaultValuePropsTheme: ValuePropsTheme = {
   layoutSplit: 'mt-8 grid gap-10 lg:grid-cols-12 lg:items-stretch',
   layoutImageForward: 'mt-8 flex flex-col items-center gap-6',
   leftCol: 'lg:col-span-5',
-  items: 'mt-8 space-y-4',
+  items: 'mt-20 space-y-4',
   item: 'flex items-start gap-3',
   itemIcon: 'mt-1 h-5 w-5 text-emerald-700',
   itemText: 'text-lg text-slate-700',
@@ -40,5 +40,5 @@ export const defaultValuePropsTheme: ValuePropsTheme = {
     'relative overflow-hidden rounded-lg bg-black/5 ring-1 ring-border aspect-[16/9]',
   ctaRow: 'mt-6 flex justify-start',
   ctaButton:
-    'inline-flex items-center justify-center rounded-md bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800 transition-colors'
+    'inline-flex items-center justify-center rounded-md bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white hover:primary transition-colors'
 };
