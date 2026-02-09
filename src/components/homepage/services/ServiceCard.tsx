@@ -13,11 +13,13 @@ interface ServiceCardProps {
 }
 
 /**
- * Render a linked service card displaying either an image, an icon, or a placeholder and the service title, with layout and styling adjusted by service card configuration and the provided theme.
+ * Render a link-wrapped service card showing an image, an icon, or a placeholder alongside the service navigation label.
  *
- * @param service - The service data to display (media, labels, and slug used for link).
- * @param theme - Theme classes used to style the card, icon, and title.
- * @returns A React element representing a link-wrapped service card for the given service.
+ * The card's layout and visual styling adapt to the service card configuration (media variant and image fit) and the provided theme. The media area is treated as decorative and marked appropriately for assistive technologies; the link is labelled by the card title.
+ *
+ * @param service - Service data containing media (imageSrc and/or icon), labels.navLabel, and slug used for the card link
+ * @param theme - Theme class names applied to the card container, icon, and title
+ * @returns A React element representing a link-wrapped service card for the provided service
  */
 export default function ServiceCard({ service, theme }: ServiceCardProps) {
   const { mediaVariant, imageFit } = useServiceCardsConfig();
