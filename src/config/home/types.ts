@@ -18,4 +18,30 @@ export type HomeConfig = {
      */
     imageFit: ServiceCardImageFit;
   };
+  valuePropsSection: ValuePropsSectionConfig;
+};
+
+export type ValuePropItem = {
+  text: string;
+};
+
+export type ValuePropsSectionConfig = {
+  heading: string;
+  description?: string;
+
+  /**
+   * Optional bullet items. If omitted or empty, the section
+   * becomes “image-forward” (landscaping style).
+   */
+  items?: ValuePropItem[];
+
+  image: {
+    src: string;
+    alt: string;
+  };
+
+  cta?: {
+    label: string;
+    href: string;
+  };
 };

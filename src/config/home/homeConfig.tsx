@@ -1,4 +1,4 @@
-import { HomeConfig } from '@/src/config/home/types';
+import { HomeConfig, ValuePropsSectionConfig } from '@/src/config/home/types';
 
 export const homeConfig: HomeConfig = {
   serviceCards: {
@@ -15,5 +15,22 @@ export const homeConfig: HomeConfig = {
      * 'contain' => logo tiles (fully visible, letterboxed)
      */
     imageFit: 'cover'
+  },
+  valuePropsSection: {
+    heading: 'Your Local Plumbing Experts',
+    description: 'Friendly, professional plumbing services.',
+    items: [
+      { text: 'Fast, Reliable Service' },
+      { text: 'Licensed & Insured' },
+      { text: 'Free Estimates' }
+    ],
+    image: {
+      src: '/plumber1.png',
+      alt: 'Plumber'
+    },
+    cta: {
+      label: 'Get a Free Quote',
+      href: '/contact'
+    }
   }
 };

@@ -17,3 +17,13 @@ export function useHomeConfig() {
 export function useServiceCardsConfig() {
   return homeConfig.serviceCards;
 }
+
+/**
+ * Accesses the `valuePropsSection` section of the home configuration.
+ *
+ * @returns The `valuePropsSection` configuration extracted from `homeConfig`.
+ */
+
+export function useValuePropsConfig() {
+  return homeConfig.valuePropsSection;
+}
