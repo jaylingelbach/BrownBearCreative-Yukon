@@ -53,6 +53,6 @@ export type HeroSectionConfig = {
   subheading?: string;
   ctas: {
     primary: CtaLink;
-    secondary?: CtaLink;
+    secondary: CtaLink;
   };
 };

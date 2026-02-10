@@ -35,12 +35,18 @@ export default function HeroSection({
             {config.ctas.primary.label}
           </Link>
 
-          <Link
-            href={config.ctas.secondary.href}
-            className={cn(theme.secondaryCta)}
-          >
-            {config.ctas.secondary.label}
-          </Link>
+          {config.ctas.secondary.href.startsWith('/') ? (
+            <Link
+              href={config.ctas.secondary.href}
+              className={theme.secondaryCta}
+            >
+              {config.ctas.secondary.label}
+            </Link>
+          ) : (
+            <a href={config.ctas.secondary.href} className={theme.secondaryCta}>
+              {config.ctas.secondary.label}
+            </a>
+          )}
         </div>
       </div>
     </section>
