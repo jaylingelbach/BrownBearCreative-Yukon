@@ -1,5 +1,6 @@
 export type ServiceCardMediaVariant = 'contained' | 'bleed';
 export type ServiceCardImageFit = 'cover' | 'contain';
+export type PrimaryCtaLayout = 'split' | 'bar';
 
 export type HomeConfig = {
   hero: HeroSectionConfig;
@@ -20,6 +21,7 @@ export type HomeConfig = {
     imageFit: ServiceCardImageFit;
   };
   valuePropsSection: ValuePropsSectionConfig;
+  primaryCtaSection: PrimaryCtaSectionConfig;
 };
 export type CtaLink = {
   label: string;
@@ -54,5 +56,23 @@ export type HeroSectionConfig = {
   ctas: {
     primary: CtaLink;
     secondary: CtaLink;
+  };
+};
+
+export type PrimaryCtaSectionConfig = {
+  layout: PrimaryCtaLayout;
+
+  heading?: string; // optional, some variants may not need
+  lines: string[]; // up to you; keeps it flexible & simple
+
+  primaryAction: CtaLink;
+
+  secondaryLine?: string; // e.g. "Serving Belleville & Nearby Areas"
+
+  icon?: 'phone' | 'pin'; // keep primitive for now; map to lucide in component
+
+  media?: {
+    imageSrc: string;
+    alt: string;
   };
 };

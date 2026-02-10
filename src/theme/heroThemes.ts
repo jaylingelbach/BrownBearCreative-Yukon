@@ -1,4 +1,5 @@
 import { cn } from '@/src/lib/cn';
+import { focusRing } from '@/src/theme/shared';
 
 /**
  * Tailwind classes expected
@@ -15,8 +16,6 @@ export type HeroTheme = {
   secondaryCta: string;
 };
 
-const focusRing =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white';
 const ctaBase =
   'inline-flex h-12 items-center justify-center rounded-md px-6 text-sm font-semibold ';
 

@@ -36,3 +36,12 @@ export function useValuePropsConfig() {
 export function useHeroConfig() {
   return homeConfig.hero;
 }
+
+/**
+ * Accesses the `primaryCtaSection` section of the home configuration.
+ *
+ * @returns The `primaryCtaSection` configuration extracted from `homeConfig`.
+ */
+export function usePrimaryCtaConfig() {
+  return homeConfig.primaryCtaSection;
+}

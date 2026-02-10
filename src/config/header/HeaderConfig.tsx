@@ -59,13 +59,13 @@ const seo = {
 
 /* ---------- Contact info ---------- */
 const phone: PhoneConfig = {
-  label: '(618) 555-1234',
-  href: 'tel:16185551234'
+  label: process.env.NEXT_PUBLIC_PHONE_STRING!,
+  href: process.env.NEXT_PUBLIC_PHONE_HREF!
 };
 
 const email: EmailConfig = {
-  label: 'info@smithplumbing.com',
-  href: 'mailto:info@smithplumbing.com'
+  label: process.env.NEXT_PUBLIC_EMAIL_STRING!,
+  href: process.env.NEXT_PUBLIC_EMAIL_HREF!
 };
 
 /* ---------- Services → dropdown children (from Service Data) ---------- */
