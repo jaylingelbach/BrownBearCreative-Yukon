@@ -59,18 +59,13 @@ export type HeroSectionConfig = {
   };
 };
 
-export type PrimaryCtaAction = {
-  label: string;
-  href: string; // e.g. tel:+16185551234 or /contact
-};
-
 export type PrimaryCtaSectionConfig = {
   layout: PrimaryCtaLayout;
 
   heading?: string; // optional, some variants may not need
   lines: string[]; // up to you; keeps it flexible & simple
 
-  primaryAction: PrimaryCtaAction;
+  primaryAction: CtaLink;
 
   secondaryLine?: string; // e.g. "Serving Belleville & Nearby Areas"
 
