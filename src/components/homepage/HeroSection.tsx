@@ -1,3 +1,4 @@
+import React from 'react';
 import { useId } from 'react';
 import Link from 'next/link';
 
@@ -8,12 +9,29 @@ import { defaultHeroTheme } from '@/src/theme/heroThemes';
 type HeroSectionProps = {
   theme?: HeroTheme;
 };
+type CtaAnchor = {
+  href: string;
+  className: string;
+  children: React.ReactNode;
+};
 
 export default function HeroSection({
   theme = defaultHeroTheme
 }: HeroSectionProps) {
   const config = useHeroConfig();
   const headingId = `${useId()}-hero-heading`;
+
+  function CtaAnchor({ href, className, children }: CtaAnchor) {
+    return href.startsWith('/') ? (
+      <Link href={href} className={className}>
+        {children}
+      </Link>
+    ) : (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    );
+  }
 
   return (
     <section className={theme.section} aria-labelledby={headingId}>
@@ -27,22 +45,19 @@ export default function HeroSection({
         ) : null}
 
         <div className={theme.ctaRow} role="group" aria-label="Primary actions">
-          <Link href={config.ctas.primary.href} className={theme.primaryCta}>
+          <CtaAnchor
+            href={config.ctas.primary.href}
+            className={theme.primaryCta}
+          >
             {config.ctas.primary.label}
-          </Link>
+          </CtaAnchor>
 
-          {config.ctas.secondary.href.startsWith('/') ? (
-            <Link
-              href={config.ctas.secondary.href}
-              className={theme.secondaryCta}
-            >
-              {config.ctas.secondary.label}
-            </Link>
-          ) : (
-            <a href={config.ctas.secondary.href} className={theme.secondaryCta}>
-              {config.ctas.secondary.label}
-            </a>
-          )}
+          <CtaAnchor
+            href={config.ctas.secondary.href}
+            className={theme.secondaryCta}
+          >
+            {config.ctas.secondary.label}
+          </CtaAnchor>
         </div>
       </div>
     </section>
