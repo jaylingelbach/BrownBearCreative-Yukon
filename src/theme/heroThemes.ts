@@ -25,5 +25,5 @@ export const defaultHeroTheme: HeroTheme = {
     'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors',
   secondaryCta:
     'inline-flex h-12 items-center justify-center rounded-md px-6 text-sm font-semibold ' +
-    'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors border border-primary text-primary'
+    'border border-primary text-primary bg-transparent hover:bg-primary/10 transition-colors'
 };
