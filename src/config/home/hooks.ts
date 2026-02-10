@@ -27,3 +27,12 @@ export function useServiceCardsConfig() {
 export function useValuePropsConfig() {
   return homeConfig.valuePropsSection;
 }
+
+/**
+ * Accesses the `hero` section of the home configuration.
+ *
+ * @returns The `hero` configuration extracted from `homeConfig`.
+ */
+export function useHeroConfig() {
+  return homeConfig.hero;
+}
