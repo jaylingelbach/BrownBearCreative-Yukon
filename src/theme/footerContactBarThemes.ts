@@ -1,4 +1,5 @@
 import { cn } from '@/src/lib/cn';
+import { focusRing } from '@/src/theme/shared';
 
 export type FooterContactBarTheme = {
   bar: string;
@@ -16,12 +17,6 @@ export type FooterContactBarTheme = {
 
   link: string;
 };
-
-const focusRing = cn(
-  'focus-visible:outline-none',
-  'focus-visible:ring-2 focus-visible:ring-primary-foreground',
-  'focus-visible:ring-offset-2 focus-visible:ring-offset-primary'
-);
 
 export const defaultFooterContactBarTheme: FooterContactBarTheme = {
   bar: 'bg-primary text-primary-foreground',

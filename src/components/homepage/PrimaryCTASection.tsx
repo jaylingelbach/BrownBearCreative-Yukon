@@ -83,7 +83,7 @@ export default function PrimaryCTASection({
                   src={config.media.imageSrc}
                   alt={config.media.alt}
                   fill
-                  sizes="(min-width: 640px) 256px, 224px"
+                  sizes="112"
                   className={theme.mediaImage}
                   priority={false}
                 />

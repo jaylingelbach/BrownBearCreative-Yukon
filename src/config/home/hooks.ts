@@ -40,7 +40,7 @@ export function useHeroConfig() {
 /**
  * Accesses the `primaryCtaSection` section of the home configuration.
  *
- * `@returns` The `primaryCtaSection` configuration extracted from `homeConfig`.
+ * @returns The `primaryCtaSection` configuration extracted from `homeConfig`.
  */
 export function usePrimaryCtaConfig() {
   return homeConfig.primaryCtaSection;

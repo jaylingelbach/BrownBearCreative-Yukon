@@ -60,7 +60,7 @@ const seo = {
 /* ---------- Contact info ---------- */
 const phone: PhoneConfig = {
   label: process.env.NEXT_PUBLIC_PHONE_STRING!,
-  href: 'tel:16185551234'
+  href: process.env.NEXT_PUBLIC_PHONE_HREF!
 };
 
 const email: EmailConfig = {

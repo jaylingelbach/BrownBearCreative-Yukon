@@ -1,4 +1,5 @@
 import { cn } from '@/src/lib/cn';
+import { focusRing } from '@/src/theme/shared';
 
 export type PrimaryCtaTheme = {
   section: string;
@@ -26,12 +27,6 @@ export type PrimaryCtaTheme = {
   mediaFrame: string;
   mediaImage: string;
 };
-
-const focusRing = cn(
-  'focus-visible:outline-none',
-  'focus-visible:ring-2 focus-visible:ring-primary-foreground',
-  'focus-visible:ring-offset-2 focus-visible:ring-offset-primary'
-);
 
 export const defaultPrimaryCtaTheme: PrimaryCtaTheme = {
   section: 'border-t bg-gradient-to-b from-primary/10 to-white',
