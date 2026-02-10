@@ -11,6 +11,14 @@ type FooterContactBarProps = {
   theme?: FooterContactBarTheme;
 };
 
+/**
+ * Renders a contact bar with a phone link and an optional service area.
+ *
+ * The component reads configuration from `footerContactBar` and returns nothing if the config is disabled.
+ *
+ * @param theme - Optional theme overrides for CSS class names; defaults to `defaultFooterContactBarTheme`.
+ * @returns The contact bar element when enabled, or `null` if the contact bar is disabled.
+ */
 export default function FooterContactBar({
   theme = defaultFooterContactBarTheme
 }: FooterContactBarProps) {
