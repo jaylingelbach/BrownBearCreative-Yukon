@@ -21,6 +21,10 @@ export type HomeConfig = {
   };
   valuePropsSection: ValuePropsSectionConfig;
 };
+export type CtaLink = {
+  label: string;
+  href: string;
+};
 
 export type ValuePropItem = {
   text: string;
@@ -41,22 +45,14 @@ export type ValuePropsSectionConfig = {
     alt: string;
   };
 
-  cta?: {
-    label: string;
-    href: string;
-  };
-};
-
-export type HeroCta = {
-  label: string;
-  href: string;
+  cta?: CtaLink;
 };
 
 export type HeroSectionConfig = {
   heading: string;
   subheading?: string;
   ctas: {
-    primary: HeroCta;
-    secondary: HeroCta;
+    primary: CtaLink;
+    secondary?: CtaLink;
   };
 };
