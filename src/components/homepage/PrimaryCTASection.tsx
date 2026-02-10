@@ -12,11 +12,25 @@ type PrimaryCTASectionProps = {
   theme?: PrimaryCtaTheme;
 };
 
+/**
+ * Selects the appropriate icon component for the CTA based on the provided keyword.
+ *
+ * @param icon - The icon keyword: use `'pin'` to select the map-pin icon; any other value selects the phone icon.
+ * @returns The matching icon component: `MapPin` when `icon` is `'pin'`, `Phone` otherwise.
+ */
 function resolveIcon(icon?: 'phone' | 'pin') {
   if (icon === 'pin') return MapPin;
   return Phone;
 }
 
+/**
+ * Renders a configurable primary call-to-action section for the homepage.
+ *
+ * Renders either a compact "bar" layout or a two-column "split" layout based on the configuration returned by `usePrimaryCtaConfig()`. Builds the section's accessible label from the configured lines and optional secondary line, displays the resolved icon, the configured text lines, the primary action as a `SmartLink`, and an optional media image when provided.
+ *
+ * @param theme - Optional theming object that supplies CSS class names for the section; defaults to `defaultPrimaryCtaTheme`.
+ * @returns The rendered CTA section element configured from the primary CTA settings.
+ */
 export default function PrimaryCTASection({
   theme = defaultPrimaryCtaTheme
 }: PrimaryCTASectionProps) {

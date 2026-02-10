@@ -23,6 +23,12 @@ export const metadata: Metadata = {
   description: siteConfig.seo.defaultDescription
 };
 
+/**
+ * Root layout component that provides the global HTML structure, fonts, header, main content area, and footer.
+ *
+ * @param children - The page content to render inside the layout's main area.
+ * @returns A JSX element containing the <html> and <body> wrappers with global font variables applied, the Header, the provided main content, and the Footer.
+ */
 export default function RootLayout({
   children
 }: Readonly<{
