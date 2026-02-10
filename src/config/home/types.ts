@@ -81,21 +81,3 @@ export type PrimaryCtaSectionConfig = {
     alt: string;
   };
 };
-
-// Example split
-// primaryCta: {
-//   layout: 'split',
-//   lines: ['Call Us:', '(618) 555-1234'],
-//   secondaryLine: 'Serving Belleville & Nearby Areas',
-//   primaryAction: { label: 'Call Us: (618) 555-1234', href: 'tel:+16185551234' },
-//   icon: 'phone',
-//   media: { imageSrc: '/plumber1.png', alt: 'Plumber working' }
-// }
-
-// example bar
-// primaryCta: {
-//   layout: 'bar',
-//   lines: ['Call:', '(555) 987-6543'],
-//   primaryAction: { label: 'Call Now', href: 'tel:+15559876543' },
-//   icon: 'phone'
-// }
