@@ -29,9 +29,9 @@ export function useValuePropsConfig() {
 }
 
 /**
- * Accesses the `heroConfigSection` section of the home configuration.
+ * Accesses the `hero` section of the home configuration.
  *
- * @returns The `heroConfigSection` configuration extracted from `homeConfig`.
+ * @returns The `hero` configuration extracted from `homeConfig`.
  */
 export function useHeroConfig() {
   return homeConfig.hero;
