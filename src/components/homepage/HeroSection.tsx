@@ -1,5 +1,4 @@
-import React from 'react';
-import { useId } from 'react';
+import { useId, type ReactNode } from 'react';
 import Link from 'next/link';
 
 import { useHeroConfig } from '@/src/config/home/hooks';
@@ -9,29 +8,28 @@ import { defaultHeroTheme } from '@/src/theme/heroThemes';
 type HeroSectionProps = {
   theme?: HeroTheme;
 };
-type CtaAnchor = {
+type CtaAnchorProps = {
   href: string;
   className: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
+function CtaAnchor({ href, className, children }: CtaAnchorProps) {
+  return href.startsWith('/') ? (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  ) : (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  );
+}
 
 export default function HeroSection({
   theme = defaultHeroTheme
 }: HeroSectionProps) {
   const config = useHeroConfig();
   const headingId = `${useId()}-hero-heading`;
-
-  function CtaAnchor({ href, className, children }: CtaAnchor) {
-    return href.startsWith('/') ? (
-      <Link href={href} className={className}>
-        {children}
-      </Link>
-    ) : (
-      <a href={href} className={className}>
-        {children}
-      </a>
-    );
-  }
 
   return (
     <section className={theme.section} aria-labelledby={headingId}>
