@@ -1,4 +1,8 @@
 import { cn } from '@/src/lib/cn';
+
+/**
+ * Tailwind classes expected
+ */
 export type HeroTheme = {
   section: string;
   inner: string;
