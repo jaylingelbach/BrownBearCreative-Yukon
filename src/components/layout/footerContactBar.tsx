@@ -33,23 +33,13 @@ export default function FooterContactBar({
           <div className="flex items-baseline gap-2">
             <span className={theme.phoneLabel}>{config.phone.label}</span>
 
-            {PhoneLink === Link ? (
-              <Link
-                href={phoneHref}
-                className={cn(theme.phoneNumber, theme.link)}
-                aria-label={phoneAriaLabel}
-              >
-                {config.phone.display}
-              </Link>
-            ) : (
-              <a
-                href={phoneHref}
-                className={cn(theme.phoneNumber, theme.link)}
-                aria-label={phoneAriaLabel}
-              >
-                {config.phone.display}
-              </a>
-            )}
+            <PhoneLink
+              href={phoneHref}
+              className={cn(theme.phoneNumber, theme.link)}
+              aria-label={phoneAriaLabel}
+            >
+              {config.phone.display}
+            </PhoneLink>
           </div>
         </div>
 
