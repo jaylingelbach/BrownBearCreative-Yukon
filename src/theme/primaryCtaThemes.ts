@@ -1,3 +1,5 @@
+import { cn } from '@/src/lib/cn';
+
 export type PrimaryCtaTheme = {
   section: string;
   inner: string;
@@ -17,6 +19,11 @@ export type PrimaryCtaTheme = {
   mediaFrame: string;
   mediaImage: string;
 };
+const focusRing = cn(
+  'focus-visible:outline-none',
+  'focus-visible:ring-2 focus-visible:ring-primary-foreground',
+  'focus-visible:ring-offset-2 focus-visible:ring-offset-primary'
+);
 
 export const defaultPrimaryCtaTheme: PrimaryCtaTheme = {
   section: 'border-t bg-gradient-to-b from-primary/10 to-white',
@@ -36,9 +43,10 @@ export const defaultPrimaryCtaTheme: PrimaryCtaTheme = {
   lines: 'text-primary font-extrabold text-lg sm:text-xl',
   secondaryLine: 'mt-2 text-sm sm:text-base text-slate-700',
 
-  action:
-    'inline-flex h-12 sm:h-14 items-center justify-center rounded-md bg-primary px-6 sm:px-8 text-sm sm:text-base font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors ' +
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white',
+  action: cn(
+    'inline-flex h-12 sm:h-14 items-center justify-center rounded-md bg-primary px-6 sm:px-8 text-sm sm:text-base font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors ',
+    focusRing
+  ),
 
   mediaFrame:
     'relative h-56 w-56 sm:h-64 sm:w-64 overflow-hidden rounded-full ring-2 ring-border bg-white shadow-sm',

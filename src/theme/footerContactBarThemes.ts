@@ -24,7 +24,6 @@ const focusRing = cn(
 );
 
 export const defaultFooterContactBarTheme: FooterContactBarTheme = {
-  // “big bar”
   bar: 'bg-primary text-primary-foreground',
   inner:
     'mx-auto flex max-w-6xl items-center justify-between ' +
