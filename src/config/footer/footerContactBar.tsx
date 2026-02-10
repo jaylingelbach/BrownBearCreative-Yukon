@@ -26,7 +26,7 @@ export default function FooterContactBar({
   const PhoneLink = phoneHref.startsWith('/') ? Link : 'a';
 
   return (
-    <div className={theme.bar} aria-label="Contact bar">
+    <nav className={theme.bar} aria-label="Contact bar">
       <div className={theme.inner}>
         <div className={theme.left}>
           <Phone className={theme.icon} aria-hidden={true} />
@@ -59,12 +59,15 @@ export default function FooterContactBar({
               •
             </span>
             <MapPin className={theme.icon} aria-hidden={true} />
-            <span className={theme.location} aria-label={`Service area ${config.location.display}`}>
+            <span
+              className={theme.location}
+              aria-label={`Service area ${config.location.display}`}
+            >
               {config.location.display}
             </span>
           </div>
         ) : null}
       </div>
-    </div>
+    </nav>
   );
 }
