@@ -1,7 +1,6 @@
 import { useId } from 'react';
 import Link from 'next/link';
 
-import { cn } from '@/src/lib/cn';
 import { useHeroConfig } from '@/src/config/home/hooks';
 import type { HeroTheme } from '@/src/theme/heroThemes';
 import { defaultHeroTheme } from '@/src/theme/heroThemes';
@@ -28,10 +27,7 @@ export default function HeroSection({
         ) : null}
 
         <div className={theme.ctaRow} role="group" aria-label="Primary actions">
-          <Link
-            href={config.ctas.primary.href}
-            className={cn(theme.primaryCta)}
-          >
+          <Link href={config.ctas.primary.href} className={theme.primaryCta}>
             {config.ctas.primary.label}
           </Link>
 
