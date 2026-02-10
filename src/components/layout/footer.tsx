@@ -1,4 +1,4 @@
-import FooterContactBar from '@/src/config/footer/footerContactBar';
+import FooterContactBar from '@/src/components/layout/footerContactBar';
 
 export default function Footer() {
   return (
