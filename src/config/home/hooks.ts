@@ -36,3 +36,7 @@ export function useValuePropsConfig() {
 export function useHeroConfig() {
   return homeConfig.hero;
 }
+
+export function usePrimaryCtaConfig() {
+  return homeConfig.primaryCtaSection;
+}

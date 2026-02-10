@@ -40,5 +40,16 @@ export const homeConfig: HomeConfig = {
       label: 'Get a Free Quote',
       href: '/contact'
     }
+  },
+  primaryCtaSection: {
+    layout: 'split',
+    lines: ['Call Us:', '(618) 555-1234'],
+    secondaryLine: 'Serving Belleville & Nearby Areas',
+    primaryAction: {
+      label: 'Call Us: (618) 555-1234',
+      href: 'tel:+16185551234'
+    },
+    icon: 'phone',
+    media: { imageSrc: '/plumber3.png', alt: 'Plumber working' }
   }
 };

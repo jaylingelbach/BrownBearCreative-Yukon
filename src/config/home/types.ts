@@ -1,5 +1,6 @@
 export type ServiceCardMediaVariant = 'contained' | 'bleed';
 export type ServiceCardImageFit = 'cover' | 'contain';
+export type PrimaryCtaLayout = 'split' | 'bar';
 
 export type HomeConfig = {
   hero: HeroSectionConfig;
@@ -20,6 +21,7 @@ export type HomeConfig = {
     imageFit: ServiceCardImageFit;
   };
   valuePropsSection: ValuePropsSectionConfig;
+  primaryCtaSection: PrimaryCtaSectionConfig;
 };
 export type CtaLink = {
   label: string;
@@ -56,3 +58,44 @@ export type HeroSectionConfig = {
     secondary: CtaLink;
   };
 };
+
+export type PrimaryCtaAction = {
+  label: string;
+  href: string; // e.g. tel:+16185551234 or /contact
+};
+
+export type PrimaryCtaSectionConfig = {
+  layout: PrimaryCtaLayout;
+
+  heading?: string; // optional, some variants may not need
+  lines: string[]; // up to you; keeps it flexible & simple
+
+  primaryAction: PrimaryCtaAction;
+
+  secondaryLine?: string; // e.g. "Serving Belleville & Nearby Areas"
+
+  icon?: 'phone' | 'pin'; // keep primitive for now; map to lucide in component
+
+  media?: {
+    imageSrc: string;
+    alt: string;
+  };
+};
+
+// Example split
+// primaryCta: {
+//   layout: 'split',
+//   lines: ['Call Us:', '(618) 555-1234'],
+//   secondaryLine: 'Serving Belleville & Nearby Areas',
+//   primaryAction: { label: 'Call Us: (618) 555-1234', href: 'tel:+16185551234' },
+//   icon: 'phone',
+//   media: { imageSrc: '/plumber1.png', alt: 'Plumber working' }
+// }
+
+// example bar
+// primaryCta: {
+//   layout: 'bar',
+//   lines: ['Call:', '(555) 987-6543'],
+//   primaryAction: { label: 'Call Now', href: 'tel:+15559876543' },
+//   icon: 'phone'
+// }
