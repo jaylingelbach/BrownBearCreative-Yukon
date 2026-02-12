@@ -29,12 +29,12 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
 }
 
 /**
- * Build page metadata for a service route identified by its slug.
+ * Builds page metadata for a service identified by its slug.
  *
- * Produces a Metadata object with `title` and `description` derived from the service and its page data. The title is chosen in this order of preference: `page.pageTitle`, `service.labels.cardTitle`, then `service.labels.navLabel`. If no service matches the slug, an empty object is returned.
+ * Chooses the page title in this order of preference: `page.pageTitle`, `service.labels.cardTitle`, then `service.labels.navLabel`. The description is taken from `page.intro` when available.
  *
  * @param params - Route params object containing a `slug` string
- * @returns The metadata for the service page: `title` and `description`; returns `{}` when the service is not found.
+ * @returns An object with `title` and `description` for the service page, or an empty object if the service is not found or navigation dropdowns are disabled.
  */
 export async function generateMetadata({
   params

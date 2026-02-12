@@ -34,14 +34,13 @@ function CtaAnchor({ href, className, children }: CtaAnchorProps) {
 }
 
 /**
- * Render a themed, configurable hero section with a heading, optional subheading, and primary/secondary CTAs.
+ * Renders a themed hero section with a heading, optional subheading, and primary and secondary CTAs.
  *
- * The component reads content from the runtime hero config, generates a unique id for the heading and binds it to
- * the section's `aria-labelledby`. CTA links use the hrefs from the config and will render as internal or external
- * links depending on the target.
+ * Reads content from the runtime hero config, binds a generated heading id to the section's `aria-labelledby`,
+ * and renders CTAs as internal or external links based on their hrefs.
  *
- * @param theme - Optional theme object supplying class names for the section; defaults to `defaultHeroTheme`
- * @returns The rendered hero section element containing the heading, optional subheading, and CTA row
+ * @param theme - Optional theme object supplying class names for section elements; defaults to `defaultHeroTheme`
+ * @returns The rendered hero section element
  */
 export default function HeroSection({
   theme = defaultHeroTheme

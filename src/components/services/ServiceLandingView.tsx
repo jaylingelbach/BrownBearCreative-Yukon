@@ -14,6 +14,15 @@ type ServicesLandingViewProps = {
   config: ServicesLandingConfig;
   theme: ServicesLandingTheme;
 };
+/**
+ * Render the services landing page using the provided configuration and theme.
+ *
+ * Resolves featured services (falling back to default homepage services), chooses a list or grid layout, renders a hero section, a services list, and an optional CTA. If the current tier is not `starter`, calls `notFound()` to produce a 404 response.
+ *
+ * @param config - Page configuration (heading, optional description, layout, optional featuredServiceIds, and optional `cta` with heading, paragraph, href, and label)
+ * @param theme - Theme CSS class mappings used to style the page's container, hero, sections, cards, and CTA
+ * @returns A `JSX.Element` containing the services landing UI; calls `notFound()` (producing a 404) when the tier is not `starter`
+ */
 export default function ServicesLandingView({
   config,
   theme

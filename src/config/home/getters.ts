@@ -10,18 +10,18 @@ export function getHomeConfig() {
 }
 
 /**
- * Accesses the `serviceCards` section of the home configuration.
+ * Gets the serviceCards section of the home configuration.
  *
- * @returns The `serviceCards` configuration extracted from `homeConfig`.
+ * @returns The `serviceCards` configuration object from `homeConfig`.
  */
 export function getServiceCardsConfig() {
   return homeConfig.serviceCards;
 }
 
 /**
- * Accesses the `valuePropsSection` section of the home configuration.
+ * Retrieve the value props section of the home configuration.
  *
- * @returns The `valuePropsSection` configuration extracted from `homeConfig`.
+ * @returns The `valuePropsSection` configuration object from `homeConfig`.
  */
 
 export function getValuePropsConfig() {
