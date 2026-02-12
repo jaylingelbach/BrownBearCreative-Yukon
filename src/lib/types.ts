@@ -162,6 +162,7 @@ export type AboutLandingTheme = {
 
   bulletsList: string;
   bulletsItem: string;
+  bulletsDot: string;
 
   featuresGrid: string;
   featureItem: string;

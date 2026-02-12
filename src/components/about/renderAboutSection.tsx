@@ -34,10 +34,7 @@ export default function renderAboutSection(args: {
         <ul className={theme.bulletsList}>
           {section.items.map((item) => (
             <li key={item} className={theme.bulletsItem}>
-              <span
-                aria-hidden={true}
-                className="mt-2 h-2 w-2 rounded-full bg-blue-800"
-              />
+              <span aria-hidden={true} className={theme.bulletsDot} />
               <span>{item}</span>
             </li>
           ))}

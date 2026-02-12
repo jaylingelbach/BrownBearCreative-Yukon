@@ -23,6 +23,7 @@ export const defaultAboutLandingTheme: AboutLandingTheme = {
 
   bulletsList: 'mt-4 space-y-2',
   bulletsItem: 'flex items-start gap-3 text-slate-700',
+  bulletsDot: 'mt-2 h-2 w-2 rounded-full bg-blue-800',
 
   featuresGrid: 'mt-4 grid gap-4 sm:grid-cols-2',
   featureItem: 'rounded-md border border-border bg-white p-4',
