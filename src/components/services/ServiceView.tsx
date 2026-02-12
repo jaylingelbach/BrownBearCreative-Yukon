@@ -74,9 +74,12 @@ export default function ServiceView({
 
               {highlights.length > 0 ? (
                 <ul className={theme.highlights}>
-                  {highlights.slice(0, 5).map((item) => (
-                    <li key={item} className={theme.highlightItem}>
-                      <span aria-hidden={true} className="mt-1 select-none">
+                  {highlights.slice(0, 5).map((item, index) => (
+                    <li
+                      key={`${item}-${index}`}
+                      className={theme.highlightItem}
+                    >
+                      <sgpan aria-hidden={true} className="mt-1 select-none">
                         •
                       </span>
                       <span>{item}</span>
