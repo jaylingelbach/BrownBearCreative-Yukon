@@ -65,7 +65,10 @@ export default function renderAboutSection(args: {
           {section.items.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div key={`${item}-${index}`} className="flex items-start gap-3">
+              <div
+                key={`${item.title}-${index}`}
+                className="flex items-start gap-3"
+              >
                 <div
                   className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center"
                   aria-hidden={true}
