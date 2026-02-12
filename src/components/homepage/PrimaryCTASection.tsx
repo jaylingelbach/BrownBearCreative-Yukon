@@ -3,7 +3,7 @@ import { MapPin, Phone } from 'lucide-react';
 
 import { cn } from '@/src/lib/cn';
 
-import { usePrimaryCtaConfig } from '@/src/config/home/hooks';
+import { getPrimaryCtaConfig } from '@/src/config/home/getters';
 import type { PrimaryCtaTheme } from '@/src/theme/primaryCtaThemes';
 import { defaultPrimaryCtaTheme } from '@/src/theme/primaryCtaThemes';
 import SmartLink from '@/src/components/ui/SmartLink';
@@ -26,7 +26,7 @@ function resolveIcon(icon?: 'phone' | 'pin') {
 /**
  * Renders a configurable primary call-to-action section for the homepage.
  *
- * Renders either a compact "bar" layout or a two-column "split" layout based on the configuration returned by `usePrimaryCtaConfig()`. Builds the section's accessible label from the configured lines and optional secondary line, displays the resolved icon, the configured text lines, the primary action as a `SmartLink`, and an optional media image when provided.
+ * Renders either a compact "bar" layout or a two-column "split" layout based on the configuration returned by `getPrimaryCtaConfig()`. Builds the section's accessible label from the configured lines and optional secondary line, displays the resolved icon, the configured text lines, the primary action as a `SmartLink`, and an optional media image when provided.
  *
  * @param theme - Optional theming object that supplies CSS class names for the section; defaults to `defaultPrimaryCtaTheme`.
  * @returns The rendered CTA section element configured from the primary CTA settings.
@@ -34,7 +34,7 @@ function resolveIcon(icon?: 'phone' | 'pin') {
 export default function PrimaryCTASection({
   theme = defaultPrimaryCtaTheme
 }: PrimaryCTASectionProps) {
-  const config = usePrimaryCtaConfig();
+  const config = getPrimaryCtaConfig();
   const Icon = resolveIcon(config.icon);
 
   const sectionLabel = [config.lines.join(' '), config.secondaryLine]

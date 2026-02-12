@@ -1,11 +1,13 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
+import SmartLink from '@/src/components/ui/SmartLink';
 import type {
   ServiceData,
   ServicePageContent
 } from '@/src/config/services/types';
 import type { ServiceViewTheme } from '@/src/lib/types';
+import { renderSection } from '@/src/components/services/renderSection';
+import { resolveCta } from '@/src/components/services/resolveCta';
 
 type ServiceViewProps = {
   service: ServiceData;
@@ -18,19 +20,9 @@ type ServiceViewProps = {
 };
 
 /**
- * Renders a themed service header section with eyebrow, title, CTAs, and hero media.
- *
- * The component displays a title (preferring the service cardTitle when present) and an eyebrow label,
- * shows primary and secondary call-to-action links, and renders hero media using the following priority:
- * 1) image from `page.heroMedia.imageSrc` if provided, 2) image from `service.media.imageSrc`, 3) `service.media.icon` if available.
- * When an image alt is present it is applied to the image; otherwise the image and icon are marked as decorative via `aria-hidden`.
- *
- * @param service - Core service data used to derive labels and media
- * @param page - Optional page-level overrides for hero media and alt text
- * @param theme - Theme object containing class names used for layout and styling
- * @param primaryCtaHref - HREF for the primary CTA (defaults to '/contact')
- * @param secondaryCtaHref - HREF for the secondary CTA (defaults to '/')
- * @returns A React element containing the service hero/header section
+ * Service detail page view:
+ * - hero (title + intro + highlights + CTAs + media)
+ * - body (description + config-driven sections)
  */
 export default function ServiceView({
   service,
@@ -39,57 +31,135 @@ export default function ServiceView({
   primaryCtaHref = '/contact',
   secondaryCtaHref = '/'
 }: ServiceViewProps) {
-  const title = service.labels.cardTitle || service.labels.navLabel;
+  const title =
+    page?.pageTitle ?? service.labels.cardTitle ?? service.labels.navLabel;
+
   const eyebrow = service.labels.navLabel;
+
+  const intro = page?.intro;
+  const description = page?.description?.trim();
+  const highlights = page?.highlights ?? [];
+  const sections = page?.sections ?? [];
+
+  const primaryCta = resolveCta({
+    override: page?.ctas?.primary,
+    fallbackHref: primaryCtaHref,
+    fallbackLabel: 'Get a Free Quote'
+  });
+
+  const secondaryCta = resolveCta({
+    override: page?.ctas?.secondary,
+    fallbackHref: secondaryCtaHref,
+    fallbackLabel: 'Back to Home'
+  });
 
   const imageUrl = page?.heroMedia?.imageSrc ?? service.media.imageSrc;
 
-  const imageAlt = page?.heroMedia?.alt ?? '';
-  const hasImageAlt = Boolean(imageAlt.trim());
+  const imageAltRaw = page?.heroMedia?.alt ?? '';
+  const imageAlt = imageAltRaw.trim();
+  const hasImageAlt = imageAlt.length > 0;
 
-  const IconComponent = service.media.icon;
+  const IconComponent = page?.heroMedia?.icon ?? service.media.icon;
 
   return (
     <main className={theme.page}>
       <header className={theme.hero}>
         <div className={theme.heroInner}>
-          <p className={theme.eyebrow}>{eyebrow}</p>
-          <h1 className={theme.title}>{title}</h1>
+          <div className={theme.heroGrid}>
+            <div className={theme.heroLeft}>
+              <p className={theme.eyebrow}>{eyebrow}</p>
+              <h1 className={theme.title}>{title}</h1>
 
-          <div className={theme.ctaRow}>
-            <Link href={primaryCtaHref} className={theme.primaryCta}>
-              Get a Free Quote
-            </Link>
+              {intro ? <p className={theme.intro}>{intro}</p> : null}
 
-            <Link href={secondaryCtaHref} className={theme.secondaryCta}>
-              Back to Home
-            </Link>
-          </div>
+              {highlights.length > 0 ? (
+                <ul className={theme.highlights}>
+                  {highlights.slice(0, 5).map((item) => (
+                    <li key={item} className={theme.highlightItem}>
+                      <span aria-hidden={true} className="mt-1 select-none">
+                        •
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
 
-          <div className={theme.mediaRow}>
-            {imageUrl ? (
-              <div className={theme.mediaFrame} aria-hidden={!hasImageAlt}>
-                <Image
-                  src={imageUrl}
-                  alt={hasImageAlt ? imageAlt : ''}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 560px"
-                  className="object-cover"
-                  priority={false}
-                />
+              <div className={theme.ctaRow}>
+                <SmartLink
+                  href={primaryCta.href}
+                  className={theme.primaryCta}
+                  ariaLabel={primaryCta.label}
+                >
+                  {primaryCta.label}
+                </SmartLink>
+
+                <SmartLink
+                  href={secondaryCta.href}
+                  className={theme.secondaryCta}
+                  ariaLabel={secondaryCta.label}
+                >
+                  {secondaryCta.label}
+                </SmartLink>
               </div>
-            ) : IconComponent ? (
-              <div className={theme.iconFrame} aria-hidden={true}>
-                <IconComponent
-                  className={theme.icon}
-                  aria-hidden={true}
-                  focusable={false}
-                />
+            </div>
+
+            <div className={theme.heroRight}>
+              {imageUrl ? (
+                <div
+                  className={theme.mediaFrame}
+                  aria-hidden={hasImageAlt ? undefined : 'true'}
+                >
+                  <Image
+                    src={imageUrl}
+                    alt={hasImageAlt ? imageAlt : ''}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 480px"
+                    className="object-cover"
+                    priority={false}
+                  />
+                </div>
+              ) : IconComponent ? (
+                <div className={theme.iconFrame} aria-hidden="true">
+                  <IconComponent
+                    className={theme.icon}
+                    aria-hidden="true"
+                    focusable={false}
+                  />
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section className={theme.bodySection}>
+        <div className={theme.bodyInner}>
+          <div className={theme.card}>
+            <h2 className={theme.cardTitle}>Service details</h2>
+
+            <p className={theme.cardBody}>
+              {description && description.length > 0
+                ? description
+                : `Learn more about ${service.labels.navLabel}. We’ll tailor the approach to your needs and provide clear next steps.`}
+            </p>
+
+            {sections.length > 0 ? (
+              <div className={theme.sectionsWrap}>
+                {sections.map((section, sectionIndex) => (
+                  <div key={`section-${sectionIndex}`}>
+                    {sectionIndex > 0 ? (
+                      <div className={theme.sectionDivider} />
+                    ) : null}
+
+                    {renderSection({ section, theme, index: sectionIndex })}
+                  </div>
+                ))}
               </div>
             ) : null}
           </div>
         </div>
-      </header>
+      </section>
     </main>
   );
 }

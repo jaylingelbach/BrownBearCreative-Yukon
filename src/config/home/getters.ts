@@ -5,7 +5,7 @@ import { homeConfig } from './homeConfig';
  *
  * @returns The `homeConfig` object containing configuration and settings for the home page.
  */
-export function useHomeConfig() {
+export function getHomeConfig() {
   return homeConfig;
 }
 
@@ -14,7 +14,7 @@ export function useHomeConfig() {
  *
  * @returns The `serviceCards` configuration extracted from `homeConfig`.
  */
-export function useServiceCardsConfig() {
+export function getServiceCardsConfig() {
   return homeConfig.serviceCards;
 }
 
@@ -24,7 +24,7 @@ export function useServiceCardsConfig() {
  * @returns The `valuePropsSection` configuration extracted from `homeConfig`.
  */
 
-export function useValuePropsConfig() {
+export function getValuePropsConfig() {
   return homeConfig.valuePropsSection;
 }
 
@@ -33,7 +33,7 @@ export function useValuePropsConfig() {
  *
  * @returns The `hero` configuration extracted from `homeConfig`.
  */
-export function useHeroConfig() {
+export function getHeroConfig() {
   return homeConfig.hero;
 }
 
@@ -42,6 +42,6 @@ export function useHeroConfig() {
  *
  * @returns The `primaryCtaSection` configuration extracted from `homeConfig`.
  */
-export function usePrimaryCtaConfig() {
+export function getPrimaryCtaConfig() {
   return homeConfig.primaryCtaSection;
 }

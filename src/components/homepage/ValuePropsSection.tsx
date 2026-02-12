@@ -6,7 +6,7 @@ import { SquareCheckBig } from 'lucide-react';
 
 import { cn } from '@/src/lib/cn';
 
-import { useValuePropsConfig } from '@/src/config/home/hooks';
+import { getValuePropsConfig } from '@/src/config/home/getters';
 
 import type { ValuePropsTheme } from '@/src/theme/valuePropsThemes';
 import { defaultValuePropsTheme } from '@/src/theme/valuePropsThemes';
@@ -24,7 +24,7 @@ type ValuePropsSectionProps = {
 export default function ValuePropsSection({
   theme = defaultValuePropsTheme
 }: ValuePropsSectionProps) {
-  const config = useValuePropsConfig();
+  const config = getValuePropsConfig();
   const items = config.items ?? [];
   const hasItems = items.length > 0;
   const hasImageAlt = Boolean(config.image.alt?.trim());

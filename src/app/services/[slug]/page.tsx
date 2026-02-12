@@ -7,6 +7,7 @@ import { services } from '@/src/config/services/services';
 import { defaultServiceViewTheme } from '@/src/theme/serviceViewThemes';
 import { getServiceBySlug } from '@/src/config/services/selectors';
 import { servicePagesById } from '@/src/config/services/servicePagesById';
+import { getTierPreset } from '@/src/config/tiers/getters';
 
 type PageProps = {
   params: Promise<{
@@ -20,6 +21,8 @@ type PageProps = {
  * @returns An array of objects each containing a `slug` string for a service
  */
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+  const tier = getTierPreset();
+  if (tier.navigation.enableDropdowns === false) return [];
   return Object.values(services).map((service) => ({
     slug: service.slug
   }));
@@ -36,9 +39,15 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
 export async function generateMetadata({
   params
 }: PageProps): Promise<Metadata> {
+  const tier = getTierPreset();
+  if (tier.navigation.enableDropdowns === false) {
+    return {};
+  }
+
   const { slug } = await params;
 
   const service = getServiceBySlug(services, slug);
+
   if (!service) {
     return {};
   }
@@ -64,6 +73,10 @@ export async function generateMetadata({
  * @returns A React element that renders the service page
  */
 export default async function ServicePage({ params }: PageProps) {
+  const tier = getTierPreset();
+  if (tier.navigation.enableDropdowns === false) {
+    return notFound();
+  }
   const { slug } = await params;
 
   const service = getServiceBySlug(services, slug);

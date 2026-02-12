@@ -1,7 +1,7 @@
 import { useId, type ReactNode } from 'react';
 import Link from 'next/link';
 
-import { useHeroConfig } from '@/src/config/home/hooks';
+import { getHeroConfig } from '@/src/config/home/getters';
 import type { HeroTheme } from '@/src/theme/heroThemes';
 import { defaultHeroTheme } from '@/src/theme/heroThemes';
 
@@ -46,7 +46,7 @@ function CtaAnchor({ href, className, children }: CtaAnchorProps) {
 export default function HeroSection({
   theme = defaultHeroTheme
 }: HeroSectionProps) {
-  const config = useHeroConfig();
+  const config = getHeroConfig();
   const headingId = `${useId()}-hero-heading`;
 
   return (
