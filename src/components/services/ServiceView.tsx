@@ -79,7 +79,7 @@ export default function ServiceView({
                       key={`${item}-${index}`}
                       className={theme.highlightItem}
                     >
-                      <sgpan aria-hidden={true} className="mt-1 select-none">
+                      <span aria-hidden={true} className="mt-1 select-none">
                         •
                       </span>
                       <span>{item}</span>
@@ -89,18 +89,14 @@ export default function ServiceView({
               ) : null}
 
               <div className={theme.ctaRow}>
-                <SmartLink
-                  href={primaryCta.href}
-                  className={theme.primaryCta}
-                  ariaLabel={primaryCta.label}
-                >
+                <SmartLink href={primaryCta.href} className={theme.primaryCta}>
                   {primaryCta.label}
                 </SmartLink>
 
                 <SmartLink
                   href={secondaryCta.href}
                   className={theme.secondaryCta}
-                  ariaLabel={secondaryCta.label}
+                  g
                 >
                   {secondaryCta.label}
                 </SmartLink>

@@ -98,17 +98,19 @@ export function renderSection(args: {
   }
 
   // text
-  return (
-    <div key={`section-${index}`} className={cardClass}>
-      {heading ? <h2 className={titleClass}>{heading}</h2> : null}
+  if (section.type === 'text') {
+    return (
+      <div key={`section-${index}`} className={cardClass}>
+        {heading ? <h2 className={titleClass}>{heading}</h2> : null}
 
-      <div className={cn(bodyClass, theme.textWrap)}>
-        {section.paragraphs.map((paragraph) => (
-          <p key={paragraph} className={theme.textParagraph}>
-            {paragraph}
-          </p>
-        ))}
+        <div className={cn(bodyClass, theme.textWrap)}>
+          {section.paragraphs.map((paragraph) => (
+            <p key={paragraph} className={theme.textParagraph}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

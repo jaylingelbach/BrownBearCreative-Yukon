@@ -81,7 +81,7 @@ export default async function ServicePage({ params }: PageProps) {
 
   const service = getServiceBySlug(services, slug);
   if (!service) {
-    notFound();
+    return notFound();
   }
 
   const page = servicePagesById[service.id];

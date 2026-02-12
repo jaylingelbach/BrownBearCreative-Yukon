@@ -17,6 +17,8 @@ export type ServicesLandingConfig = {
   cta?: {
     label: string;
     href: string;
+    heading: string;
+    paragraph: string;
   };
 };
 
@@ -27,6 +29,8 @@ export const defaultServicesLandingConfig: ServicesLandingConfig = {
   layout: 'list',
   cta: {
     label: 'Get a Free Quote',
-    href: '/contact'
+    href: '/contact',
+    heading: 'Need help choosing?',
+    paragraph: `Tell us what’s going on and we’ll recommend the right next step.`
   }
 };

@@ -58,7 +58,7 @@ export default function ServiceCard({ service, theme }: ServiceCardProps) {
     ? 'h-14 flex items-center justify-center px-4 bg-blue-800'
     : 'h-14 flex items-center justify-center px-4 mt-4 bg-blue-800';
 
-  const titleColorClasses = isBleed ? 'text-white' : 'text-white';
+  const titleColorClasses = 'text-white';
 
   return (
     <Link

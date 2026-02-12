@@ -96,11 +96,9 @@ export default function ServicesLandingView({
           <section className={theme.sectionWrap} aria-labelledby={ctaHeadingId}>
             <div className={theme.ctaCard}>
               <h2 id={ctaHeadingId} className={theme.sectionHeading}>
-                Need help choosing?
+                {config.cta.heading}
               </h2>
-              <p className={theme.ctaText}>
-                Tell us what’s going on and we’ll recommend the right next step.
-              </p>
+              <p className={theme.ctaText}>{config.cta.paragraph}</p>
 
               <div className={theme.ctaActions}>
                 <SmartLink href={config.cta.href} className={theme.ctaPrimary}>
