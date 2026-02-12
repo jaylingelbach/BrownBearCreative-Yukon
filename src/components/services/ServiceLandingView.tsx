@@ -58,7 +58,7 @@ export default function ServicesLandingView({
 
           <div className={isList ? theme.cardsList : theme.cardsGrid}>
             {resolvedServices.map((service) => {
-              const title = service.labels.cardTitle || service.labels.navLabel;
+              const title = service.labels.cardTitle;
               const description = service.labels.navLabel;
 
               return (
