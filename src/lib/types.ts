@@ -56,10 +56,17 @@ export type ServiceViewTheme = {
   hero: string;
   heroInner: string;
 
+  heroGrid: string;
+  heroLeft: string;
+  heroRight: string;
+
   eyebrow: string;
   title: string;
+  intro: string;
 
-  mediaRow: string;
+  highlights: string;
+  highlightItem: string;
+
   mediaFrame: string;
   iconFrame: string;
   icon: string;
@@ -68,9 +75,67 @@ export type ServiceViewTheme = {
   primaryCta: string;
   secondaryCta: string;
 
-  section: string;
-  sectionInner: string;
+  bodySection: string;
+  bodyInner: string;
+
   card: string;
   cardTitle: string;
   cardBody: string;
+
+  // ── Service page sections (theme-driven) ───────────────────────────────
+  sectionsWrap: string;
+  sectionDivider: string;
+
+  bulletsList: string;
+  bulletsItem: string;
+  bulletsIcon: string;
+  bulletsText: string;
+
+  stepsList: string;
+  stepsItem: string;
+  stepsBadge: string;
+  stepsTitle: string;
+  stepsText: string;
+
+  featuresGrid: string;
+  featureCard: string;
+  featureIcon: string;
+  featureDot: string;
+  featureTitle: string;
+  featureText: string;
+
+  textWrap: string;
+  textParagraph: string;
+};
+
+// -- Service Landing theme ---------------------
+export type ServicesLandingTheme = {
+  page: string;
+  inner: string;
+
+  heroWrap: string;
+  heroHeading: string;
+  heroSubheading: string;
+
+  sectionWrap: string;
+  sectionHeadingTop: string;
+  sectionHeading: string;
+
+  cardsGrid: string;
+  card: string;
+  cardIcon: string;
+  cardTitle: string;
+  cardDescription: string;
+  cardsList: string;
+  cardList: string;
+
+  bulletsList: string;
+  bulletsItem: string;
+  bulletsDot: string;
+
+  ctaCard: string;
+  ctaText: string;
+  ctaActions: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
 };

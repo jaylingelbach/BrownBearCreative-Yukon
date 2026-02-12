@@ -1,8 +1,16 @@
+import ServicesLandingView from '@/src/components/services/ServiceLandingView';
+import { getServicesLandingConfig } from '@/src/config/services/landing/getters';
+import { defaultServicesLandingTheme } from '@/src/theme/serviceLandingThemes';
+
 /**
- * Renders a page containing a top-level heading "Services".
+ * Render the services landing page with the current configuration and default theme.
  *
- * @returns A JSX element containing an `<h1>` with the text "Services".
+ * @returns A React element that displays the services landing view using the value returned by `getServicesLandingConfig()` and `defaultServicesLandingTheme`.
  */
 export default function Services() {
-  return <h1>Services</h1>;
+  const config = getServicesLandingConfig();
+
+  return (
+    <ServicesLandingView config={config} theme={defaultServicesLandingTheme} />
+  );
 }

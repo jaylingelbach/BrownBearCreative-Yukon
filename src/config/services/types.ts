@@ -74,6 +74,12 @@ export type ServicePageContent = {
   intro?: string;
 
   /**
+   * Longer body description shown in the page content area (below the hero).
+   * Use this when you want more detail than the intro without duplicating it.
+   */
+  description?: string;
+
+  /**
    * Optional hero media override for the service page (separate from card media).
    */
   heroMedia?: ServicePageMedia;
@@ -90,4 +96,38 @@ export type ServicePageContent = {
     primary?: ServiceCta;
     secondary?: ServiceCta;
   };
+
+  /**
+   * Optional page body sections. Generic on purpose so any business type can use it.
+   */
+  sections?: ServicePageSection[];
 };
+
+export type ServicePageSection =
+  | {
+      type: 'bullets';
+      heading?: string;
+      items: string[];
+    }
+  | {
+      type: 'steps';
+      heading?: string;
+      steps: Array<{
+        title: string;
+        text?: string;
+      }>;
+    }
+  | {
+      type: 'features';
+      heading?: string;
+      items: Array<{
+        title: string;
+        text?: string;
+        icon?: LucideIcon;
+      }>;
+    }
+  | {
+      type: 'text';
+      heading?: string;
+      paragraphs: string[];
+    };

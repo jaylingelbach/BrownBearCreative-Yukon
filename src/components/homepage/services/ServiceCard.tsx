@@ -2,7 +2,7 @@ import { useId } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useServiceCardsConfig } from '@/src/config/home/hooks';
+import { getServiceCardsConfig } from '@/src/config/home/getters';
 
 import type { ServiceData } from '@/src/config/services/types';
 import type { ServiceGridTheme } from '@/src/theme/serviceGridThemes';
@@ -22,7 +22,7 @@ interface ServiceCardProps {
  * @returns A React element representing a link-wrapped service card for the provided service
  */
 export default function ServiceCard({ service, theme }: ServiceCardProps) {
-  const { mediaVariant, imageFit } = useServiceCardsConfig();
+  const { mediaVariant, imageFit } = getServiceCardsConfig();
 
   const baseId = useId();
   const titleId = `${baseId}-title`;
@@ -58,7 +58,7 @@ export default function ServiceCard({ service, theme }: ServiceCardProps) {
     ? 'h-14 flex items-center justify-center px-4 bg-blue-800'
     : 'h-14 flex items-center justify-center px-4 mt-4 bg-blue-800';
 
-  const titleColorClasses = isBleed ? 'text-white' : 'text-white';
+  const titleColorClasses = 'text-white';
 
   return (
     <Link
