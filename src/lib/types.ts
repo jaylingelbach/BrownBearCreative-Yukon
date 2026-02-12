@@ -141,7 +141,6 @@ export type ServicesLandingTheme = {
 };
 
 // About
-
 export type AboutLandingTheme = {
   page: string;
   inner: string;
@@ -166,6 +165,10 @@ export type AboutLandingTheme = {
 
   featuresGrid: string;
   featureItem: string;
+  featureRow: string;
+  featureIconWrap: string;
+  featureIcon: string;
+  featureDot: string;
   featureTitle: string;
   featureText: string;
 
@@ -181,4 +184,6 @@ export type AboutLandingTheme = {
   ctaPrimary: string;
   ctaSecondary: string;
   ctaHeading: string;
+
+  textBodyWrap: string;
 };

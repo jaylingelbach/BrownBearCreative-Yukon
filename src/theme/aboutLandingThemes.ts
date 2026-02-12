@@ -1,5 +1,5 @@
 import { cn } from '@/src/lib/cn';
-import type { AboutLandingTheme } from '@/src/lib/types';
+import { AboutLandingTheme } from '@/src/lib/types';
 import { focusRing } from '@/src/theme/shared';
 
 export const defaultAboutLandingTheme: AboutLandingTheme = {
@@ -7,7 +7,6 @@ export const defaultAboutLandingTheme: AboutLandingTheme = {
   inner: 'mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-10',
 
   heroWrap: 'space-y-3 rounded-lg bg-white shadow-sm ring-1 ring-border p-6',
-
   heroHeading: 'text-3xl font-extrabold tracking-tight sm:text-4xl',
   heroSubheading: 'text-base leading-relaxed text-slate-700 max-w-2xl',
 
@@ -27,6 +26,10 @@ export const defaultAboutLandingTheme: AboutLandingTheme = {
 
   featuresGrid: 'mt-4 grid gap-4 sm:grid-cols-2',
   featureItem: 'rounded-md border border-border bg-white p-4',
+  featureRow: 'flex items-start gap-3',
+  featureIconWrap: 'mt-0.5 flex h-6 w-6 flex-none items-center justify-center',
+  featureIcon: 'h-7 w-7 text-primary',
+  featureDot: 'h-3 w-3 rounded-full bg-primary',
   featureTitle: 'font-semibold text-slate-900',
   featureText: 'mt-1 text-sm leading-relaxed text-slate-600',
 
@@ -48,5 +51,7 @@ export const defaultAboutLandingTheme: AboutLandingTheme = {
     'inline-flex h-11 items-center justify-center rounded-md border border-white/30 bg-transparent px-5 text-sm font-semibold text-white hover:bg-white/10 transition-colors',
     focusRing
   ),
-  ctaHeading: 'text-lg font-bold text-white'
+  ctaHeading: 'text-lg font-bold text-white',
+
+  textBodyWrap: 'mt-4 space-y-3'
 };
