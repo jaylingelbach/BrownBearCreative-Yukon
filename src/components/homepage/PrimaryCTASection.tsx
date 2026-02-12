@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { MapPin, Phone } from 'lucide-react';
 
 import { cn } from '@/src/lib/cn';
-
 import { getPrimaryCtaConfig } from '@/src/config/home/getters';
 import type { PrimaryCtaTheme } from '@/src/theme/primaryCtaThemes';
 import { defaultPrimaryCtaTheme } from '@/src/theme/primaryCtaThemes';
@@ -12,30 +11,23 @@ type PrimaryCTASectionProps = {
   theme?: PrimaryCtaTheme;
 };
 
-/**
- * Selects the appropriate icon component for the CTA based on the provided keyword.
- *
- * @param icon - The icon keyword: use `'pin'` to select the map-pin icon; any other value selects the phone icon.
- * @returns The matching icon component: `MapPin` when `icon` is `'pin'`, `Phone` otherwise.
- */
-function resolveIcon(icon?: 'phone' | 'pin') {
-  if (icon === 'pin') return MapPin;
-  return Phone;
+type PrimaryCtaIconProps = {
+  icon?: 'phone' | 'pin';
+  className: string;
+};
+
+function PrimaryCtaIcon({ icon, className }: PrimaryCtaIconProps) {
+  if (icon === 'pin') {
+    return <MapPin className={className} aria-hidden={true} />;
+  }
+
+  return <Phone className={className} aria-hidden={true} />;
 }
 
-/**
- * Renders a configurable primary call-to-action section for the homepage.
- *
- * Renders either a compact "bar" layout or a two-column "split" layout based on the configuration returned by `getPrimaryCtaConfig()`. Builds the section's accessible label from the configured lines and optional secondary line, displays the resolved icon, the configured text lines, the primary action as a `SmartLink`, and an optional media image when provided.
- *
- * @param theme - Optional theming object that supplies CSS class names for the section; defaults to `defaultPrimaryCtaTheme`.
- * @returns The rendered CTA section element configured from the primary CTA settings.
- */
 export default function PrimaryCTASection({
   theme = defaultPrimaryCtaTheme
 }: PrimaryCTASectionProps) {
   const config = getPrimaryCtaConfig();
-  const Icon = resolveIcon(config.icon);
 
   const sectionLabel = [config.lines.join(' '), config.secondaryLine]
     .filter(Boolean)
@@ -47,7 +39,7 @@ export default function PrimaryCTASection({
         <div className={theme.inner}>
           <div className={theme.barWrap}>
             <div className="flex items-center gap-3">
-              <Icon className={theme.icon} aria-hidden={true} />
+              <PrimaryCtaIcon icon={config.icon} className={theme.icon} />
               <div className={theme.lines}>{config.lines.join(' ')}</div>
             </div>
 
@@ -64,14 +56,13 @@ export default function PrimaryCTASection({
     );
   }
 
-  // split
   return (
     <section className={theme.section} aria-label={sectionLabel}>
       <div className={theme.inner}>
         <div className={theme.splitWrap}>
           <div className={cn(theme.splitLeft, theme.splitLeftCard)}>
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <Icon className={theme.icon} aria-hidden={true} />
+              <PrimaryCtaIcon icon={config.icon} className={theme.icon} />
               <div className={theme.lines}>{config.lines.join(' ')}</div>
             </div>
 

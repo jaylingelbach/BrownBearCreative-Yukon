@@ -96,7 +96,6 @@ export default function ServiceView({
                 <SmartLink
                   href={secondaryCta.href}
                   className={theme.secondaryCta}
-                  g
                 >
                   {secondaryCta.label}
                 </SmartLink>

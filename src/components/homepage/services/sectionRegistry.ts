@@ -9,7 +9,9 @@ import GallerySection from '@/src/components/homepage/GallerySection';
 import FaqSection from '@/src/components/homepage/Faq/FaqSection';
 
 import { HomepageSectionType } from '@/src/config/tiers';
-export type HomepageSectionComponent = React.ComponentType<{}>;
+export type HomepageSectionComponent = React.ComponentType<
+  Record<string, never>
+>;
 
 // homepage sections are “render-only” (no required props).
 export const homepageSectionRegistry: Record<
