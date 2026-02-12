@@ -10,7 +10,7 @@ import FaqSection from '@/src/components/homepage/Faq/FaqSection';
 
 import { HomepageSectionType } from '@/src/config/tiers';
 export type HomepageSectionComponent = React.ComponentType<
-  Record<string, never>
+  Record<string, string>
 >;
 
 // homepage sections are “render-only” (no required props).
