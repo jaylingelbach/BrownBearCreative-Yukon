@@ -20,9 +20,9 @@ type ServiceViewProps = {
 };
 
 /**
- * Service detail page view:
- * - hero (title + intro + highlights + CTAs + media)
- * - body (description + config-driven sections)
+ * Render the service detail page with a hero (title, intro, highlights, CTAs, media) and a body (description and configuration-driven sections).
+ *
+ * @returns A React element representing the complete service detail page layout
  */
 export default function ServiceView({
   service,

@@ -3,6 +3,14 @@ import { cn } from '@/src/lib/cn';
 import { ServiceViewTheme } from '@/src/lib/types';
 import { SquareCheckBig } from 'lucide-react';
 
+/**
+ * Render a service page section (bullets, steps, features, or text) using the provided theme.
+ *
+ * @param args.section - Section data describing the content and type to render.
+ * @param args.theme - Theme object containing CSS class names used for layout and styling.
+ * @param args.index - Zero-based index of the section, used to form stable keys.
+ * @returns The JSX element for the rendered section, or `undefined` if the section type is not recognized.
+ */
 export function renderSection(args: {
   section: ServicePageSection;
   theme: ServiceViewTheme;

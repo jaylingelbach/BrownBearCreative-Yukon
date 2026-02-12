@@ -16,6 +16,13 @@ type PrimaryCtaIconProps = {
   className: string;
 };
 
+/**
+ * Render the primary CTA icon based on the provided `icon` type.
+ *
+ * @param icon - The icon type to render; `'pin'` renders a map pin icon, any other value renders a phone icon.
+ * @param className - CSS class names applied to the rendered icon element.
+ * @returns A `MapPin` icon when `icon` is `'pin'`, otherwise a `Phone` icon.
+ */
 function PrimaryCtaIcon({ icon, className }: PrimaryCtaIconProps) {
   if (icon === 'pin') {
     return <MapPin className={className} aria-hidden={true} />;
@@ -24,6 +31,12 @@ function PrimaryCtaIcon({ icon, className }: PrimaryCtaIconProps) {
   return <Phone className={className} aria-hidden={true} />;
 }
 
+/**
+ * Render the primary call-to-action section using the configured layout, text, actions, icon, and optional media.
+ *
+ * @param theme - Optional theme object of CSS class names to override the section's styling and layout
+ * @returns The rendered section element containing the CTA content and action control
+ */
 export default function PrimaryCTASection({
   theme = defaultPrimaryCtaTheme
 }: PrimaryCTASectionProps) {
