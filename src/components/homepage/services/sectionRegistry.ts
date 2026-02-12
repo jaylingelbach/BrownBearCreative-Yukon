@@ -12,6 +12,7 @@ import { HomepageSectionType } from '@/src/config/tiers';
 export type HomepageSectionComponent = React.ComponentType<
   Record<string, never>
 >;
+co;
 
 // homepage sections are “render-only” (no required props).
 export const homepageSectionRegistry: Record<

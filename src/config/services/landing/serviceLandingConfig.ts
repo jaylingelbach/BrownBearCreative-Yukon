@@ -24,8 +24,7 @@ export type ServicesLandingConfig = {
 
 export const defaultServicesLandingConfig: ServicesLandingConfig = {
   heading: 'Our Services',
-  description:
-    'Explore what we offer. If you’re not sure what you need, reach out and we’ll point you in the right direction.',
+  description: `Explore what we offer. If you're not sure what you need, reach out and we'll point you in the right direction.`,
   layout: 'list',
   cta: {
     label: 'Get a Free Quote',
