@@ -1,6 +1,4 @@
-import { cn } from '@/src/lib/cn';
-import type { ContactLandingTheme } from '@/src/lib/types';
-import { focusRing } from '@/src/theme/shared';
+gitimport type { ContactLandingTheme } from '@/src/lib/types';
 
 export const defaultContactLandingTheme: ContactLandingTheme = {
   page: 'bg-white text-slate-900',
