@@ -223,4 +223,8 @@ export type ContactLandingTheme = {
   stepIndex: string;
   stepTitle: string;
   stepText: string;
+
+  locationsList: string;
+  locationItem: string;
+  locationDot: string;
 };

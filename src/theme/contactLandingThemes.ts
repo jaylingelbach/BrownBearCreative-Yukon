@@ -1,4 +1,4 @@
-gitimport type { ContactLandingTheme } from '@/src/lib/types';
+import type { ContactLandingTheme } from '@/src/lib/types';
 
 export const defaultContactLandingTheme: ContactLandingTheme = {
   page: 'bg-white text-slate-900',
@@ -35,5 +35,9 @@ export const defaultContactLandingTheme: ContactLandingTheme = {
   stepIndex:
     'mt-0.5 inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary',
   stepTitle: 'font-semibold text-slate-900',
-  stepText: 'mt-1 text-sm leading-relaxed text-slate-600'
+  stepText: 'mt-1 text-sm leading-relaxed text-slate-600',
+
+  locationsList: 'mt-4 grid gap-2 sm:grid-cols-2 text-sm text-slate-700',
+  locationItem: 'flex items-start gap-3',
+  locationDot: 'mt-2 h-2 w-2 rounded-full bg-blue-800'
 };

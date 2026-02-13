@@ -16,6 +16,19 @@ export default function ContactLandingView({
   const serviceArea = config.serviceArea;
   const nextSteps = config.nextSteps;
 
+  const locationsListClass =
+    'locationsList' in theme
+      ? theme.locationsList
+      : 'mt-4 grid gap-2 sm:grid-cols-2 text-sm text-slate-700';
+
+  const locationItemClass =
+    'locationItem' in theme ? theme.locationItem : 'flex items-start gap-3';
+
+  const locationDotClass =
+    'locationDot' in theme
+      ? theme.locationDot
+      : 'mt-2 h-2 w-2 rounded-full bg-blue-800';
+
   return (
     <main className={theme.page}>
       <div className={theme.inner}>
@@ -115,13 +128,10 @@ export default function ContactLandingView({
                 ) : null}
 
                 {serviceArea.locations && serviceArea.locations.length > 0 ? (
-                  <ul className="mt-4 grid gap-2 sm:grid-cols-2 text-sm text-slate-700">
+                  <ul className={locationsListClass}>
                     {serviceArea.locations.map((location) => (
-                      <li key={location} className="flex items-start gap-3">
-                        <span
-                          aria-hidden={true}
-                          className="mt-2 h-2 w-2 rounded-full bg-blue-800"
-                        />
+                      <li key={location} className={locationItemClass}>
+                        <span aria-hidden={true} className={locationDotClass} />
                         <span>{location}</span>
                       </li>
                     ))}
