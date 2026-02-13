@@ -53,9 +53,6 @@ export default function FooterContactBar({
 
         {config.location?.display ? (
           <div className={theme.right}>
-            <span className={theme.divider} aria-hidden={true}>
-              •
-            </span>
             <MapPin className={theme.icon} aria-hidden={true} />
             <span
               className={theme.location}

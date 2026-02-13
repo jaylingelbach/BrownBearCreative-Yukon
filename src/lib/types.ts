@@ -139,3 +139,51 @@ export type ServicesLandingTheme = {
   ctaPrimary: string;
   ctaSecondary: string;
 };
+
+// About
+export type AboutLandingTheme = {
+  page: string;
+  inner: string;
+
+  heroWrap: string;
+  heroHeading: string;
+  heroSubheading: string;
+
+  proofList: string;
+  proofItem: string;
+  proofIcon: string;
+
+  sectionsWrap: string;
+
+  card: string;
+  cardHeading: string;
+  cardBody: string;
+
+  bulletsList: string;
+  bulletsItem: string;
+  bulletsDot: string;
+
+  featuresGrid: string;
+  featureItem: string;
+  featureRow: string;
+  featureIconWrap: string;
+  featureIcon: string;
+  featureDot: string;
+  featureTitle: string;
+  featureText: string;
+
+  stepsList: string;
+  stepItem: string;
+  stepIndex: string;
+  stepTitle: string;
+  stepText: string;
+
+  ctaCard: string;
+  ctaText: string;
+  ctaActions: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  ctaHeading: string;
+
+  textBodyWrap: string;
+};
