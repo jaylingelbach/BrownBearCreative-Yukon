@@ -140,7 +140,7 @@ export type ServicesLandingTheme = {
   ctaSecondary: string;
 };
 
-// About
+// ── About Landing Theme ───────────────────────────────
 export type AboutLandingTheme = {
   page: string;
   inner: string;
@@ -186,4 +186,41 @@ export type AboutLandingTheme = {
   ctaHeading: string;
 
   textBodyWrap: string;
+};
+
+// ──  Contact Landing Theme ───────────────────────────────
+export type ContactLandingTheme = {
+  page: string;
+  inner: string;
+
+  heroWrap: string;
+  heroHeading: string;
+  heroSubheading: string;
+
+  layoutGrid: string;
+  leftCol: string;
+  rightCol: string;
+
+  card: string;
+  cardHeading: string;
+  cardBody: string;
+
+  methodsGrid: string;
+  methodItem: string;
+  methodIconWrap: string;
+  methodIcon: string;
+  methodLabel: string;
+  methodValue: string;
+  methodHint: string;
+
+  hoursList: string;
+  hoursRow: string;
+  hoursLabel: string;
+  hoursValue: string;
+
+  stepsList: string;
+  stepItem: string;
+  stepIndex: string;
+  stepTitle: string;
+  stepText: string;
 };
