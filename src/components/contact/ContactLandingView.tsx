@@ -7,6 +7,21 @@ type ContactLandingViewProps = {
   theme: ContactLandingTheme;
 };
 
+/**
+ * Render a two-column contact landing view with configurable sections for contact methods, service area, hours, and next steps.
+ *
+ * The component displays a hero heading and optional subheading, then builds left and right columns that include:
+ * - "How to reach us" (methods) with optional icons, values, hints and links
+ * - "Service area" with optional description and locations
+ * - "Hours" showing business hours rows
+ * - "What happens next" listing ordered steps
+ *
+ * Sections are rendered only when the corresponding config data is present. The provided `theme` supplies CSS class names for layout and styling; when keys are missing, sensible defaults are used for specific list and item styles.
+ *
+ * @param config - ContactLandingConfig containing heading, subheading, methods, hours, serviceArea, and nextSteps used to populate the view
+ * @param theme - ContactLandingTheme providing class-name hooks for styling and layout; missing theme keys fall back to internal defaults
+ * @returns The rendered contact landing element containing the hero and any configured sections
+ */
 export default function ContactLandingView({
   config,
   theme
