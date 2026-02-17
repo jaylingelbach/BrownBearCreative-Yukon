@@ -228,3 +228,40 @@ export type ContactLandingTheme = {
   locationItem: string;
   locationDot: string;
 };
+
+// reviews
+export type ReviewsLandingTheme = {
+  page: string;
+  inner: string;
+
+  heroWrap: string;
+  heroHeading: string;
+  heroSubheading: string;
+
+  statsGrid: string;
+  statCard: string;
+  statLabel: string;
+  statValue: string;
+  statIconWrap: string;
+  statIcon: string;
+
+  sectionWrap: string;
+  sectionHeading: string;
+
+  reviewsGrid: string;
+  reviewCard: string;
+  reviewQuote: string;
+  reviewMetaRow: string;
+  reviewAuthor: string;
+  reviewLocation: string;
+  reviewRatingRow: string;
+  starIcon: string;
+  reviewSource: string;
+
+  ctaCard: string;
+  ctaHeading: string;
+  ctaText: string;
+  ctaActions: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+};
