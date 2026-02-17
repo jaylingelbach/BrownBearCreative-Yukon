@@ -12,7 +12,10 @@ export default function ReviewCard({ config, theme }: ReviewsLandingViewProps) {
           )
       : config.reviews;
   return (
-    <section className={theme.sectionWrap} aria-labelledby="reviews-section-title">
+    <section
+      className={theme.sectionWrap}
+      aria-labelledby="reviews-section-title"
+    >
       <h2 id="reviews-section-title" className={theme.sectionHeading}>
         Reviews
       </h2>
@@ -32,7 +35,6 @@ export default function ReviewCard({ config, theme }: ReviewsLandingViewProps) {
             <li key={review.id}>
               <article
                 className={theme.reviewCard}
-                tabIndex={0}
                 aria-labelledby={authorId}
                 aria-describedby={`${quoteId} ${metaId}`}
               >
