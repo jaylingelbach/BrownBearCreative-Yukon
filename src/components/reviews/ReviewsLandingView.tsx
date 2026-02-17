@@ -26,11 +26,11 @@ export default function ReviewsLandingView({
               Review highlights
             </h2>
             <ul className={theme.statsGrid} role="list">
-              {stats.map((stat) => {
+              {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 return (
                   <li
-                    key={`${stat.label}-${stat.value}`}
+                    key={`${stat.label}-${stat.value}-${index}`}
                     className={theme.statCard}
                   >
                     {Icon ? (
