@@ -1,5 +1,4 @@
 'use client';
-g;
 
 import { type KeyboardEvent, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
