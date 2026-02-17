@@ -4,7 +4,7 @@ export function getReviewsLandingConfig(): ReviewsLandingConfig {
   return {
     heading: 'Customer Reviews',
     subheading:
-      'Real feedback from people we’ve helped. Expect clear communication, clean work, and results you can trust.',
+      "Real feedback from people we've helped. Expect clear communication, clean work, and results you can trust.",
 
     stats: [
       { label: 'Average rating', value: '4.9/5' },
@@ -39,7 +39,7 @@ export function getReviewsLandingConfig(): ReviewsLandingConfig {
         quote:
           'Quick response when we had an emergency. Walked us through options and handled it calmly.',
         author: 'Sam R.',
-        location: 'O’Fallon, IL',
+        location: "O'Fallon, IL",
         rating: 5,
         dateLabel: 'Nov 2025',
         source: 'facebook'
@@ -48,7 +48,7 @@ export function getReviewsLandingConfig(): ReviewsLandingConfig {
 
     cta: {
       heading: 'Want the same experience?',
-      text: 'Tell us what’s going on and we’ll recommend the right next step.',
+      text: "Tell us what's going on and we'll recommend the right next step.",
       primary: { label: 'Get a Free Quote', href: '/contact' },
       secondary: { label: 'Back to Home', href: '/' }
     }
