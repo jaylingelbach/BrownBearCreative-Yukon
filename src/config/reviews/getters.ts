@@ -3,6 +3,7 @@ import type { ReviewsLandingConfig } from '@/src/config/reviews/types';
 export function getReviewsLandingConfig(): ReviewsLandingConfig {
   return {
     heading: 'Customer Reviews',
+    cardHeading: 'Reviews',
     subheading:
       "Real feedback from people we've helped. Expect clear communication, clean work, and results you can trust.",
 

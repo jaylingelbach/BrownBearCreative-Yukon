@@ -20,7 +20,7 @@ export default function ReviewsList({
       aria-labelledby="reviews-section-title"
     >
       <h2 id="reviews-section-title" className={theme.sectionHeading}>
-        Reviews
+        {config.cardHeading}
       </h2>
 
       <ul className={theme.reviewsGrid} role="list">

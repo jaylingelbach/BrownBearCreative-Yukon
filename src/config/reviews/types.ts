@@ -20,6 +20,7 @@ export type ReviewsStat = {
 
 export type ReviewsLandingConfig = {
   heading: string;
+  cardHeading: string;
   subheading?: string;
 
   stats?: ReviewsStat[];
