@@ -2,6 +2,15 @@ import SmartLink from '@/src/components/ui/SmartLink';
 import { ReviewsLandingViewProps } from '@/src/components/reviews/types';
 import ReviewsList from '@/src/components/reviews/ReviewsList';
 
+/**
+ * Render the reviews landing page with a hero, optional highlights grid, a reviews list, and an optional call-to-action.
+ *
+ * Renders accessible headings and ARIA attributes for the highlights and CTA sections, and safely handles missing stats or CTA data.
+ *
+ * @param config - Page configuration including `heading`, optional `subheading`, optional `stats` (array of {label, value, icon}), and optional `cta` (with `heading`, `text`, `primary`, and optional `secondary` actions)
+ * @param theme - CSS class names used to style the component's elements
+ * @returns A React element representing the reviews landing page
+ */
 export default function ReviewsLandingView({
   config,
   theme

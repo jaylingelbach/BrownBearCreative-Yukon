@@ -1,5 +1,10 @@
 import type { ReviewsLandingConfig } from '@/src/config/reviews/types';
 
+/**
+ * Provides the static content configuration for the reviews landing page.
+ *
+ * @returns A ReviewsLandingConfig object containing headings, subheading, stats, an array of reviews, and CTA data used to render the reviews landing UI.
+ */
 export function getReviewsLandingConfig(): ReviewsLandingConfig {
   return {
     heading: 'Customer Reviews',
