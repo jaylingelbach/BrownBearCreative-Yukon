@@ -1,6 +1,6 @@
 import SmartLink from '@/src/components/ui/SmartLink';
-import ReviewCard from '@/src/components/reviews/ReviewCard';
 import { ReviewsLandingViewProps } from '@/src/components/reviews/types';
+import ReviewsList from '@/src/components/reviews/ReviewsList';
 
 export default function ReviewsLandingView({
   config,
@@ -47,14 +47,12 @@ export default function ReviewsLandingView({
           </section>
         ) : null}
 
-        <ReviewCard theme={theme} config={config} />
+        <ReviewsList theme={theme} config={config} />
 
         {config.cta ? (
           <section
             className={theme.ctaCard}
-            aria-labelledby={
-              config.cta.heading ? ctaHeadingId : undefined
-            }
+            aria-labelledby={config.cta.heading ? ctaHeadingId : undefined}
             aria-label={config.cta.heading ? undefined : 'Get started'}
           >
             {config.cta.heading ? (

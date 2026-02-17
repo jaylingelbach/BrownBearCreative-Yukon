@@ -2,7 +2,10 @@ import { Star } from 'lucide-react';
 import { clampRating } from '@/src/components/reviews/utils';
 import { ReviewsLandingViewProps } from '@/src/components/reviews/types';
 
-export default function ReviewCard({ config, theme }: ReviewsLandingViewProps) {
+export default function ReviewsList({
+  config,
+  theme
+}: ReviewsLandingViewProps) {
   const resolvedReviews =
     config.featuredReviewIds && config.featuredReviewIds.length > 0
       ? config.featuredReviewIds
