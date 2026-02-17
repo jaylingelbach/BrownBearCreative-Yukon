@@ -265,3 +265,39 @@ export type ReviewsLandingTheme = {
   ctaPrimary: string;
   ctaSecondary: string;
 };
+
+// FAQ
+export type FaqLandingTheme = {
+  page: string;
+  inner: string;
+
+  heroWrap: string;
+  heroHeading: string;
+  heroSubheading: string;
+
+  bulletsList: string;
+  bulletsItem: string;
+  bulletsDot: string;
+
+  sectionsWrap: string;
+
+  sectionCard: string;
+  sectionHeading: string;
+  sectionDescription: string;
+
+  faqList: string;
+
+  faqItem: string;
+  faqSummary: string;
+  faqQuestion: string;
+  faqChevron: string;
+  faqAnswerWrap: string;
+  faqAnswer: string;
+
+  ctaCard: string;
+  ctaHeading: string;
+  ctaText: string;
+  ctaActions: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+};
