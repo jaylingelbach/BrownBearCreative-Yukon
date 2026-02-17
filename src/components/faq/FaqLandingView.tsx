@@ -13,7 +13,7 @@ type FaqLandingViewProps = {
 };
 export default function FaqLandingView({ config, theme }: FaqLandingViewProps) {
   const bullets = config.bullets ?? [];
-  const sections = config.sections ?? [];
+  const sections = config.sections;
   const summaryRefs = useRef<Record<number, Array<HTMLElement | undefined>>>(
     {}
   );
@@ -109,7 +109,6 @@ export default function FaqLandingView({ config, theme }: FaqLandingViewProps) {
                         <summary
                           className={theme.faqSummary}
                           aria-controls={answerId}
-                          aria-labelledby={questionId}
                           ref={(node) => {
                             if (!summaryRefs.current[sectionIndex]) {
                               summaryRefs.current[sectionIndex] = [];
@@ -126,7 +125,7 @@ export default function FaqLandingView({ config, theme }: FaqLandingViewProps) {
                             handleSummaryKeyDown(event, sectionIndex, itemIndex)
                           }
                         >
-                          <span id={questionId} className={theme.faqQuestion}>
+                          <span className={theme.faqQuestion}>
                             {item.question}
                           </span>
                           <ChevronDown
