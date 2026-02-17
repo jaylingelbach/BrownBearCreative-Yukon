@@ -2,6 +2,13 @@ import { Star } from 'lucide-react';
 import { clampRating } from '@/src/components/reviews/utils';
 import { ReviewsLandingViewProps } from '@/src/components/reviews/types';
 
+/**
+ * Render a reviews section with quoted review cards, optional star ratings, and author/source metadata.
+ *
+ * @param config - Component configuration containing `reviews`, optional `featuredReviewIds` (to prioritize shown reviews), and `cardHeading`.
+ * @param theme - CSS className mappings for the section and its nested elements (e.g., sectionWrap, sectionHeading, reviewsGrid, reviewCard, reviewQuote, reviewRatingRow, starIcon, reviewMetaRow, reviewAuthor, reviewLocation, reviewSource).
+ * @returns A section element containing a labeled heading and a list of review cards with quotes, optional 0–5 star ratings, author/location, and optional source/date labels.
+ */
 export default function ReviewsList({
   config,
   theme
