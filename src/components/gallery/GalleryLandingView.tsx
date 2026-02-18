@@ -12,6 +12,17 @@ type GalleryLandingViewProps = {
   theme: GalleryLandingTheme;
 };
 
+/**
+ * Render a gallery landing view with a hero area and a keyboard-navigable gallery grid.
+ *
+ * Renders the page hero (heading, optional subheading, optional bullets) and, when items are present,
+ * a gallery of focusable cards that support Arrow/Home/End navigation with wraparound. Card DOM
+ * references are tracked to enable programmatic focus movement.
+ *
+ * @param config - Component content configuration (heading, optional subheading, bullets, and gallery items)
+ * @param theme - CSS class map used to style the component's elements
+ * @returns A React element containing the hero section and an optional gallery of keyboard-navigable cards
+ */
 export default function GalleryLandingView({
   config,
   theme
