@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { useRef } from 'react';
 import type { KeyboardEvent } from 'react';
