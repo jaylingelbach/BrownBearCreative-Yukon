@@ -1,4 +1,6 @@
+import { cn } from '@/src/lib/cn';
 import type { GalleryLandingTheme } from '@/src/lib/types';
+import { focusRing } from '@/src/theme/shared';
 
 export const defaultGalleryLandingTheme: GalleryLandingTheme = {
   page: 'bg-white text-slate-900',
@@ -14,7 +16,10 @@ export const defaultGalleryLandingTheme: GalleryLandingTheme = {
 
   grid: 'mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3',
 
-  card: 'rounded-lg bg-white shadow-sm ring-1 ring-border overflow-hidden',
+  card: cn(
+    'rounded-lg bg-white shadow-sm ring-1 ring-border overflow-hidden',
+    focusRing
+  ),
   imageFrame: 'relative aspect-[4/3] bg-black/5',
   image: 'object-cover',
 
