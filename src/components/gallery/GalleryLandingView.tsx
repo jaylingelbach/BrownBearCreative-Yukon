@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import type { KeyboardEvent } from 'react';
 
 import type { GalleryLandingConfig } from '@/src/config/gallery/types';
@@ -19,6 +19,8 @@ export default function GalleryLandingView({
   const bullets = config.bullets ?? [];
   const items = config.items ?? [];
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
+
+  const [focusedIndex, setFocusedIndex] = useState(0);
 
   const handleCardKeyDown = (
     event: KeyboardEvent<HTMLElement>,
@@ -50,6 +52,7 @@ export default function GalleryLandingView({
     }
 
     event.preventDefault();
+    setFocusedIndex(nextIndex);
     cardRefs.current[nextIndex]?.focus();
   };
 
@@ -65,8 +68,8 @@ export default function GalleryLandingView({
 
           {bullets.length > 0 ? (
             <ul className={theme.bulletsList}>
-              {bullets.map((bullet) => (
-                <li key={bullet} className={theme.bulletsItem}>
+              {bullets.map((bullet, index) => (
+                <li key={index} className={theme.bulletsItem}>
                   <span aria-hidden={true} className={theme.bulletsDot} />
                   <span>{bullet}</span>
                 </li>
@@ -84,7 +87,8 @@ export default function GalleryLandingView({
                 <article
                   key={item.id}
                   className={theme.card}
-                  tabIndex={0}
+                  tabIndex={itemIndex === focusedIndex ? 0 : -1}
+                  onFocus={() => setFocusedIndex(itemIndex)}
                   ref={(node) => {
                     cardRefs.current[itemIndex] = node;
                     return () => {
@@ -93,7 +97,7 @@ export default function GalleryLandingView({
                   }}
                   onKeyDown={(event) => handleCardKeyDown(event, itemIndex)}
                 >
-                  <div className={theme.imageFrame} aria-hidden={true}>
+                  <div className={theme.imageFrame}>
                     <Image
                       src={item.imageSrc}
                       alt={item.alt}
@@ -106,7 +110,7 @@ export default function GalleryLandingView({
 
                   <div className={theme.cardBody}>
                     {item.title ? (
-                      <div className={theme.cardTitle}>{item.title}</div>
+                      <h2 className={theme.cardTitle}>{item.title}</h2>
                     ) : null}
 
                     {item.description ? (
@@ -116,17 +120,13 @@ export default function GalleryLandingView({
                     ) : null}
 
                     {tags.length > 0 ? (
-                      <div
-                        className={theme.tagsWrap}
-                        aria-label="Tags"
-                        role="list"
-                      >
+                      <ul className={theme.tagsWrap} aria-label="Tags">
                         {tags.map((tag) => (
-                          <span key={`${item.id}-${tag}`} className={theme.tag}>
+                          <li key={`${item.id}-${tag}`} className={theme.tag}>
                             {tag}
-                          </span>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     ) : null}
                   </div>
                 </article>
