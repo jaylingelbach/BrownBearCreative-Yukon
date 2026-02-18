@@ -68,7 +68,7 @@ export default function GalleryLandingView({
   };
 
   return (
-    <main className={theme.page}>
+    <div className={theme.page}>
       <div className={theme.inner}>
         <div className={theme.heroWrap}>
           <h1 className={theme.heroHeading}>{config.heading}</h1>
@@ -92,12 +92,14 @@ export default function GalleryLandingView({
         {items.length > 0 ? (
           <section
             aria-label="Gallery"
-            aria-describedby="gallery-nav-hint"
+            aria-describedby={items.length > 1 ? 'gallery-nav-hint' : undefined}
             className={theme.grid}
           >
-            <p id="gallery-nav-hint" className="sr-only">
-              Use arrow keys to move between gallery items.
-            </p>
+            {items.length > 1 && (
+              <p id="gallery-nav-hint" className="sr-only">
+                Use arrow keys to move between gallery items.
+              </p>
+            )}
             {items.map((item, itemIndex) => {
               const tags = item.tags ?? [];
 
@@ -153,6 +155,6 @@ export default function GalleryLandingView({
           </section>
         ) : null}
       </div>
-    </main>
+    </div>
   );
 }
