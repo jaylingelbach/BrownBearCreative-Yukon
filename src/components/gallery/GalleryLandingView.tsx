@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { useRef } from 'react';
+import type { KeyboardEvent } from 'react';
 
 import type { GalleryLandingConfig } from '@/src/config/gallery/types';
 import type { GalleryLandingTheme } from '@/src/lib/types';
@@ -14,6 +16,40 @@ export default function GalleryLandingView({
 }: GalleryLandingViewProps) {
   const bullets = config.bullets ?? [];
   const items = config.items ?? [];
+  const cardRefs = useRef<Array<HTMLElement | null>>([]);
+
+  const handleCardKeyDown = (
+    event: KeyboardEvent<HTMLElement>,
+    itemIndex: number
+  ) => {
+    if (items.length < 2) {
+      return;
+    }
+
+    let nextIndex = itemIndex;
+
+    switch (event.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        nextIndex = (itemIndex + 1) % items.length;
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        nextIndex = (itemIndex - 1 + items.length) % items.length;
+        break;
+      case 'Home':
+        nextIndex = 0;
+        break;
+      case 'End':
+        nextIndex = items.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    cardRefs.current[nextIndex]?.focus();
+  };
 
   return (
     <main className={theme.page}>
@@ -39,11 +75,22 @@ export default function GalleryLandingView({
 
         {items.length > 0 ? (
           <section aria-label="Gallery" className={theme.grid}>
-            {items.map((item) => {
+            {items.map((item, itemIndex) => {
               const tags = item.tags ?? [];
 
               return (
-                <article key={item.id} className={theme.card}>
+                <article
+                  key={item.id}
+                  className={theme.card}
+                  tabIndex={0}
+                  ref={(node) => {
+                    cardRefs.current[itemIndex] = node;
+                    return () => {
+                      cardRefs.current[itemIndex] = null;
+                    };
+                  }}
+                  onKeyDown={(event) => handleCardKeyDown(event, itemIndex)}
+                >
                   <div className={theme.imageFrame} aria-hidden={true}>
                     <Image
                       src={item.imageSrc}
