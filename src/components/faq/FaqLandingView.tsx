@@ -32,9 +32,8 @@ export default function FaqLandingView({ config, theme }: FaqLandingViewProps) {
     let nextIndex: number | null = null;
     if (event.key === 'ArrowDown')
       nextIndex = (itemIndex + 1) % summaries.length;
-    if (event.key === 'ArrowUp') {
+    if (event.key === 'ArrowUp')
       nextIndex = (itemIndex - 1 + summaries.length) % summaries.length;
-    }
     if (event.key === 'Home') nextIndex = 0;
     if (event.key === 'End') nextIndex = summaries.length - 1;
 
@@ -114,10 +113,12 @@ export default function FaqLandingView({ config, theme }: FaqLandingViewProps) {
                             if (!summaryRefs.current[sectionIndex]) {
                               summaryRefs.current[sectionIndex] = [];
                             }
-                            summaryRefs.current[sectionIndex][itemIndex] = node ?? undefined;
-                           return () => {
-                             summaryRefs.current[sectionIndex][itemIndex] = undefined;
-+                           };
+                            summaryRefs.current[sectionIndex][itemIndex] =
+                              node ?? undefined;
+                            return () => {
+                              summaryRefs.current[sectionIndex][itemIndex] =
+                                undefined;
+                            };
                           }}
                           onKeyDown={(event) =>
                             handleSummaryKeyDown(event, sectionIndex, itemIndex)
