@@ -1,6 +1,6 @@
 import { Phone } from 'lucide-react';
 
-import SmartLink from '@/src/components/ui/SmartLink';
+import SmartLink from '@/src/brownBearComponents/components/ui/SmartLink';
 import { cn } from '@/src/lib/cn';
 import type { ServicesLandingTheme } from '@/src/lib/types';
 

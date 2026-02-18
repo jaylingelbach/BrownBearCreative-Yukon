@@ -1,6 +1,6 @@
-import SmartLink from '@/src/components/ui/SmartLink';
-import { ReviewsLandingViewProps } from '@/src/components/reviews/types';
-import ReviewsList from '@/src/components/reviews/ReviewsList';
+import SmartLink from '@/src/brownBearComponents/components/ui/SmartLink';
+import { ReviewsLandingViewProps } from '@/src/brownBearComponents/components/reviews/types';
+import ReviewsList from '@/src/brownBearComponents/components/reviews/ReviewsList';
 
 /**
  * Render the reviews landing page with a hero, optional highlights grid, a reviews list, and an optional call-to-action.

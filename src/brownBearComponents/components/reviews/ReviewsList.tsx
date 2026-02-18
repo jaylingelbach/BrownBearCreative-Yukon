@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react';
-import { clampRating } from '@/src/components/reviews/utils';
-import { ReviewsLandingViewProps } from '@/src/components/reviews/types';
+import { clampRating } from '@/src/brownBearComponents/components/reviews/utils';
+import { ReviewsLandingViewProps } from '@/src/brownBearComponents/components/reviews/types';
 
 /**
  * Render a reviews section with quoted review cards, optional star ratings, and author/source metadata.

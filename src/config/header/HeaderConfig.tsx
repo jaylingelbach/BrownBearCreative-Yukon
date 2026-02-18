@@ -1,4 +1,4 @@
-import { TextLogo } from '@/src/components/branding/TextLogo';
+import { TextLogo } from '@/src/brownBearComponents/components/branding/TextLogo';
 import { blueTheme } from '@/src/theme/navbarThemes';
 
 import Image from 'next/image';
@@ -83,7 +83,26 @@ const linksByTier = {
   managed: buildManagedLinks({ serviceChildren })
 } as const;
 
+const primaryCtaByTier = {
+  starter: {
+    label: 'Call',
+    href: phone.href,
+    ariaLabel: `Call ${phone.label}`
+  },
+  growth: {
+    label: 'Get a Quote',
+    href: '/contact',
+    ariaLabel: 'Get a quote'
+  },
+  managed: {
+    label: 'Book Appointment',
+    href: '/contact',
+    ariaLabel: 'Book an appointment'
+  }
+} as const;
+
 /* ---------- Final Site config ---------- */
+
 export const siteConfig: SiteConfig = {
   theme: blueTheme,
   logo,
@@ -91,5 +110,6 @@ export const siteConfig: SiteConfig = {
   email,
   seo,
   links: linksByTier[tierId],
-  enableDropdowns
+  enableDropdowns,
+  primaryCta: primaryCtaByTier[tierId]
 };

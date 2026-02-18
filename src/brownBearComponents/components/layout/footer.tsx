@@ -1,4 +1,4 @@
-import FooterContactBar from '@/src/components/layout/footerContactBar';
+import FooterContactBar from '@/src/brownBearComponents/components/layout/footerContactBar';
 
 /**
  * Renders the site's footer containing the contact bar.

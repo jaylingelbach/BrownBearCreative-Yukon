@@ -1,4 +1,4 @@
-import SmartLink from '@/src/components/ui/SmartLink';
+import SmartLink from '@/src/brownBearComponents/components/ui/SmartLink';
 import type { ContactLandingConfig } from '@/src/config/contact/types';
 import type { ContactLandingTheme } from '@/src/lib/types';
 

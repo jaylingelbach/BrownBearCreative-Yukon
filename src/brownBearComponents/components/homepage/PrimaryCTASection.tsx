@@ -5,7 +5,7 @@ import { cn } from '@/src/lib/cn';
 import { getPrimaryCtaConfig } from '@/src/config/home/getters';
 import type { PrimaryCtaTheme } from '@/src/theme/primaryCtaThemes';
 import { defaultPrimaryCtaTheme } from '@/src/theme/primaryCtaThemes';
-import SmartLink from '@/src/components/ui/SmartLink';
+import SmartLink from '@/src/brownBearComponents/components/ui/SmartLink';
 
 type PrimaryCTASectionProps = {
   theme?: PrimaryCtaTheme;

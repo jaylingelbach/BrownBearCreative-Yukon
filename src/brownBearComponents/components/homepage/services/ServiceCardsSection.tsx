@@ -1,4 +1,4 @@
-import ServicesGrid from '@/src/components/homepage/services/ServicesGrid';
+import ServicesGrid from '@/src/brownBearComponents/components/homepage/services/ServicesGrid';
 import { getHomepageServices } from '@/src/config/services/selectors';
 import { services } from '@/src/config/services/services';
 import { useId } from 'react';

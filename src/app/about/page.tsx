@@ -1,4 +1,4 @@
-import AboutLandingView from '@/src/components/about/AboutLandingView';
+import AboutLandingView from '@/src/brownBearComponents/components/about/AboutLandingView';
 import { getAboutLandingConfig } from '@/src/config/about/getters';
 import { defaultAboutLandingTheme } from '@/src/theme/aboutLandingThemes';
 

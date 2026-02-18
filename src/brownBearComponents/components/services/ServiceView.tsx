@@ -1,13 +1,13 @@
 import Image from 'next/image';
 
-import SmartLink from '@/src/components/ui/SmartLink';
+import SmartLink from '@/src/brownBearComponents/components/ui/SmartLink';
 import type {
   ServiceData,
   ServicePageContent
 } from '@/src/config/services/types';
 import type { ServiceViewTheme } from '@/src/lib/types';
-import { renderSection } from '@/src/components/services/renderSection';
-import { resolveCta } from '@/src/components/services/resolveCta';
+import { renderSection } from '@/src/brownBearComponents/components/services/renderSection';
+import { resolveCta } from '@/src/brownBearComponents/components/services/resolveCta';
 
 type ServiceViewProps = {
   service: ServiceData;
