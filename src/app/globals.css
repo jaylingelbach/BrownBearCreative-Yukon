@@ -1,6 +1,6 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -125,6 +125,9 @@
 }
 
 .dark {
+  --brand-primary: `#3b82f6`; /* blue-500, lighter for dark bg */
+  --brand-primary-foreground: `#ffffff`;
+  --brand-border: oklch(1 0 0 / 10%);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
