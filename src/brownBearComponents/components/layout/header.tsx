@@ -21,7 +21,7 @@ import type { HeaderProps } from '@/src/lib/types';
 import { isActivePath } from '@/src/lib/navigation';
 import { useAccessibleDropdownMenu } from '@/src/hooks/useAccessibleDropdownMenu';
 import { NavTrigger } from '@/src/brownBearComponents/components/layout/NavTrigger';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 /**
  * Renders the site header including a top identity bar and a primary navigation bar with optional accessible dropdown menus.
@@ -29,7 +29,7 @@ import { useEffect, useState } from 'react';
  * Mobile behavior:
  * - The hamburger menu uses a `Sheet` (shadcn/ui).
  * - Clicking any menu item closes the sheet via `SheetClose asChild`.
- * - If the route changes (pathname update), we also close the sheet as a fallback.
+ * - We avoid "close on route change" effects to prevent cascading render lint warnings.
  *
  * Desktop behavior:
  * - Optional accessible dropdown menus.
@@ -55,9 +55,7 @@ export function Header({
 
   /**
    * Controls the shadcn Sheet open state so we can programmatically close it.
-   * `SheetClose` will also close it when clicked, but controlling state ensures:
-   * - route-change fallback closes it
-   * - any custom handlers can close it reliably
+   * `SheetClose` will close it when clicked.
    */
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -73,11 +71,6 @@ export function Header({
   } = useAccessibleDropdownMenu();
 
   const mobileCta = primaryCta ?? { label: 'Call', href: phone.href };
-
-  // Fallback: if navigation happens by any means, ensure the sheet is closed.
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
 
   return (
     <header className="w-full">
@@ -100,20 +93,17 @@ export function Header({
 
       {/* ───────────────── Mobile nav bar ───────────────── */}
       <div className={`md:hidden ${theme.mobileBar ?? theme.navContainer}`}>
-        <div className="flex items-center gap-2" />
-
-        <div className="flex items-center gap-2">
-          {/* CTA should also close the sheet if it happens to be open */}
+        <div className="flex items-center gap-2 ml-auto">
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <SheetClose asChild>
-              <Link
-                href={mobileCta.href}
-                aria-label={mobileCta.ariaLabel ?? mobileCta.label}
-                className={theme.mobileCtaButton ?? ''}
-              >
-                {mobileCta.label}
-              </Link>
-            </SheetClose>
+            {/* CTA: if sheet is open and user taps CTA, close it */}
+            <Link
+              href={mobileCta.href}
+              aria-label={mobileCta.ariaLabel ?? mobileCta.label}
+              className={theme.mobileCtaButton ?? ''}
+              onClick={() => setMobileOpen(false)}
+            >
+              {mobileCta.label}
+            </Link>
 
             <SheetTrigger
               className={theme.mobileMenuButton ?? ''}
