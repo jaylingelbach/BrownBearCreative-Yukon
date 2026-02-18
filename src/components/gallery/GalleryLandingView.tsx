@@ -17,7 +17,7 @@ export default function GalleryLandingView({
   theme
 }: GalleryLandingViewProps) {
   const bullets = config.bullets ?? [];
-  const items = config.items ?? [];
+  const items = config.items;
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
 
   const [focusedIndex, setFocusedIndex] = useState(0);
@@ -111,7 +111,7 @@ export default function GalleryLandingView({
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className={theme.image}
-                      priority={false}
+                      priority={itemIndex < 3}
                     />
                   </div>
 
