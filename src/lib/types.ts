@@ -301,3 +301,31 @@ export type FaqLandingTheme = {
   ctaPrimary: string;
   ctaSecondary: string;
 };
+
+// Gallery
+
+export type GalleryLandingTheme = {
+  page: string;
+  inner: string;
+
+  heroWrap: string;
+  heroHeading: string;
+  heroSubheading: string;
+
+  bulletsList: string;
+  bulletsItem: string;
+  bulletsDot: string;
+
+  grid: string;
+
+  card: string;
+  imageFrame: string;
+  image: string;
+
+  cardBody: string;
+  cardTitle: string;
+  cardDescription: string;
+
+  tagsWrap: string;
+  tag: string;
+};
