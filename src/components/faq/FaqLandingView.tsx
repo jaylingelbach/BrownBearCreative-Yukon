@@ -109,6 +109,7 @@ export default function FaqLandingView({ config, theme }: FaqLandingViewProps) {
                         <summary
                           className={theme.faqSummary}
                           aria-controls={answerId}
+                          id={questionId}
                           ref={(node) => {
                             if (!summaryRefs.current[sectionIndex]) {
                               summaryRefs.current[sectionIndex] = [];
