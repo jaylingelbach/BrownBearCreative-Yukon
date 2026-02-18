@@ -116,7 +116,11 @@ export default function GalleryLandingView({
                     ) : null}
 
                     {tags.length > 0 ? (
-                      <div className={theme.tagsWrap} aria-label="Tags">
+                      <div
+                        className={theme.tagsWrap}
+                        aria-label="Tags"
+                        role="list"
+                      >
                         {tags.map((tag) => (
                           <span key={`${item.id}-${tag}`} className={theme.tag}>
                             {tag}
