@@ -17,16 +17,18 @@ export const defaultGalleryLandingTheme: GalleryLandingTheme = {
   grid: 'mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3',
 
   card: cn(
-    'rounded-lg bg-white shadow-sm ring-1 ring-border overflow-hidden',
+    'flex h-full flex-col overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-border',
     focusRing
   ),
+
   imageFrame: 'relative aspect-[4/3] bg-black/5',
   image: 'object-cover',
 
-  cardBody: 'p-5',
+  cardBody: 'flex flex-1 flex-col p-5',
   cardTitle: 'text-base font-semibold text-slate-900',
   cardDescription: 'mt-1 text-sm leading-relaxed text-slate-600',
 
-  tagsWrap: 'mt-4 flex flex-wrap gap-2',
-  tag: 'rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-700'
+  tagsWrap: 'mt-auto pt-4 flex flex-wrap gap-2',
+
+  tag: 'inline-flex items-center rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium leading-5 text-slate-700'
 };
