@@ -9,5 +9,5 @@ import type { FaqLandingConfig } from './types';
  * @returns A `FaqLandingConfig` object containing heading, subheading, bullets, sections, and `cta` data for rendering the FAQ landing page
  */
 export function getFaqLandingConfig(): FaqLandingConfig {
-  return defaultFaqLandingConfigg;
+  return defaultFaqLandingConfig;
 }
