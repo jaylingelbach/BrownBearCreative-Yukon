@@ -79,7 +79,14 @@ export default function GalleryLandingView({
         </div>
 
         {items.length > 0 ? (
-          <section aria-label="Gallery" className={theme.grid}>
+          <section
+            aria-label="Gallery"
+            aria-describedby="gallery-nav-hint"
+            className={theme.grid}
+          >
+            <p id="gallery-nav-hint" className="sr-only">
+              Use arrow keys to move between gallery items.
+            </p>
             {items.map((item, itemIndex) => {
               const tags = item.tags ?? [];
 
