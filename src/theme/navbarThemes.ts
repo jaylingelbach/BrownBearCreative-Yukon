@@ -27,9 +27,10 @@ export const blueTheme: NavbarTheme = {
   mobileBar:
     'bg-blue-800 text-white h-14 px-4 flex items-center justify-between',
   mobileMenuButton:
-    'inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60',
+    'inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-white/10 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white/60',
+
   mobileCtaButton:
-    'inline-flex h-10 items-center justify-center rounded-md bg-white px-4 text-sm font-semibold text-blue-900 hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60',
+    'inline-flex h-10 items-center justify-center rounded-md bg-white px-4 text-sm font-semibold text-blue-900 hover:bg-white/90 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white/60',
 
   mobileSheet: 'p-0',
   mobileSheetHeader: 'px-4 py-4 border-b',

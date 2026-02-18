@@ -9,8 +9,9 @@ import GallerySection from '@/src/brownBearComponents/components/homepage/Galler
 import FaqSection from '@/src/brownBearComponents/components/homepage/Faq/FaqSection';
 
 import { HomepageSectionType } from '@/src/config/tiers';
+// Components in this registry must accept no required props.
 export type HomepageSectionComponent = React.ComponentType<
-  Record<string, string>
+  Record<never, never>
 >;
 
 // homepage sections are “render-only” (no required props).
