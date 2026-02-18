@@ -11,6 +11,15 @@ type FaqLandingViewProps = {
   config: FaqLandingConfig;
   theme: FaqLandingTheme;
 };
+/**
+ * Render an FAQ landing page from the provided configuration and theme.
+ *
+ * Renders a hero area, one or more FAQ sections (each with optional heading and description), and an optional call-to-action; question items are rendered as details/summary pairs with keyboard support (ArrowUp/ArrowDown/Home/End) to move focus between summaries and with ARIA attributes linking questions to answers.
+ *
+ * @param config - FAQ page configuration (heading, subheading, bullets, sections with items, and optional CTA)
+ * @param theme - Mapping of CSS class names used for layout and styling of the component
+ * @returns The rendered FAQ landing view as a React element
+ */
 export default function FaqLandingView({ config, theme }: FaqLandingViewProps) {
   const bullets = config.bullets ?? [];
   const sections = config.sections;
