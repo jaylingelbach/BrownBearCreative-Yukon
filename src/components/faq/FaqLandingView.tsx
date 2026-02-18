@@ -114,13 +114,10 @@ export default function FaqLandingView({ config, theme }: FaqLandingViewProps) {
                             if (!summaryRefs.current[sectionIndex]) {
                               summaryRefs.current[sectionIndex] = [];
                             }
-                            if (node) {
-                              summaryRefs.current[sectionIndex][itemIndex] =
-                                node;
-                            } else {
-                              summaryRefs.current[sectionIndex][itemIndex] =
-                                undefined;
-                            }
+                            summaryRefs.current[sectionIndex][itemIndex] = node ?? undefined;
+                           return () => {
+                             summaryRefs.current[sectionIndex][itemIndex] = undefined;
++                           };
                           }}
                           onKeyDown={(event) =>
                             handleSummaryKeyDown(event, sectionIndex, itemIndex)
