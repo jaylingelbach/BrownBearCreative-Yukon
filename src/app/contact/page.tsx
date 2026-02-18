@@ -1,4 +1,4 @@
-import ContactLandingView from '@/src/components/contact/ContactLandingView';
+import ContactLandingView from '@/src/brownBearComponents/components/contact/ContactLandingView';
 import { getContactLandingConfig } from '@/src/config/contact/getters';
 import { defaultContactLandingTheme } from '@/src/theme/contactLandingThemes';
 

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import ServiceView from '@/src/components/services/ServiceView';
+import ServiceView from '@/src/brownBearComponents/components/services/ServiceView';
 import { services } from '@/src/config/services/services';
 
 import { defaultServiceViewTheme } from '@/src/theme/serviceViewThemes';

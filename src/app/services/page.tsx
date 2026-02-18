@@ -1,4 +1,4 @@
-import ServicesLandingView from '@/src/components/services/ServiceLandingView';
+import ServicesLandingView from '@/src/brownBearComponents/components/services/ServiceLandingView';
 import { getServicesLandingConfig } from '@/src/config/services/landing/getters';
 import { defaultServicesLandingTheme } from '@/src/theme/serviceLandingThemes';
 import type { Metadata } from 'next';

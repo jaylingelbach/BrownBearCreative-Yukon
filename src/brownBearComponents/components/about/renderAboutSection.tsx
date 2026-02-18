@@ -1,4 +1,4 @@
-import SmartLink from '@/src/components/ui/SmartLink';
+import SmartLink from '@/src/brownBearComponents/components/ui/SmartLink';
 import { AboutSection } from '@/src/config/about/types';
 import { AboutLandingTheme } from '@/src/lib/types';
 

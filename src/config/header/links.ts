@@ -56,7 +56,7 @@ export function buildGrowthLinks(params: {
     { label: 'Home', href: '/' },
     {
       label: 'Services',
-      href: '/services', // parent page must exist for ALL tiers
+      //href: '/services', // parent page must exist for ALL tiers
       children: params.serviceChildren
     },
     { label: 'About', href: '/about' }
@@ -89,7 +89,7 @@ export function buildManagedLinks(params: {
     { label: 'Home', href: '/' },
     {
       label: 'Services',
-      href: '/services', // parent page must exist for ALL tiers
+      // href: '/services', // parent page must exist for ALL tiers
       children: params.serviceChildren
     },
     { label: 'About', href: '/about' }

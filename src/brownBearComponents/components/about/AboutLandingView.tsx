@@ -2,7 +2,7 @@ import { CheckCircle2 } from 'lucide-react';
 
 import type { AboutLandingTheme } from '@/src/lib/types';
 import type { AboutLandingConfig } from '@/src/config/about/types';
-import renderAboutSection from '@/src/components/about/renderAboutSection';
+import renderAboutSection from '@/src/brownBearComponents/components/about/renderAboutSection';
 
 type AboutLandingViewProps = {
   config: AboutLandingConfig;

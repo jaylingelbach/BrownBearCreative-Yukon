@@ -1,4 +1,4 @@
-import ReviewsLandingView from '@/src/components/reviews/ReviewsLandingView';
+import ReviewsLandingView from '@/src/brownBearComponents/components/reviews/ReviewsLandingView';
 import { getReviewsLandingConfig } from '@/src/config/reviews/getters';
 import { defaultReviewsLandingTheme } from '@/src/theme/reviewsLandingThemes';
 

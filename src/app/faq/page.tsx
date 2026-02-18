@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import FaqLandingView from '@/src/components/faq/FaqLandingView';
+import FaqLandingView from '@/src/brownBearComponents/components/faq/FaqLandingView';
 import { getFaqLandingConfig } from '@/src/config/faq/getters';
 import { defaultFaqLandingTheme } from '@/src/theme/faqLandingThemes';
 

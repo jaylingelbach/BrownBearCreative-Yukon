@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { NavItem, NavbarTheme } from '@/src/lib/types';
+import type { NavCta, NavItem, NavbarTheme } from '@/src/lib/types';
 
 export type PhoneConfig = {
   label: string;
@@ -25,4 +25,5 @@ export type SiteConfig = {
   seo: SiteSeoConfig;
   links: NavItem[];
   enableDropdowns: boolean;
+  primaryCta?: NavCta;
 };
