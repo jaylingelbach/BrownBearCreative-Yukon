@@ -56,8 +56,8 @@ export default function FaqLandingView({ config, theme }: FaqLandingViewProps) {
 
           {bullets.length > 0 ? (
             <ul className={theme.bulletsList}>
-              {bullets.map((item) => (
-                <li key={item} className={theme.bulletsItem}>
+              {bullets.map((item, index) => (
+                <li key={index} className={theme.bulletsItem}>
                   <span aria-hidden={true} className={theme.bulletsDot} />
                   <span>{item}</span>
                 </li>
