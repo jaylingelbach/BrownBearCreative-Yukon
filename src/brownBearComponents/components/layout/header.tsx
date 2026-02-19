@@ -76,7 +76,11 @@ export function Header({
     focusButton
   } = useAccessibleDropdownMenu();
 
-  const mobileCta = primaryCta ?? { label: 'Call', href: phone.href };
+  const mobileCta = primaryCta ?? {
+    label: 'Call',
+    href: phone.href,
+    ariaLabel: undefined
+  };
 
   // Split links into:
   // - items with children (accordion groups on mobile)
