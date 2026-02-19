@@ -29,10 +29,11 @@ import { useState } from 'react';
  * Mobile behavior:
  * - The hamburger menu uses a `Sheet` (shadcn/ui).
  * - Clicking any menu item closes the sheet via `SheetClose asChild`.
+ * - Mobile can always render accordion groups when `item.children` exist, even if desktop dropdowns are disabled.
  * - We avoid "close on route change" effects to prevent cascading render lint warnings.
  *
  * Desktop behavior:
- * - Optional accessible dropdown menus.
+ * - Dropdown UI is gated by `enableDropdowns`.
  * - Clicking a dropdown child closes the dropdown.
  *
  * @param logo - Visual/logo node shown in the top-left Home link
@@ -129,10 +130,9 @@ export function Header({
                       ? isActivePath(pathname, item.href)
                       : false;
 
+                    // ✅ Mobile: children existence is independent of enableDropdowns
                     const hasChildren =
-                      enableDropdowns &&
-                      Array.isArray(item.children) &&
-                      item.children.length > 0;
+                      Array.isArray(item.children) && item.children.length > 0;
 
                     if (hasChildren) {
                       const triggerClass = theme.mobileAccordionTrigger ?? '';
@@ -252,8 +252,11 @@ export function Header({
             ].join(' ')}
           >
             {links.map((item) => {
-              const hasDropdown =
-                enableDropdowns && item.children && item.children.length > 0;
+              const hasChildren =
+                Array.isArray(item.children) && item.children.length > 0;
+
+              // ✅ Desktop dropdown UI is gated by enableDropdowns
+              const hasDropdown = enableDropdowns && hasChildren;
 
               if (hasDropdown) {
                 const dropdownActive = item.children!.some((child) =>
