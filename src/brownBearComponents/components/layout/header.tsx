@@ -1,7 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
+import { useState } from 'react';
+
+import type { HeaderProps, NavItem } from '@/src/lib/types';
+import { isActivePath } from '@/src/lib/navigation';
+
 import {
   Sheet,
   SheetClose,
@@ -10,29 +16,38 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/src/components/ui/sheet';
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger
 } from '@/src/components/ui/accordion';
-import { usePathname } from 'next/navigation';
-import type { HeaderProps } from '@/src/lib/types';
-import { isActivePath } from '@/src/lib/navigation';
+
 import { useAccessibleDropdownMenu } from '@/src/hooks/useAccessibleDropdownMenu';
 import { NavTrigger } from '@/src/brownBearComponents/components/layout/NavTrigger';
-import { useState } from 'react';
 
 /**
- * Render a responsive site header with a top identity bar, a mobile slide-out menu, and an optional accessible desktop navigation with dropdowns.
+ * Renders the site header including a top identity bar and a primary navigation bar with optional accessible dropdown menus.
  *
- * @param logo - Visual node rendered as the left-aligned Home link
- * @param phone - Object with `href` and `label` for the top-right call link
- * @param links - Array of navigation items; each item may include `href`, `label`, and optional `children` (child items follow the same `{ href, label }` shape)
+ * Mobile behavior:
+ * - The hamburger menu uses a `Sheet` (shadcn/ui).
+ * - Clicking any menu item closes the sheet via `SheetClose asChild`.
+ * - Mobile can always render accordion groups when `item.children` exist, even if desktop dropdowns are disabled.
+ * - Accordion is single-open across all groups (one Accordion wrapping all AccordionItem groups).
+ * - We avoid "close on route change" effects to prevent cascading render lint warnings.
+ *
+ * Desktop behavior:
+ * - Dropdown UI is gated by `enableDropdowns`.
+ * - Clicking a dropdown child closes the dropdown.
+ *
+ * @param logo - Visual/logo node shown in the top-left Home link
+ * @param phone - Object with `href` and `label` for the phone call link in the top-right
+ * @param links - Array of navigation items; items may include `href`, `label`, and optional `children` for dropdowns
  * @param enableDropdowns - When true, items with `children` render as accessible dropdown menus (default: `false`)
- * @param theme - Object of CSS class names used to style the top bar, mobile and desktop nav, and dropdowns
- * @param primaryCta - Optional override for the persistent mobile CTA; when omitted a Call CTA derived from `phone` is used
- * @returns The header JSX element to render at the top of the page
+ * @param theme - Object of CSS class names used to style the header and navigation elements
+ * @param primaryCta - Optional override for the persistent CTA (e.g. Get a Quote). Defaults to Call / phone href.
+ * @returns The header JSX element to be rendered at the top of the page
  */
 export function Header({
   logo,
@@ -62,6 +77,19 @@ export function Header({
   } = useAccessibleDropdownMenu();
 
   const mobileCta = primaryCta ?? { label: 'Call', href: phone.href };
+
+  // Split links into:
+  // - items with children (accordion groups on mobile)
+  // - items without children (plain links/spans on mobile)
+  const itemsWithChildren: NavItem[] = [];
+  const itemsWithoutChildren: NavItem[] = [];
+
+  for (const item of links) {
+    const hasChildren =
+      Array.isArray(item.children) && item.children.length > 0;
+    if (hasChildren) itemsWithChildren.push(item);
+    else itemsWithoutChildren.push(item);
+  }
 
   return (
     <header className="w-full">
@@ -117,104 +145,118 @@ export function Header({
                 className={theme.mobileNavList ?? ''}
               >
                 <ul className="space-y-1">
-                  <Accordion type="single" collapsible>
-                    {links.map((item) => {
-                      const isActive = item.href
-                        ? isActivePath(pathname, item.href)
-                        : false;
+                  {/* Plain items (no children) */}
+                  {itemsWithoutChildren.map((item) => {
+                    const isActive = item.href
+                      ? isActivePath(pathname, item.href)
+                      : false;
 
-                      // Mobile: children existence is independent of enableDropdowns
-                      const hasChildren =
-                        Array.isArray(item.children) &&
-                        item.children.length > 0;
+                    const itemClass = theme.mobileNavItem ?? '';
+                    const itemActiveClass = theme.mobileNavItemActive ?? '';
 
-                      if (hasChildren) {
-                        const triggerClass = theme.mobileAccordionTrigger ?? '';
-                        const childClass = theme.mobileChildItem ?? '';
-                        const childActiveClass =
-                          theme.mobileChildItemActive ?? '';
-
-                        return (
-                          <AccordionItem key={item.label} value={item.label}>
-                            <AccordionTrigger className={triggerClass}>
-                              {item.label}
-                            </AccordionTrigger>
-
-                            <AccordionContent
-                              className={theme.mobileAccordionContent ?? ''}
-                            >
-                              <div className="space-y-1">
-                                {/* Optional parent page link (ONLY if this tier provides it) */}
-                                {item.href ? (
-                                  <SheetClose asChild>
-                                    <Link
-                                      href={item.href}
-                                      className={`${childClass} ${
-                                        isActive ? childActiveClass : ''
-                                      }`}
-                                      aria-current={
-                                        isActive ? 'page' : undefined
-                                      }
-                                    >
-                                      All {item.label}
-                                    </Link>
-                                  </SheetClose>
-                                ) : null}
-
-                                {item.children!.map((child) => {
-                                  const childActive = isActivePath(
-                                    pathname,
-                                    child.href
-                                  );
-
-                                  return (
-                                    <SheetClose asChild key={child.href}>
-                                      <Link
-                                        href={child.href}
-                                        className={`${childClass} ${
-                                          childActive ? childActiveClass : ''
-                                        }`}
-                                        aria-current={
-                                          childActive ? 'page' : undefined
-                                        }
-                                      >
-                                        {child.label}
-                                      </Link>
-                                    </SheetClose>
-                                  );
-                                })}
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        );
-                      }
-
-                      const itemClass = theme.mobileNavItem ?? '';
-                      const itemActiveClass = theme.mobileNavItemActive ?? '';
-
-                      if (!item.href) {
-                        return (
-                          <li key={item.label}>
-                            <span className={itemClass}>{item.label}</span>
-                          </li>
-                        );
-                      }
-
+                    if (!item.href) {
                       return (
-                        <li key={item.href}>
-                          <SheetClose asChild>
-                            <Link
-                              href={item.href}
-                              className={`${itemClass} ${isActive ? itemActiveClass : ''}`}
-                              aria-current={isActive ? 'page' : undefined}
-                            >
-                              {item.label}
-                            </Link>
-                          </SheetClose>
+                        <li key={item.label}>
+                          <span className={itemClass}>{item.label}</span>
                         </li>
                       );
-                    })}
-                  </Accordion>
+                    }
+
+                    return (
+                      <li key={item.href}>
+                        <SheetClose asChild>
+                          <Link
+                            href={item.href}
+                            className={`${itemClass} ${
+                              isActive ? itemActiveClass : ''
+                            }`}
+                            aria-current={isActive ? 'page' : undefined}
+                          >
+                            {item.label}
+                          </Link>
+                        </SheetClose>
+                      </li>
+                    );
+                  })}
+
+                  {/* Accordion groups (has children) */}
+                  {itemsWithChildren.length > 0 ? (
+                    <li>
+                      <Accordion type="single" collapsible>
+                        {itemsWithChildren.map((item) => {
+                          const isActive = item.href
+                            ? isActivePath(pathname, item.href)
+                            : false;
+
+                          const triggerClass =
+                            theme.mobileAccordionTrigger ?? '';
+                          const childClass = theme.mobileChildItem ?? '';
+                          const childActiveClass =
+                            theme.mobileChildItemActive ?? '';
+
+                          // Your rule:
+                          // - On Growth/Managed, we do NOT want "All Services" in mobile.
+                          // - We treat "enableDropdowns === true" as "this tier uses dropdowns".
+                          // - So we only show the parent link in mobile when dropdowns are NOT enabled.
+                          const showParentLinkInMobile =
+                            Boolean(item.href) && enableDropdowns === false;
+
+                          return (
+                            <AccordionItem key={item.label} value={item.label}>
+                              <AccordionTrigger className={triggerClass}>
+                                {item.label}
+                              </AccordionTrigger>
+
+                              <AccordionContent
+                                className={theme.mobileAccordionContent ?? ''}
+                              >
+                                <div className="space-y-1">
+                                  {showParentLinkInMobile ? (
+                                    <SheetClose asChild>
+                                      <Link
+                                        href={item.href!}
+                                        className={`${childClass} ${
+                                          isActive ? childActiveClass : ''
+                                        }`}
+                                        aria-current={
+                                          isActive ? 'page' : undefined
+                                        }
+                                      >
+                                        All {item.label}
+                                      </Link>
+                                    </SheetClose>
+                                  ) : null}
+
+                                  {item.children!.map((child) => {
+                                    const childActive = isActivePath(
+                                      pathname,
+                                      child.href
+                                    );
+
+                                    return (
+                                      <SheetClose asChild key={child.href}>
+                                        <Link
+                                          href={child.href}
+                                          className={`${childClass} ${
+                                            childActive ? childActiveClass : ''
+                                          }`}
+                                          aria-current={
+                                            childActive ? 'page' : undefined
+                                          }
+                                        >
+                                          {child.label}
+                                        </Link>
+                                      </SheetClose>
+                                    );
+                                  })}
+                                </div>
+                              </AccordionContent>
+                            </AccordionItem>
+                          );
+                        })}
+                      </Accordion>
+                    </li>
+                  ) : null}
                 </ul>
               </nav>
             </SheetContent>
@@ -385,7 +427,9 @@ export function Header({
                   </span>
                 );
               }
+
               const isActive = isActivePath(pathname, item.href);
+
               return (
                 <Link
                   key={item.href}
