@@ -358,6 +358,7 @@ export function Header({
 
                     <div
                       role="menu"
+                      aria-label={item.label}
                       id={dropdownId}
                       className={`
                         absolute left-0 top-full z-50 mt-2

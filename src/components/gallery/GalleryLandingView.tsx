@@ -27,8 +27,8 @@ export default function GalleryLandingView({
 
           {bullets.length > 0 ? (
             <ul className={theme.bulletsList}>
-              {bullets.map((bullet) => (
-                <li key={bullet} className={theme.bulletsItem}>
+              {bullets.map((bullet, index) => (
+                <li key={index} className={theme.bulletsItem}>
                   <span aria-hidden={true} className={theme.bulletsDot} />
                   <span>{bullet}</span>
                 </li>
@@ -44,7 +44,7 @@ export default function GalleryLandingView({
 
               return (
                 <article key={item.id} className={theme.card}>
-                  <div className={theme.imageFrame} aria-hidden={true}>
+                  <div className={theme.imageFrame} aria-hidden={false}>
                     <Image
                       src={item.imageSrc}
                       alt={item.alt}
@@ -57,7 +57,7 @@ export default function GalleryLandingView({
 
                   <div className={theme.cardBody}>
                     {item.title ? (
-                      <div className={theme.cardTitle}>{item.title}</div>
+                      <h2 className={theme.cardTitle}>{item.title}</h2>
                     ) : null}
 
                     {item.description ? (
