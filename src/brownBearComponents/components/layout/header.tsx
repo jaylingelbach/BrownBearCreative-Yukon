@@ -24,25 +24,15 @@ import { NavTrigger } from '@/src/brownBearComponents/components/layout/NavTrigg
 import { useState } from 'react';
 
 /**
- * Renders the site header including a top identity bar and a primary navigation bar with optional accessible dropdown menus.
+ * Render a responsive site header with a top identity bar, a mobile slide-out menu, and an optional accessible desktop navigation with dropdowns.
  *
- * Mobile behavior:
- * - The hamburger menu uses a `Sheet` (shadcn/ui).
- * - Clicking any menu item closes the sheet via `SheetClose asChild`.
- * - Mobile can always render accordion groups when `item.children` exist, even if desktop dropdowns are disabled.
- * - We avoid "close on route change" effects to prevent cascading render lint warnings.
- *
- * Desktop behavior:
- * - Dropdown UI is gated by `enableDropdowns`.
- * - Clicking a dropdown child closes the dropdown.
- *
- * @param logo - Visual/logo node shown in the top-left Home link
- * @param phone - Object with `href` and `label` for the phone call link in the top-right
- * @param links - Array of navigation items; items may include `href`, `label`, and optional `children` for dropdowns
+ * @param logo - Visual node rendered as the left-aligned Home link
+ * @param phone - Object with `href` and `label` for the top-right call link
+ * @param links - Array of navigation items; each item may include `href`, `label`, and optional `children` (child items follow the same `{ href, label }` shape)
  * @param enableDropdowns - When true, items with `children` render as accessible dropdown menus (default: `false`)
- * @param theme - Object of CSS class names used to style the header and navigation elements
- * @param primaryCta - Optional override for the persistent CTA (e.g. Get a Quote). Defaults to Call / phone href.
- * @returns The header JSX element to be rendered at the top of the page
+ * @param theme - Object of CSS class names used to style the top bar, mobile and desktop nav, and dropdowns
+ * @param primaryCta - Optional override for the persistent mobile CTA; when omitted a Call CTA derived from `phone` is used
+ * @returns The header JSX element to render at the top of the page
  */
 export function Header({
   logo,

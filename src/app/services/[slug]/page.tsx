@@ -65,12 +65,12 @@ export async function generateMetadata({
 }
 
 /**
- * Render the service page for the given slug.
+ * Render the service page for a given slug.
  *
- * Resolves the slug from `params`, looks up the corresponding service and its page data, and renders the ServiceView for that service. If no service matches the slug, triggers a 404 response.
+ * Resolves the route `slug`, finds the matching service and its page data, and renders the ServiceView. If navigation is disabled or the slug does not match a service, responds with a 404.
  *
- * @param params - An object (possibly a promise) containing the route `slug`
- * @returns A React element that renders the service page
+ * @param params - Object containing the route `slug`
+ * @returns The React element that renders the requested service page, or triggers a 404 response when unavailable
  */
 export default async function ServicePage({ params }: PageProps) {
   const tier = getTierPreset();
