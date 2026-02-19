@@ -93,8 +93,10 @@ export function Header({
       </div>
 
       {/* ───────────────── Mobile nav bar ───────────────── */}
-      <div className={`md:hidden ${theme.mobileBar ?? theme.navContainer}`}>
-        <div className="flex items-center gap-2 ml-auto">
+      <div
+        className={`md:hidden flex items-center justify-end ${theme.mobileBar ?? theme.navContainer}`}
+      >
+        <div className="flex items-center gap-2">
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             {/* CTA: if sheet is open and user taps CTA, close it */}
             <Link
@@ -125,107 +127,104 @@ export function Header({
                 className={theme.mobileNavList ?? ''}
               >
                 <ul className="space-y-1">
-                  {links.map((item) => {
-                    const isActive = item.href
-                      ? isActivePath(pathname, item.href)
-                      : false;
+                  <Accordion type="single" collapsible>
+                    {links.map((item) => {
+                      const isActive = item.href
+                        ? isActivePath(pathname, item.href)
+                        : false;
 
-                    // ✅ Mobile: children existence is independent of enableDropdowns
-                    const hasChildren =
-                      Array.isArray(item.children) && item.children.length > 0;
+                      // Mobile: children existence is independent of enableDropdowns
+                      const hasChildren =
+                        Array.isArray(item.children) &&
+                        item.children.length > 0;
 
-                    if (hasChildren) {
-                      const triggerClass = theme.mobileAccordionTrigger ?? '';
-                      const childClass = theme.mobileChildItem ?? '';
-                      const childActiveClass =
-                        theme.mobileChildItemActive ?? '';
+                      if (hasChildren) {
+                        const triggerClass = theme.mobileAccordionTrigger ?? '';
+                        const childClass = theme.mobileChildItem ?? '';
+                        const childActiveClass =
+                          theme.mobileChildItemActive ?? '';
 
-                      return (
-                        <li key={item.label}>
-                          <Accordion type="single" collapsible>
-                            <AccordionItem value={item.label}>
-                              <AccordionTrigger className={triggerClass}>
-                                {item.label}
-                              </AccordionTrigger>
+                        return (
+                          <AccordionItem key={item.label} value={item.label}>
+                            <AccordionTrigger className={triggerClass}>
+                              {item.label}
+                            </AccordionTrigger>
 
-                              <AccordionContent
-                                className={theme.mobileAccordionContent ?? ''}
-                              >
-                                <div className="space-y-1">
-                                  {/* Optional parent page link (ONLY if this tier provides it) */}
-                                  {item.href ? (
-                                    <SheetClose asChild>
+                            <AccordionContent
+                              className={theme.mobileAccordionContent ?? ''}
+                            >
+                              <div className="space-y-1">
+                                {/* Optional parent page link (ONLY if this tier provides it) */}
+                                {item.href ? (
+                                  <SheetClose asChild>
+                                    <Link
+                                      href={item.href}
+                                      className={`${childClass} ${
+                                        isActive ? childActiveClass : ''
+                                      }`}
+                                      aria-current={
+                                        isActive ? 'page' : undefined
+                                      }
+                                    >
+                                      All {item.label}
+                                    </Link>
+                                  </SheetClose>
+                                ) : null}
+
+                                {item.children!.map((child) => {
+                                  const childActive = isActivePath(
+                                    pathname,
+                                    child.href
+                                  );
+
+                                  return (
+                                    <SheetClose asChild key={child.href}>
                                       <Link
-                                        href={item.href}
+                                        href={child.href}
                                         className={`${childClass} ${
-                                          isActive ? childActiveClass : ''
+                                          childActive ? childActiveClass : ''
                                         }`}
                                         aria-current={
-                                          isActive ? 'page' : undefined
+                                          childActive ? 'page' : undefined
                                         }
                                       >
-                                        All {item.label}
+                                        {child.label}
                                       </Link>
                                     </SheetClose>
-                                  ) : null}
+                                  );
+                                })}
+                              </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        );
+                      }
 
-                                  {item.children!.map((child) => {
-                                    const childActive = isActivePath(
-                                      pathname,
-                                      child.href
-                                    );
+                      const itemClass = theme.mobileNavItem ?? '';
+                      const itemActiveClass = theme.mobileNavItemActive ?? '';
 
-                                    return (
-                                      <SheetClose asChild key={child.href}>
-                                        <Link
-                                          href={child.href}
-                                          className={`${childClass} ${
-                                            childActive ? childActiveClass : ''
-                                          }`}
-                                          aria-current={
-                                            childActive ? 'page' : undefined
-                                          }
-                                        >
-                                          {child.label}
-                                        </Link>
-                                      </SheetClose>
-                                    );
-                                  })}
-                                </div>
-                              </AccordionContent>
-                            </AccordionItem>
-                          </Accordion>
-                        </li>
-                      );
-                    }
+                      if (!item.href) {
+                        return (
+                          <li key={item.label}>
+                            <span className={itemClass}>{item.label}</span>
+                          </li>
+                        );
+                      }
 
-                    const itemClass = theme.mobileNavItem ?? '';
-                    const itemActiveClass = theme.mobileNavItemActive ?? '';
-
-                    if (!item.href) {
                       return (
-                        <li key={item.label}>
-                          <span className={itemClass}>{item.label}</span>
+                        <li key={item.href}>
+                          <SheetClose asChild>
+                            <Link
+                              href={item.href}
+                              className={`${itemClass} ${isActive ? itemActiveClass : ''}`}
+                              aria-current={isActive ? 'page' : undefined}
+                            >
+                              {item.label}
+                            </Link>
+                          </SheetClose>
                         </li>
                       );
-                    }
-
-                    return (
-                      <li key={item.href}>
-                        <SheetClose asChild>
-                          <Link
-                            href={item.href}
-                            className={`${itemClass} ${
-                              isActive ? itemActiveClass : ''
-                            }`}
-                            aria-current={isActive ? 'page' : undefined}
-                          >
-                            {item.label}
-                          </Link>
-                        </SheetClose>
-                      </li>
-                    );
-                  })}
+                    })}
+                  </Accordion>
                 </ul>
               </nav>
             </SheetContent>
@@ -396,17 +395,15 @@ export function Header({
                   </span>
                 );
               }
-
+              const isActive = isActivePath(pathname, item.href);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={`${theme.navLink} ${
-                    isActivePath(pathname, item.href) ? theme.navLinkActive : ''
+                    isActive ? theme.navLinkActive : ''
                   }`}
-                  aria-current={
-                    isActivePath(pathname, item.href) ? 'page' : undefined
-                  }
+                  aria-current={isActive ? 'page' : undefined}
                 >
                   {item.label}
                 </Link>
