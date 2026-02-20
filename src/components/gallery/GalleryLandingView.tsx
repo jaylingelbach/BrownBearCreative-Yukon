@@ -1,8 +1,4 @@
-'use client';
-
 import Image from 'next/image';
-import { useRef, useState } from 'react';
-import type { KeyboardEvent } from 'react';
 
 import type { GalleryLandingConfig } from '@/src/config/gallery/types';
 import type { GalleryLandingTheme } from '@/src/lib/types';
@@ -12,60 +8,12 @@ type GalleryLandingViewProps = {
   theme: GalleryLandingTheme;
 };
 
-/**
- * Render a gallery landing view with a hero area and a keyboard-navigable gallery grid.
- *
- * Renders the page hero (heading, optional subheading, optional bullets) and, when items are present,
- * a gallery of focusable cards that support Arrow/Home/End navigation with wraparound. Card DOM
- * references are tracked to enable programmatic focus movement.
- *
- * @param config - Component content configuration (heading, optional subheading, bullets, and gallery items)
- * @param theme - CSS class map used to style the component's elements
- * @returns A React element containing the hero section and an optional gallery of keyboard-navigable cards
- */
 export default function GalleryLandingView({
   config,
   theme
 }: GalleryLandingViewProps) {
   const bullets = config.bullets ?? [];
-  const items = config.items;
-  const cardRefs = useRef<Array<HTMLElement | null>>([]);
-
-  const [focusedIndex, setFocusedIndex] = useState(0);
-
-  const handleCardKeyDown = (
-    event: KeyboardEvent<HTMLElement>,
-    itemIndex: number
-  ) => {
-    if (items.length < 2) {
-      return;
-    }
-
-    let nextIndex = itemIndex;
-
-    switch (event.key) {
-      case 'ArrowRight':
-      case 'ArrowDown':
-        nextIndex = (itemIndex + 1) % items.length;
-        break;
-      case 'ArrowLeft':
-      case 'ArrowUp':
-        nextIndex = (itemIndex - 1 + items.length) % items.length;
-        break;
-      case 'Home':
-        nextIndex = 0;
-        break;
-      case 'End':
-        nextIndex = items.length - 1;
-        break;
-      default:
-        return;
-    }
-
-    event.preventDefault();
-    setFocusedIndex(nextIndex);
-    cardRefs.current[nextIndex]?.focus();
-  };
+  const items = config.items ?? [];
 
   return (
     <main className={theme.page}>
@@ -90,31 +38,12 @@ export default function GalleryLandingView({
         </div>
 
         {items.length > 0 ? (
-          <section
-            aria-label="Gallery"
-            aria-describedby="gallery-nav-hint"
-            className={theme.grid}
-          >
-            <p id="gallery-nav-hint" className="sr-only">
-              Use arrow keys to move between gallery items.
-            </p>
-            {items.map((item, itemIndex) => {
+          <section aria-label="Gallery" className={theme.grid}>
+            {items.map((item) => {
               const tags = item.tags ?? [];
 
               return (
-                <article
-                  key={item.id}
-                  className={theme.card}
-                  tabIndex={itemIndex === focusedIndex ? 0 : -1}
-                  onFocus={() => setFocusedIndex(itemIndex)}
-                  ref={(node) => {
-                    cardRefs.current[itemIndex] = node;
-                    return () => {
-                      cardRefs.current[itemIndex] = null;
-                    };
-                  }}
-                  onKeyDown={(event) => handleCardKeyDown(event, itemIndex)}
-                >
+                <article key={item.id} className={theme.card}>
                   <div className={theme.imageFrame}>
                     <Image
                       src={item.imageSrc}
@@ -122,7 +51,7 @@ export default function GalleryLandingView({
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className={theme.image}
-                      priority={itemIndex < 3}
+                      priority={false}
                     />
                   </div>
 

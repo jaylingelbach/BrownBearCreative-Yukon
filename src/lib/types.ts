@@ -18,6 +18,24 @@ export type NavbarTheme = {
 
   // navigation bar gap
   navGap: string;
+
+  // ── Mobile (optional) ───────────────────────────────
+  mobileBar?: string;
+  mobileMenuButton?: string;
+  mobileCtaButton?: string;
+
+  mobileSheet?: string;
+  mobileSheetHeader?: string;
+  mobileSheetTitle?: string;
+
+  mobileNavList?: string;
+  mobileNavItem?: string;
+  mobileNavItemActive?: string;
+
+  mobileAccordionTrigger?: string;
+  mobileAccordionContent?: string;
+  mobileChildItem?: string;
+  mobileChildItemActive?: string;
 };
 
 export type NavChild = {
@@ -37,6 +55,12 @@ export type NavbarProps = {
   theme: NavbarTheme;
 };
 
+export type NavCta = {
+  label: string;
+  href: string;
+  ariaLabel?: string;
+};
+
 /* ---------- Header ---------- */
 export type HeaderProps = {
   logo: React.ReactNode;
@@ -47,6 +71,7 @@ export type HeaderProps = {
   links: NavItem[];
   enableDropdowns?: boolean;
   theme: NavbarTheme;
+  primaryCta?: NavCta;
 };
 
 /* ---------- Service View Theme ---------- */

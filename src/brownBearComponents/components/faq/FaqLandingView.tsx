@@ -3,7 +3,7 @@
 import { type KeyboardEvent, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-import SmartLink from '@/src/components/ui/SmartLink';
+import SmartLink from '@/src/brownBearComponents/components/ui/SmartLink';
 import type { FaqLandingConfig } from '@/src/config/faq/types';
 import type { FaqLandingTheme } from '@/src/lib/types';
 

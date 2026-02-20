@@ -1,4 +1,4 @@
-import { homepageSectionRegistry } from '@/src/components/homepage/services/sectionRegistry';
+import { homepageSectionRegistry } from '@/src/brownBearComponents/components/homepage/services/sectionRegistry';
 import { getTierPreset } from '@/src/config/tiers/getters';
 
 /**

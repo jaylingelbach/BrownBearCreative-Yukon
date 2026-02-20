@@ -1,11 +1,11 @@
-import ServicesLandingView from '@/src/components/services/ServiceLandingView';
+import ServicesLandingView from '@/src/brownBearComponents/components/services/ServiceLandingView';
 import { getServicesLandingConfig } from '@/src/config/services/landing/getters';
 import { defaultServicesLandingTheme } from '@/src/theme/serviceLandingThemes';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Our Services',
-  description: 'Learn about our services and how to contact us.'
+  description: 'Learn about our services and what we can do for you.'
 };
 
 /**

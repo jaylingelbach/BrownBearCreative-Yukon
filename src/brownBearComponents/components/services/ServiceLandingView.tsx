@@ -1,6 +1,6 @@
 import { Phone } from 'lucide-react';
 
-import SmartLink from '@/src/components/ui/SmartLink';
+import SmartLink from '@/src/brownBearComponents/components/ui/SmartLink';
 import { cn } from '@/src/lib/cn';
 import type { ServicesLandingTheme } from '@/src/lib/types';
 
@@ -17,10 +17,10 @@ type ServicesLandingViewProps = {
 /**
  * Render the services landing page using the provided configuration and theme.
  *
- * Resolves featured services (falling back to default homepage services), chooses a list or grid layout, renders a hero section, a services list, and an optional CTA. If the current tier is not `starter`, calls `notFound()` to produce a 404 response.
+ * Resolves featured services (falling back to default homepage services), chooses list or grid layout, renders the hero and services sections, and optionally renders a CTA.
  *
- * @param config - Page configuration (heading, optional description, layout, optional featuredServiceIds, and optional `cta` with heading, paragraph, href, and label)
- * @param theme - Theme CSS class mappings used to style the page's container, hero, sections, cards, and CTA
+ * @param config - Page configuration: heading, optional description, layout ('list' | 'grid'), optional featuredServiceIds, and optional `cta` (heading, paragraph, href, label)
+ * @param theme - CSS class mappings used to style page container, hero, sections, cards, and CTA
  * @returns A `JSX.Element` containing the services landing UI; calls `notFound()` (producing a 404) when the tier is not `starter`
  */
 export default function ServicesLandingView({

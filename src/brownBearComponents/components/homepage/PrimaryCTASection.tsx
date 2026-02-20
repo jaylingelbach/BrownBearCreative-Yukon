@@ -5,7 +5,7 @@ import { cn } from '@/src/lib/cn';
 import { getPrimaryCtaConfig } from '@/src/config/home/getters';
 import type { PrimaryCtaTheme } from '@/src/theme/primaryCtaThemes';
 import { defaultPrimaryCtaTheme } from '@/src/theme/primaryCtaThemes';
-import SmartLink from '@/src/components/ui/SmartLink';
+import SmartLink from '@/src/brownBearComponents/components/ui/SmartLink';
 
 type PrimaryCTASectionProps = {
   theme?: PrimaryCtaTheme;
@@ -32,10 +32,10 @@ function PrimaryCtaIcon({ icon, className }: PrimaryCtaIconProps) {
 }
 
 /**
- * Render the primary call-to-action section using the configured layout, text, actions, icon, and optional media.
+ * Renders the primary call-to-action section using the configured layout, text, action, icon, and optional media.
  *
  * @param theme - Optional theme object of CSS class names to override the section's styling and layout
- * @returns The rendered section element containing the CTA content and action control
+ * @returns The section element containing the CTA content and action control
  */
 export default function PrimaryCTASection({
   theme = defaultPrimaryCtaTheme
