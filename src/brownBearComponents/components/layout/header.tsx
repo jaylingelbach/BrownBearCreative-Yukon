@@ -363,7 +363,10 @@ export function Header({
 
                         if (event.key === 'End') {
                           event.preventDefault();
-                          focusMenuItem(item.label, links.length - 1);
+                          focusMenuItem(
+                            item.label,
+                            (item.children?.length ?? 1) - 1
+                          );
                         }
 
                         if (event.key === 'Escape') {
