@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import type { HeaderProps, NavItem } from '@/src/lib/types';
 import { isActivePath } from '@/src/lib/navigation';
@@ -75,6 +75,16 @@ export function Header({
     focusMenuItem,
     focusButton
   } = useAccessibleDropdownMenu();
+
+  // Close the mobile sheet if the viewport widens past the md breakpoint
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) setMobileOpen(false);
+    };
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const mobileCta = primaryCta ?? { label: 'Call', href: phone.href };
 
@@ -286,7 +296,7 @@ export function Header({
               const hasChildren =
                 Array.isArray(item.children) && item.children.length > 0;
 
-              // ✅ Desktop dropdown UI is gated by enableDropdowns
+              // Desktop dropdown UI is gated by enableDropdowns
               const hasDropdown = enableDropdowns && hasChildren;
 
               if (hasDropdown) {
@@ -344,6 +354,16 @@ export function Header({
                             item.label,
                             (menuItemRefs.current[item.label]?.length ?? 0) - 1
                           );
+                        }
+
+                        if (event.key === 'Home') {
+                          event.preventDefault();
+                          focusMenuItem(item.label, 0);
+                        }
+
+                        if (event.key === 'End') {
+                          event.preventDefault();
+                          focusMenuItem(item.label, links.length - 1);
                         }
 
                         if (event.key === 'Escape') {

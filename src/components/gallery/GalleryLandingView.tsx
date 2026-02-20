@@ -44,7 +44,7 @@ export default function GalleryLandingView({
 
               return (
                 <article key={item.id} className={theme.card}>
-                  <div className={theme.imageFrame} aria-hidden={false}>
+                  <div className={theme.imageFrame}>
                     <Image
                       src={item.imageSrc}
                       alt={item.alt}
@@ -67,13 +67,13 @@ export default function GalleryLandingView({
                     ) : null}
 
                     {tags.length > 0 ? (
-                      <div className={theme.tagsWrap} aria-label="Tags">
+                      <ul className={theme.tagsWrap} aria-label="Tags">
                         {tags.map((tag) => (
-                          <span key={`${item.id}-${tag}`} className={theme.tag}>
+                          <li key={`${item.id}-${tag}`} className={theme.tag}>
                             {tag}
-                          </span>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     ) : null}
                   </div>
                 </article>
